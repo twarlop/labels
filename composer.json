@@ -1,0 +1,26 @@
+{
+    "name":"twarlop/productlabels",
+    "description":"etiketten module shoponsite",
+    "authors":[
+        {
+            "name":"Thomas Warlop",
+            "email":"thomas.warlop@gmail.com"
+        }
+    ],
+    "require":{
+        "illuminate/database":"master"
+    },
+    "autoload":{
+        "psr-0":{
+            "ProductLabels": "src/"
+        }
+    },
+    "license":"proprietary",
+    "minimum-stability":"dev",
+    "extra":{
+        "branch-alias":
+        {
+            "dev-master":"0.1"
+        }
+    }
+}
