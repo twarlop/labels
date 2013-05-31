@@ -1,12 +1,10 @@
 <?php
-namespace ProductLables;
+namespace ProductLabels;
 
-use Contract\ProviderInterface;
+use ProductLabels\Contract\ProviderInterface;
 
-abstract class ProductLabelProvider implements ProviderInterface{
+class ProductLabelProvider implements ProviderInterface{
 
-	private function __construct(){
 
-	}
 
 }

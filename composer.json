@@ -13,7 +13,11 @@
     "autoload":{
         "psr-0":{
             "ProductLabels": "src/"
-        }
+        },
+        "files":
+        [
+            "bootstrap/start.php"
+        ]
     },
     "license":"proprietary",
     "minimum-stability":"dev",

@@ -13,10 +13,5 @@ class Dimensions implements MigrationInterface
 	{
 
 	}
-
-	protected function init()
-	{
-
-	}
 	
 }
