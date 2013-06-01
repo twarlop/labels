@@ -4,7 +4,6 @@ namespace ProductLabels;
 echo "start test classes<br/>";
 
 $dimension = new Dimension\Dimension();
-$dimensionFactory = new Dimension\DimensionFactory();
 $dimensionprovider = new Dimension\DimensionProvider();
 $photoDimension = new Dimension\PhotoDimension();
 $textDimension = new Dimension\TextDimension();
@@ -16,14 +15,13 @@ $dimensions = new Migration\Dimensions();
 
 $page = new Pages\Page();
 $pageCollection = new Pages\PageCollection();
-$pageFactory = new Pages\PageFactory();
+$pageProvider = new Pages\PageProvider();
 
 $labelProduct = new Setup\LabelProduct();
-$labelProductProvider = new Setup\LabelProductProvider();
+$labelProductProvider = new Setup\LabelProductProvider(477);
 
 $document = new Document();
 $layout = new Layout();
-$productLabelProduct = new ProductLabelProvider();
-
+$productLabelProduct = new ProductLabelProvider(477);
 
 echo "end test classes<br/>";

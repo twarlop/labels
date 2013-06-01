@@ -3,6 +3,10 @@ namespace ProductLabels;
 
 /**
 * Layout
+*
+* Holds a property for each possible dimension that is valid for the labels to be used on the pages
+*
+* example: this will not hold a photo dimension if the current layout to be printed doens't need a photo
 */
 class Layout
 {
@@ -47,5 +51,5 @@ class Layout
 	 */
 	protected $logoHandelaar;
 
-	
+
 }

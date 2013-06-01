@@ -3,6 +3,8 @@ namespace ProductLabels;
 
 /**
 * Document
+*
+* This is the superobject that hold all the necessary stuff to build our pdf document.
 */
 class Document
 {

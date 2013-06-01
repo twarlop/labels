@@ -1,10 +1,10 @@
 <?php
-
+require __DIR__. '/../vendor/autoload.php';
 //setup laravel connection
 $settings = array(
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => 'elektrozine',
+    'database' => 'shoponsite',
     'username' => 'root',
     'password' => 'root',
     'charset' => 'utf8',
@@ -16,6 +16,13 @@ $container = new Illuminate\Container\Container();
 
 $connFactory = new \Illuminate\Database\Connectors\ConnectionFactory($container);
 $conn = $connFactory->make($settings);
+
+ProductLabels\DB::addConnection('sos', $conn);
+
+
+/**
+ * Uncomment to use eloquent
+ */
 
 $resolver = new \Illuminate\Database\ConnectionResolver();
 $resolver->addConnection('sos', $conn);
