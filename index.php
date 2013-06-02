@@ -24,6 +24,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 	<li><a href='?page=home'>Home</a></li>
 	<li><a href='?page=categories'>Categories</a></li>
 </ul>
+
+
+<div>
+	<label for="etiketCategorieSearch">
+		Bewerk Categorie
+	</label>
+	<input id='etiketCategorieSearch' type='text'>
+</div>
 <?
 
 
@@ -32,7 +40,7 @@ switch($page)
 	case 'home':
 		include('views/home.php');
 	break;
-	case 'categories':
-		include('views/categories.php');
+	case 'category':
+		include('views/category.php');
 	break;
 }
