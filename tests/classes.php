@@ -21,7 +21,7 @@ $labelProduct = new Setup\LabelProduct();
 $labelProductProvider = new Setup\LabelProductProvider(477);
 
 $document = new Document();
-$layout = new Layout();
+$layout = new Label\Layout();
 $productLabelProduct = new ProductLabelProvider(477);
 
 echo "end test classes<br/>";
