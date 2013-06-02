@@ -11,6 +11,10 @@ namespace ProductLabels\Setup;
 class LabelProduct
 {
 	
+	protected $product_id;
+	protected $merkid;
+	protected $merknaam;
+	protected $categorie_id;
 	protected $title;
 	protected $photo;
 	protected $prijs;
@@ -19,5 +23,19 @@ class LabelProduct
 	protected $text;
 	protected $logoMerk;
 	protected $logoHandelaar;
+
+
+	public function __construct(array $data = array())
+	{
+		foreach($data as $k => $v)
+		{
+			$this->$k = $v;
+		}
+	}
+
+	public function __get($name)
+	{
+		return $this->$name;
+	}
 
 }
