@@ -30,16 +30,26 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 	<input id='etiketCategorieSearch' type='text'>
 </p>
 
-<div id='propertyPicker' class='clearfix'>
+<div id="primary-app">
+	<h5>Print your labels</h5>
+	<div>
+		hier worden de labels geprint.
+	</div>
+</div>
+
+<div id='propertyPicker' class='clearfix' style='display'>
+	<a href="#" class="close-app"><i class='ui-icon ui-icon-close'>&nbsp;</i></a>
 	<div id="action-holder">
 		<a href="#" class="button submit-properties">Bevestigen</a>
 		<a href="#" class="button reset-properties">Ongedaan maken</a>
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
 	<div class='left'>
+		<h5>Mijn Volgorde</h5>
 		<ul id="addedContainer"></ul>
 	</div>
 	<div class='right'>
+		<h5>Standaard volgorde</h5>
 		<ul id="addableContainer"></ul>
 	</div>
 </div>

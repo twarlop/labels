@@ -1,5 +1,7 @@
-#propertyPicker{position:relative;}#propertyPicker .left,#propertyPicker .right{padding-top:10px;width:30%;float:left;}
-#propertyPicker ul{list-style:none;}
+#propertyPicker{float:left;position:relative;}#propertyPicker .close-app{position:absolute;z-index:1100;right:5px;top:5px;}
+#propertyPicker .left,#propertyPicker .right{min-width:400px;padding-top:10px;float:left;}
+#propertyPicker .right{margin-left:20px;}
+#propertyPicker ul{list-style:none;padding:5px;}
 #propertyPicker li{margin:3px 0;padding:2px 0;border:1px solid #DDD;background-color:#EEE;}#propertyPicker li>.ui-icon:first-child,#propertyPicker li>span{float:left;}
 #propertyPicker li>.ui-icon:last-child{float:right;cursor:pointer;}
 #propertyPicker li.removeable{cursor:move;}

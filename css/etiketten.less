@@ -1,16 +1,28 @@
 #propertyPicker
 {
-
+	float:left;
 	position: relative;
 
+	.close-app{
+		position: absolute;
+		z-index: 1100;
+		right: 5px;
+		top: 5px;
+	}
+
 	.left, .right{
+		min-width: 400px;
 		padding-top: 10px;
-		width: 30%;
 		float:left;
 	}
 
+	.right{
+		margin-left: 20px;
+	}
+
 	ul{
-		list-style: none
+		list-style: none;
+		padding: 5px;
 	}
 
 	li{
