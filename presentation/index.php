@@ -3,6 +3,7 @@
  * manually include autoload to simplify installation in old sos system
  */
 
+echo getcwd() . '<br>';
 
 include getcwd() . '/../bootstrap/start.php';
 
