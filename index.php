@@ -2,7 +2,7 @@
 /**
  * manually include autoload to simplify installation in old sos system
  */
-require __DIR__. '/../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 include('bootstrap/start.php');
 // include('tests/classes.php');
