@@ -3,3 +3,5 @@ vendor/
 composer.lock
 js/jquery*
 js/modernizr*
+css/ui.css
+css/images/*
