@@ -2,9 +2,9 @@
 /**
  * manually include autoload to simplify installation in old sos system
  */
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
-include('bootstrap/start.php');
+include '../bootstrap/start.php';
 // include('tests/classes.php');
 
 // $migration = new ProductLabels\Migration\Dimensions();
