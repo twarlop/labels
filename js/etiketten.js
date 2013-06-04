@@ -131,7 +131,7 @@ window.sos = sos;
 		 */
 		clear: function()
 		{
-			$(this.modal).html('');
+			this.plugin.find('#addedContainer, #addableContainer').html('');
 		},
 		show: function(custom, standard)
 		{
@@ -210,7 +210,7 @@ window.sos = sos;
 		undo: function()
 		{
 			this.plugin.hide();
-			this.plugin.find('#addedContainer, #addableContainer').html('');
+			this.clear();
 			this.displayProperties(this.original.custom);
 			this.displayAddableProperties(this.original.standard);
 			this.plugin.show();

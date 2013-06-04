@@ -37,7 +37,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 	</div>
 </div>
 
-<div id='propertyPicker' class='clearfix' style='display'>
+<div id='propertyPicker' class='clearfix' style='display:none'>
 	<a href="#" class="close-app"><i class='ui-icon ui-icon-close'>&nbsp;</i></a>
 	<div id="action-holder">
 		<a href="#" class="button submit-properties">Bevestigen</a>
