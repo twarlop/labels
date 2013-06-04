@@ -24,6 +24,7 @@ class Properties extends Base
 	{
 		$this->builder->create('label_category_properties', function($t){
 			$t->engine = 'InnoDB';
+			$t->increments('id');
 			$t->integer('owner_id');
 			$t->integer('category_id');
 			$t->integer('property_id');

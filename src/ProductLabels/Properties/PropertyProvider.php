@@ -46,9 +46,42 @@ class PropertyProvider implements ProviderInterface
 			->orderBy('weight')
 			->get();
 
-		return $results->map(function($item){
+		$results = $results->map(function($item){
 			return $item->properties;
 		});
+		return $results->reverse();
+	}
+
+	/**
+	 * start from the bottom and begin with 1, next you up them by 1
+	 * this will make it easier on sorting when there is room for extra property info an a label.
+	 * Unsorted items can then use 0 which makes more sense.
+	 */
+	public function sync($category, $properties)
+	{
+		$this->clearCategory($category);
+		$weight = 1;
+		while($property = array_pop($properties))
+		{
+			echo $property . "       ";
+			LabelCategoryProperty::create(array(
+				'category_id' => $category,
+				'property_id' => $property,
+				'owner_id' => $this->handelaar_id,
+				'weight' => $weight
+			));
+		}
+	}
+
+	protected function clearCategory($category)
+	{
+		$links = LabelCategoryProperty::where('owner_id', $this->handelaar_id)
+			->where('category_id', $category)
+			->get();
+		foreach($links as $link)
+		{
+			$link->delete();
+		}
 	}
 	
 }

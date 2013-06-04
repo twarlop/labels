@@ -11,7 +11,7 @@ class LabelCategoryProperty extends Eloquent
 {
 	protected $table = 'label_category_properties';
 
-	protected $fillable = array('property_id', 'category_id', 'owner', 'weight');
+	protected $fillable = array('property_id', 'category_id', 'owner_id', 'weight');
 
 	public $timestamps = false;
 

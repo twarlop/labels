@@ -37,4 +37,12 @@ switch($action){
 			'custom' => $customProperties->toArray()
 		));
 	break;
+
+	case 'saveCategory':
+
+		$categoryId = $_POST['categoryId'];
+		$properties = isset($_POST['properties']) ? $_POST['properties'] : array();
+		$propertyProvider->sync($categoryId, $properties);
+
+	break;
 }

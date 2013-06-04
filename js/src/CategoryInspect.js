@@ -60,10 +60,6 @@
 				{
 					this.hide();
 				}
-				else
-				{
-					return;
-				}
 			}
 			else
 			{
@@ -77,16 +73,16 @@
 			$.ajax({
 				url:'ajax/etiketten.php',
 				data:{
-					action: 'saveSorting',
+					action: 'saveCategory',
 					categoryId: that.categoryId,
-					sorting: sorting
+					properties: sorting
 				},
 				type:'POST',
 				dataType: 'json',
 				success: function(){
 					that.close(false);
 				}
-			})
+			});
 		},
 		getSorting: function()
 		{
@@ -149,12 +145,15 @@
 		{
 			var ul = $('#addedContainer').html('');
 			for(var i in properties){
-				var li = $('<li>' + properties[i].invoernl + '</li>');
-				li.attr({
-					'data-property-id': properties[i].catinvoerveldid,
-					'class': 'removeable ui-icon ui-icon-arrowthick-2-n-s'
+				var li = $('<li>' + properties[i].invoernl + '</li>', {
+					'class': 'removeable ui-icon ui-icon-arrowthick-2-n-s',
+					'text': properties[i].invoernl
 				});
-				ul.append();
+				li.attr({
+					'data-property-id': properties[i].catinvoerveldid
+				});
+				li = this.addIcons(li);
+				ul.append(li);
 			}
 		},
 		/**
@@ -172,7 +171,7 @@
 				});
 				if(this.isSorted(properties[i].catinvoerveldid))
 				{
-					this.hide();
+					li.hide();
 				}
 				container.append(li);
 			}
@@ -185,7 +184,7 @@
 			var custom = this.original.custom;
 			for(var i in custom)
 			{
-				if(property === custom.catinvoerveldid)
+				if(property === custom[i].catinvoerveldid)
 				{
 					return true;
 				}
@@ -215,6 +214,15 @@
 		{
 			element.hide();
 			element = element.clone();
+			element = this.addIcons(element);
+			element.show().toggleClass('addable removeable added');
+			element.appendTo(this.plugin.find('#addedContainer'));
+			setTimeout(function(){
+				element.removeClass('added');
+			}, 2000);
+		},
+		addIcons: function(element)
+		{
 			element.prepend($("<i/>", {
 				'class' : 'ui-icon ui-icon-arrowthick-2-n-s',
 				'text' : '&nbsp;'
@@ -222,11 +230,7 @@
 				'class' : 'ui-icon ui-icon-close remove',
 				'text': '&nbsp;'
 			}));
-			element.show().toggleClass('addable removeable added');
-			element.appendTo(this.plugin.find('#addedContainer'));
-			setTimeout(function(){
-				element.removeClass('added');
-			}, 2000);
+			return element;
 		},
 		/**
 		 * Event when clicking on a property that needs to be removed from the custom sort
