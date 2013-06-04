@@ -3,8 +3,6 @@
  * manually include autoload to simplify installation in old sos system
  */
 
-echo __DIR__ . '<br>';
-
 include __DIR__ . '/../bootstrap/start.php';
 
 // include('tests/classes.php');

@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(-1);
+ini_set('display_errors', 'on');
 include '../bootstrap/start.php';
 
 $action = false;
