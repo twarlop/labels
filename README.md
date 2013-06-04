@@ -23,4 +23,6 @@ copy the js dir to the appropriate js dir
 
 copy the ajax dir to the appropriate ajax dir
 
-make sure you have a wrapping page (read: controller-file) and include views/index.php in it between the html-top and html-bottom
+make sure you have a wrapping page (read: controller-file) and include presentation/index.php in it between the html-top and html-bottom
+
+use the index.php in the root of the plugin to test it. this file uses a custom header and bottom

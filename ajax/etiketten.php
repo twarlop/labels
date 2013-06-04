@@ -1,7 +1,12 @@
 <?php
 error_reporting(-1);
 ini_set('display_errors', 'on');
-include '../bootstrap/start.php';
+if(is_file('../bootstrap/start.php'))
+	include '../bootstrap/start.php';
+else
+{
+	include '../vendor/twarlop/productlabels/bootstrap/start.php';
+}
 
 $action = false;
 if(isset($_GET['action']))
