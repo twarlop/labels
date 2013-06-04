@@ -63,7 +63,6 @@ class PropertyProvider implements ProviderInterface
 		$weight = 1;
 		while($property = array_pop($properties))
 		{
-			echo $property . "       ";
 			LabelCategoryProperty::create(array(
 				'category_id' => $category,
 				'property_id' => $property,
