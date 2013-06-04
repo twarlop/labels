@@ -30,7 +30,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 	<input id='etiketCategorieSearch' type='text'>
 </div>
 
-<div id='propertyPicker'>
+<div id='propertyPicker' class='clearfix'>
 	<div id="action-holder">
 		<a href="#" class="button submit-properties">Bevestigen</a>
 		<a href="#" class="button reset-properties">Ongedaan maken</a>
