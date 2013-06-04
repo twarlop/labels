@@ -23,12 +23,12 @@ include __DIR__ . '/../bootstrap/start.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
-<div>
+<p>
 	<label for="etiketCategorieSearch">
 		Bewerk Categorie
 	</label>
 	<input id='etiketCategorieSearch' type='text'>
-</div>
+</p>
 
 <div id='propertyPicker' class='clearfix'>
 	<div id="action-holder">
@@ -37,6 +37,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
 	<div class='left'>
+		&nbsp;
 		<ul id="addedContainer"></ul>
 	</div>
 	<div class='right'>
