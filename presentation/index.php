@@ -37,7 +37,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
 	<div class='left'>
-		&nbsp;
 		<ul id="addedContainer"></ul>
 	</div>
 	<div class='right'>

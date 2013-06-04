@@ -1,4 +1,4 @@
-#propertyPicker{position:relative;}#propertyPicker .left,#propertyPicker .right{width:30%;float:left;}
+#propertyPicker{position:relative;}#propertyPicker .left,#propertyPicker .right{padding-top:10px;width:30%;float:left;}
 #propertyPicker ul{list-style:none;}
 #propertyPicker li{margin:3px 0;padding:2px 0;border:1px solid #DDD;background-color:#EEE;}#propertyPicker li>.ui-icon:first-child,#propertyPicker li>span{float:left;}
 #propertyPicker li>.ui-icon:last-child{float:right;cursor:pointer;}
