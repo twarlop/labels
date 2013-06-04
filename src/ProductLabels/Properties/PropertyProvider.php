@@ -49,7 +49,7 @@ class PropertyProvider implements ProviderInterface
 		$results = $results->map(function($item){
 			return $item->properties;
 		});
-		return $results->reverse();
+		return $results;
 	}
 
 	/**
@@ -61,7 +61,7 @@ class PropertyProvider implements ProviderInterface
 	{
 		$this->clearCategory($category);
 		$weight = 1;
-		while($property = array_pop($properties))
+		while($property = array_shift($properties))
 		{
 			LabelCategoryProperty::create(array(
 				'category_id' => $category,
@@ -69,6 +69,7 @@ class PropertyProvider implements ProviderInterface
 				'owner_id' => $this->handelaar_id,
 				'weight' => $weight
 			));
+			$weight++;
 		}
 	}
 
