@@ -1,5 +1,5 @@
 <?php
-require __DIR__. '/../vendor/autoload.php';
+
 //setup laravel connection
 $settings = array(
     'driver' => 'mysql',
