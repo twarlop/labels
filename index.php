@@ -1,6 +1,6 @@
 <?php
 include('bootstrap/start.php');
-include('tests/classes.php');
+// include('tests/classes.php');
 
 // $migration = new ProductLabels\Migration\Dimensions();
 // $migration->run();
@@ -16,31 +16,40 @@ include('tests/classes.php');
 // var_dump($products);
 
 
-//start navigation
-
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
-<ul>
-	<li><a href='?page=home'>Home</a></li>
-	<li><a href='?page=categories'>Categories</a></li>
-</ul>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/ui.css">
+		<link rel="stylesheet" href="css/etiketten.css">
+	</head>
+	<body>
+		<div>
+			<label for="etiketCategorieSearch">
+				Bewerk Categorie
+			</label>
+			<input id='etiketCategorieSearch' type='text'>
+		</div>
+
+		<div id='propertyPicker'>
+			<div id="action-holder">
+				<a href="#" class="button submit-properties">Bevestigen</a>
+				<a href="#" class="button reset-properties">Ongedaan maken</a>
+				<a href="#" class="button full-reset-properties">Volledige reset</a>
+			</div>
+			<div class='left'>
+				<ul id="addedContainer"></ul>
+			</div>
+			<div class='right'>
+				<ul id="addableContainer"></ul>
+			</div>
+		</div>
+
+		<script src='js/jquery-1.8.3.js'></script>
+		<script src='js/jquery-ui-1.9.2.custom.min.js'></script>
+		<script src='js/etiketten.js'></script>
+	</body>
+</html>
 
 
-<div>
-	<label for="etiketCategorieSearch">
-		Bewerk Categorie
-	</label>
-	<input id='etiketCategorieSearch' type='text'>
-</div>
-<?
 
-
-switch($page)
-{
-	case 'home':
-		include('views/home.php');
-	break;
-	case 'category':
-		include('views/category.php');
-	break;
-}

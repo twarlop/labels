@@ -1,0 +1,58 @@
+#propertyPicker
+{
+
+	position: relative;
+
+	.left, .right{
+		width: 30%;
+		float:left;
+	}
+
+	ul{
+		list-style: none
+	}
+
+	li{
+		margin: 3px 0;
+		padding: 2px 0;
+		border: 1px solid #DDD;
+		background-color: #EEE;
+
+		> .ui-icon:first-child, > span{
+			float:left;
+		}
+
+		> .ui-icon:last-child{
+			float:right;
+			cursor: pointer;
+		}
+	}
+
+	li.added{
+		@color : #dff0d8;
+		@lighter: darken(@color, 20%);
+		border: 1px solid darken(@color, 50%);
+		background-image: -webkit-linear-gradient(top, @color, @lighter);
+		background-image: -moz-linear-gradient(top, @color, @lighter);
+		background-image: -o-linear-gradient(top, @color, @lighter);
+		background-image: -ms-linear-gradient(top, @color, @lighter);
+		background-image: linear-gradient(top, @color, @lighter);
+	}
+
+	li.removed{
+		@color : #f2dede;
+		@lighter: darken(@color, 20%);
+		border: 1px solid darken(@color, 50%);
+		background-image: -webkit-linear-gradient(top, @color, @lighter);
+		background-image: -moz-linear-gradient(top, @color, @lighter);
+		background-image: -o-linear-gradient(top, @color, @lighter);
+		background-image: -ms-linear-gradient(top, @color, @lighter);
+		background-image: linear-gradient(top, @color, @lighter);
+	}
+
+	#addableContainer{
+		.addable{
+			padding-left: 30px;
+		}
+	}
+}
