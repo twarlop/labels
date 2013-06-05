@@ -45,12 +45,16 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
 	<div class='left'>
-		<h5>Mijn Volgorde</h5>
+		<h5>Gebruik</h5>
 		<ul id="addedContainer"></ul>
 	</div>
-	<div class='right'>
-		<h5>Standaard volgorde</h5>
+	<div class='left'>
+		<h5>Niet gebruiken</h5>
 		<ul id="addableContainer"></ul>
+	</div>
+	<div class='left'>
+		<h5>Standaard volgorde</h5>
+		<ul id='standard'></ul>
 	</div>
 </div>
 

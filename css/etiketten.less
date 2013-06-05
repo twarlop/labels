@@ -10,19 +10,24 @@
 		top: 5px;
 	}
 
-	.left, .right{
-		min-width: 400px;
+	.left{
 		padding-top: 10px;
 		float:left;
+		margin-left: 20px;
+	}
+	.left:first-child{
+		margin-left: 0;
 	}
 
-	.right{
-		margin-left: 20px;
+	.left:last-child{
+		border-left: 1px solid #DDD;
+		padding-left: 10px;
 	}
 
 	ul{
 		list-style: none;
 		padding: 5px;
+		min-width: 400px;
 	}
 
 	li{

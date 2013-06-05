@@ -55,7 +55,7 @@ window.sos = sos;
 			this.categoryId = parseInt(categoryId, 10);
 			if(!isNaN(this.categoryId))
 			{
-				this.clear();
+				this.clear(true);
 				this.load();
 			}
 		},
@@ -118,6 +118,7 @@ window.sos = sos;
 					that.data = response;
 					//save original to be able to reset to original
 					that.original = response;
+					that.displayStandard(response.standard);
 					that.show(response.custom, response.standard);
 				}
 			});
@@ -125,8 +126,10 @@ window.sos = sos;
 		/**
 		 * Cleans the modal up before we will fill it with a new category
 		 */
-		clear: function()
+		clear: function(clearStandard)
 		{
+			if(clearStandard)
+				this.plugin.find('#standard').html('');
 			this.plugin.find('#addedContainer, #addableContainer').html('');
 		},
 		show: function(custom, standard)
@@ -181,6 +184,17 @@ window.sos = sos;
 				{
 					li.hide();
 				}
+				container.append(li);
+			}
+		},
+		displayStandard: function(properties)
+		{
+			var container = this.plugin.find('#standard');
+			for(var i in properties)
+			{
+				var li = $('<li/>', {
+					text: properties[i].invoernl
+				});
 				container.append(li);
 			}
 		},
