@@ -23,6 +23,20 @@ $container = new Illuminate\Container\Container();
 $connFactory = new \Illuminate\Database\Connectors\ConnectionFactory($container);
 $conn = $connFactory->make($settings);
 
+//set event dispatcher
+$eventDispatcher = new Illuminate\Events\Dispatcher();
+// $eventDispatcher->listen('illuminate.query', function($query, $bindings, $time)
+// {
+//     echo '<div style=\'background-color:#ddd;margin: 5px;\'>';
+//     echo $query;
+//     echo '<pre>';
+//     print_r($bindings);
+//     echo '</pre>';
+//     echo '</div>';
+// });
+
+$conn->setEventDispatcher($eventDispatcher);
+
 ProductLabels\DB::addConnection('sos', $conn);
 
 

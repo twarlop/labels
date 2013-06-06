@@ -5,6 +5,9 @@
 
 include __DIR__ . '/../bootstrap/start.php';
 
+
+setLocale(LC_MONETARY, 'nl_BE');
+
 // include('tests/classes.php');
 
 // $migration = new ProductLabels\Migration\Dimensions();
@@ -16,10 +19,8 @@ include __DIR__ . '/../bootstrap/start.php';
 // $migration->run();
 
 
-// $provider = new ProductLabels\ProductLabelProvider(477);
-// $products = $provider->fetchProducts();
-// var_dump($products);
-
+$provider = new ProductLabels\ProductLabelProvider(477);
+$products = $provider->fetchProducts();
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
@@ -31,9 +32,100 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 </p>
 
 <div id="primary-app">
-	<h5>Print your labels</h5>
-	<div>
-		hier worden de labels geprint.
+	<div id='step1'>
+		<h5>Stap 1</h5>
+		<p>
+			<label for="etiketAfmeting">Afmeting</label>
+			<select name="etiketAfmeting" id="etiketAfmeting">
+				<option value="">Kies een afmeting</option>
+			</select>
+
+			<br>
+
+			<label for="etiketType">Soort inhoud</label>
+			<select name="etiketType" id="etiketType">
+				<option value="1">Volledig tekst</option>
+				<option value="2">Eigenschappen</option>
+				<option value="3">Korte tekst</option>
+			</select>
+
+			<br>
+
+			<label for="etiketLang">Taal</label>
+			<select name="etiketLang" id="etiketLang">
+				<option value="1">Nederlands</option>
+				<option value="2">Frans</option>
+			</select>
+
+			<br>
+
+			<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
+			<input type="text" id='etiketDatum' value=''>
+
+		</p>
+	</div>
+	<div id='step2'>
+		<h5>stap 2</h5>
+		<p>
+			<table>
+				<thead>
+					<tr>
+						<th>foto</th>
+						<th>artikelnaam</th>
+						<th>merk</th>
+						<th>prijs</th>
+						<th>promoprijs</th>
+						<th>promo tot</th>
+						<th>eigen label</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<? foreach($products as $product): ?>
+					<tr data-prodid='<?= $product->product_id ?>'>
+						<td>
+						</td>
+						<td>
+							<?= $product->category ?><br>
+							<a href='#' class='inspect'><?= $product->title ?></a>
+						</td>
+						<td>
+							<?= $product->merknaam ?>
+						</td>
+						<td><?= money_format('%n', $product->prijs['prijs']) ?></td>
+						<? if($product->promotie): ?>
+							<td><?= money_format('%n', $product->promotie['promo']) ?></td>
+							<td><?= $product->promotie['stop']?></td>
+						<? else: ?>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						<? endif; ?>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<? endforeach ?>
+				</tbody>
+				<tfoot>
+					<tr class='template-row'>
+						<td>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
+		</p>
 	</div>
 </div>
 

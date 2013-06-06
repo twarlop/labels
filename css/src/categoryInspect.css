@@ -1,0 +1,12 @@
+#propertyPicker{float:left;position:relative;}#propertyPicker .close-app{position:absolute;z-index:1100;right:5px;top:5px;}
+#propertyPicker .left{padding-top:10px;float:left;margin-left:20px;}
+#propertyPicker .left:first-child{margin-left:0;}
+#propertyPicker .left:last-child{border-left:1px solid #DDD;padding-left:10px;}
+#propertyPicker ul{list-style:none;padding:5px;min-width:400px;}
+#propertyPicker li{margin:3px 0;padding:2px 0;border:1px solid #DDD;background-color:#EEE;}#propertyPicker li>.ui-icon:first-child,#propertyPicker li>span{float:left;}
+#propertyPicker li>.ui-icon:last-child{float:right;cursor:pointer;}
+#propertyPicker li.removeable{cursor:move;}
+#propertyPicker li.addable{cursor:pointer;}
+#propertyPicker li.added{border:1px solid #529138;background-image:-webkit-linear-gradient(top, #dff0d8, #a3d48e);background-image:-moz-linear-gradient(top, #dff0d8, #a3d48e);background-image:-o-linear-gradient(top, #dff0d8, #a3d48e);background-image:-ms-linear-gradient(top, #dff0d8, #a3d48e);background-image:linear-gradient(top, #dff0d8, #a3d48e);}
+#propertyPicker li.removed{border:1px solid #963b3b;background-image:-webkit-linear-gradient(top, #f2dede, #d59595);background-image:-moz-linear-gradient(top, #f2dede, #d59595);background-image:-o-linear-gradient(top, #f2dede, #d59595);background-image:-ms-linear-gradient(top, #f2dede, #d59595);background-image:linear-gradient(top, #f2dede, #d59595);}
+#propertyPicker #addableContainer .addable{padding-left:30px;}
