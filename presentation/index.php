@@ -93,10 +93,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 						<td>
 							<?= $product->merknaam ?>
 						</td>
-						<td><?= money_format('%n', $product->prijs['prijs']) ?></td>
+						<td><?= money_format('%n', $product->prijs->prijs) ?></td>
 						<? if($product->promotie): ?>
-							<td><?= money_format('%n', $product->promotie['promo']) ?></td>
-							<td><?= $product->promotie['stop']?></td>
+							<td><?= money_format('%n', $product->promotie->promo) ?></td>
+							<td><?= $product->promotie->stop?></td>
 						<? else: ?>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>

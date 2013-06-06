@@ -64,7 +64,7 @@ class LabelProduct
 		{
 			if($this->prijs)
 			{
-				$type = $this->prijs['type'];
+				$type = $this->prijs->type;
 				switch($type)
 				{
 					case 'hand':

@@ -17,6 +17,16 @@ class PropertyProvider implements ProviderInterface
 		$this->handelaar_id = $handelaarid;
 	}
 
+	public function fetchCustomProperties(array $categoryIds)
+	{
+
+	}
+
+	public function fetchStandardProperties(array $categoryIds)
+	{
+		
+	}
+
 	public function fetchStandardPropertyOrder($category_id)
 	{
 		if(!is_numeric($category_id))
