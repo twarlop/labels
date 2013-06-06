@@ -1,6 +1,7 @@
 <?php
 
 namespace ProductLabels\Setup;
+use Exception;
 
 /**
 * LabelProduct
@@ -24,7 +25,7 @@ class LabelProduct
 	protected $text;
 	protected $logoMerk;
 	protected $logoHandelaar;
-
+	protected $customLabel;
 
 	public function __construct(array $data = array())
 	{
@@ -83,6 +84,28 @@ class LabelProduct
 				}
 			}
 		}
+	}
+
+	/**
+	 * expects a key-value array with the locale being the key, and the value being the custom label for that locale
+	 * @param array $label [description]
+	 */
+	public function setCustomLabel(array $labels)
+	{
+		$locales = array('nl', 'fr');
+		foreach($labels as $locale => $label)
+		{
+			if(!in_array($locale, $locales))
+			{
+				throw new Exception('Invalid locale provided');
+			}
+		}
+		$this->customLabel = $labels;
+	}
+
+	public function hasCustomLabel()
+	{
+		return is_array($this->customLabel);
 	}
 
 }

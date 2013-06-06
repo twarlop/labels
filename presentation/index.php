@@ -101,7 +101,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						<? endif; ?>
-						<td></td>
+						<td>
+							<? if($product->hasCustomLabel()) : ?>
+							<img src="/images/bo/icons/tick.png" alt="V">
+							<? endif; ?>
+						</td>
 						<td></td>
 						<td></td>
 					</tr>

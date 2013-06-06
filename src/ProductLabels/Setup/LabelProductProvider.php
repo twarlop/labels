@@ -38,6 +38,18 @@ class LabelProductProvider implements ProviderInterface
 	{
 		if(count($prodids) === 0)
 			return array();
+		$products = $this->findBases($prodids);
+		$products = $this->instantiate($products);
+		$this->groeperingen = $this->groeperingen();
+		$this->findPrijzen($prodids, $products);
+		$this->findPromoties($prodids, $products);
+		$this->findEigenschappen($prodids, $products);
+		$this->findCustomLabels($prodids, $products);
+		return $products;
+	}
+
+	protected function findBases(array $prodids)
+	{
 		$query = $this->connection->table('prod');
 		$products = $query->join('merken', 'merken.merkid', '=', 'prod.Brand')
 			->join('fabrikanten', 'merken.merkid', '=', 'fabrikanten.merkid')
@@ -53,11 +65,6 @@ class LabelProductProvider implements ProviderInterface
 				'prod.primairecatid as category_id', 
 				'categories.Title_short_nl as category'
 			));
-		$products = $this->instantiate($products);
-		$this->groeperingen = $this->groeperingen();
-		$this->findPrijzen($prodids, $products);
-		$this->findPromoties($prodids, $products);
-		$this->findEigenschappen($prodids, $products);
 		return $products;
 	}
 
@@ -228,7 +235,6 @@ class LabelProductProvider implements ProviderInterface
 			->where('lcp.owner_id', $this->handelaarid)
 			->distinct()
 			->get(array('prod.ID as product_id'));
-			var_dump($customProdids);
 	}
 
 	/**
@@ -236,7 +242,20 @@ class LabelProductProvider implements ProviderInterface
 	 */
 	protected function findCustomLabels(array $prodids, array $products)
 	{
-
+		$query = $this->connection->table('handelaars_labels');
+		$labels = $query->whereHandelaarid($this->handelaarid)
+			->whereIn('prodid', $prodids)
+			->get();
+		foreach($labels as $label)
+		{
+			if(isset($products[$label['prodid']]))
+			{
+				$products[$label['prodid']]->setCustomLabel(array(
+					'nl' => $label['tekstnl'],
+					'fr' => $label['tekstfr']
+				));
+			}
+		}
 	}
 
 	/**
