@@ -1,15 +1,14 @@
 <?php
 namespace ProductLabels\Migration;
 
-use ProductLabels\Contract\MigrationInterface;
 use ProductLabels\Setup\Queue as NewQueue;
 use ProductLabels\DB;
 
 /**
 * Queue
 */
-class Queue extends Base implements MigrationInterface
-{	
+class Queue extends Base
+{
 
 	public function run()
 	{

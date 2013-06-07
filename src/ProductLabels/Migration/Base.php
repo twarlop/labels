@@ -4,11 +4,12 @@ namespace ProductLabels\Migration;
 
 use ProductLabels\DB;
 use Illuminate\Database\Schema\Builder;
+use ProductLabels\Contract\MigrationInterface;
 
 /**
 * Base
 */
-class Base
+class Base implements MigrationInterface
 {
 	protected $builder;
 

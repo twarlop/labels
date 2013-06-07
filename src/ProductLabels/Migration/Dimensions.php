@@ -1,7 +1,6 @@
 <?php
 namespace ProductLabels\Migration;
 
-use ProductLabels\Contract\MigrationInterface;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 use ProductLabels\Dimension\Dimension;
@@ -15,7 +14,7 @@ use ProductLabels\Label\LayoutDimensions;
 * Dimension migrations will rebuild the current sos_labels table to a newer version
 * which will split dimensions into more sustainable records.
 */
-class Dimensions extends Base implements MigrationInterface
+class Dimensions extends Base
 {
 
 	protected $checks = array(
