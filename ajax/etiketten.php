@@ -18,31 +18,25 @@ else if( isset($_POST['action']))
 	$action = $_POST['action'];
 }
 
-
-$categoryProvider = new ProductLabels\Categories\CategoryProvider();
-$propertyProvider = new ProductLabels\Properties\PropertyProvider(477);
+$provider = new ProductLabels\ProductLabelProvider(477);
 
 
 switch($action){
 	case 'suggestCategory':
-		$categories = $categoryProvider->suggest($_GET['query']);
+		$categories = $provider->suggestCategory($_GET['query']);
 		echo $categories->toJson();
 	break;
 
 	case 'loadCategory':
-		$standardProperties = $propertyProvider->fetchStandardPropertyOrder($_GET['categoryId']);
-		$customProperties = $propertyProvider->fetchCustomPropertyOrder($_GET['categoryId']);
-		echo json_encode(array(
-			'standard' => $standardProperties->toArray(),
-			'custom' => $customProperties->toArray()
-		));
+		$answer = $provider->fetchSortingsForCategory($_GET['categoryId']);
+		echo json_encode($answer);
 	break;
 
 	case 'saveCategory':
 
 		$categoryId = $_POST['categoryId'];
 		$properties = isset($_POST['properties']) ? $_POST['properties'] : array();
-		$propertyProvider->sync($categoryId, $properties);
+		$provider->sync($categoryId, $properties);
 
 	break;
 }

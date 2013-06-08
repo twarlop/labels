@@ -32,13 +32,15 @@ class LabelProductProvider implements ProviderInterface
 
 	protected $prijsProvider;
 	protected $promotieProvider;
+	protected $propertyProvider;
 
-	public function __construct($handelaarid)
+	public function __construct($handelaarid, $propertyProvider)
 	{
 		$this->handelaarid = $handelaarid;
 		$this->connection = DB::connection('sos');
 		$this->prijsProvider = new PrijsProvider($this->handelaarid, $this->connection, $this->groeperingen);
 		$this->promotieProvider = new PromotieProvider($this->handelaarid, $this->connection, $this->groeperingen);
+		$this->propertyProvider = $propertyProvider;
 	}
 
 	public function find(array $prodids)
@@ -50,7 +52,7 @@ class LabelProductProvider implements ProviderInterface
 		$this->groeperingen = $this->groeperingen();
 		$this->prijsProvider->find($prodids, $products);
 		$this->promotieProvider->find($prodids, $products);
-		// $this->findEigenschappen($prodids, $products);
+		$this->propertyProvider->propertiesForProducts($prodids, $products);
 		$this->findCustomLabels($prodids, $products);
 		return $products;
 	}
@@ -73,42 +75,6 @@ class LabelProductProvider implements ProviderInterface
 				'categories.Title_short_nl as category'
 			));
 		return $products;
-	}	
-
-	/**
-	 * We will use maps to load the properties per product.
-	 * We first build a map for the properties needed per category
-	 * Next we build a map with properties per product with property-id as index
-	 * At last we can return the correct properties using the category map and the property map
-	 */
-	protected function findEigenschappen(array $prodids, array $products)
-	{
-		$categoryMap = $this->mapCategoryProperties($products);
-		$productMap = $this->mapProductProperties($prodids);
-	}
-
-	/**
-	 * Use a query for standards
-	 * Use a query for customs
-	 */
-	protected function mapCategoryProperties(array $products)
-	{
-		$categoryIds = array_map(function($item)
-		{
-			return $item->category_id;
-		}, $products);
-		$custom = LabelCategoryProperty::whereOwner($this->handelaarid);
-
-	}
-
-	protected function standardProperties()
-	{
-
-	}
-
-	protected function customProperties()
-	{
-
 	}
 
 	/**

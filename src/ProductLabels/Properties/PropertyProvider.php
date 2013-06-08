@@ -12,19 +12,60 @@ class PropertyProvider implements ProviderInterface
 
 	protected $handelaar_id;
 
-	public function __construct($handelaarid)
+	/**
+	 * Map containing the properties that should be loaded for each category
+	 */
+	protected $categoryMap = array();
+
+	/*
+	 * Map containing properties per product, loaded using the category map
+	 */
+	protected $productMap = array();
+
+	protected $productPropertyProvider;
+
+	public function __construct($handelaarid, $connection)
 	{
+		$this->connection = $connection;
+		$this->productPropertyProvider = new ProductPropertyProvider($connection);
 		$this->handelaar_id = $handelaarid;
 	}
 
-	public function fetchCustomProperties(array $categoryIds)
+	/**
+	 * We will use maps to load the properties per product.
+	 * We first build a map for the properties needed per category
+	 * Next we build a map with properties per product with property-id as index
+	 * At last we can return the correct properties using the category map and the property map
+	 */
+	public function propertiesForProducts(array $prodids, array $products)
 	{
-
+		$categoryIds = $this->getCategoryIds($products);
+		$lists = $this->listCustomAndStandard($categoryIds);
+		extract($lists);
+		$properties = $this->fetchCustomPropertyOrders($custom);
+		$properties = $this->fetchStandardPropertyOrders($standard);
+		$this->addToCategoryMap($properties);
+		$properties = $this->productPropertyProvider->findForProducts($prodids);
+		$this->setProductProperties($properties, $products);
 	}
 
-	public function fetchStandardProperties(array $categoryIds)
+	protected function setProductProperties(array $properties, array $products)
 	{
-		
+		foreach($properties as $property)
+		{
+			if(isset($products[$property['prodid']]))
+			{
+				$products[$property['prodid']]->addProperty($property);
+			}
+		}
+	}
+
+	protected function getCategoryIds(array $products)
+	{
+		return array_map(function($item)
+		{
+			return $item->category_id;
+		}, $products);
 	}
 
 	public function fetchStandardPropertyOrder($category_id)
@@ -44,6 +85,21 @@ class PropertyProvider implements ProviderInterface
 		});
 	}
 
+	public function fetchStandardPropertyOrders(array $categoryIds)
+	{
+		if(empty($categoryIds))
+			return array();
+		$results = LabelCategoryProperty::with(array('properties'))
+			->whereIn('category_id', $categoryIds)
+			->where('owner_id', 0)
+			->orderBy('weight')
+			->get();
+
+		return $results->map(function($item){
+			return $item->properties;
+		});
+	}
+
 	public function fetchCustomPropertyOrder($category_id)
 	{
 		if(!is_numeric($category_id))
@@ -52,6 +108,23 @@ class PropertyProvider implements ProviderInterface
 		}
 		$results = LabelCategoryProperty::with(array('properties'))
 			->where('category_id', $category_id)
+			->where('owner_id', $this->handelaar_id)
+			->orderBy('weight')
+			->get();
+
+		$results = $results->map(function($item){
+			return $item->properties;
+		});
+		return $results;
+	}
+
+	public function fetchCustomPropertyOrders(array $categoryIds)
+	{
+		if(empty($categoryIds))
+			return array();
+
+		$results = LabelCategoryProperty::with(array('properties'))
+			->whereIn('category_id', $categoryIds)
 			->where('owner_id', $this->handelaar_id)
 			->orderBy('weight')
 			->get();
@@ -91,6 +164,38 @@ class PropertyProvider implements ProviderInterface
 		foreach($links as $link)
 		{
 			$link->delete();
+		}
+	}
+
+	/**
+	 * We fetch only the custom lists, so we know which ones don't have a custom sorting
+	 */
+	protected function listCustomAndStandard(array $categoryIds)
+	{
+		$custom = array();
+		$standard = array();
+		$lists = LabelCategoryProperty::whereIn('category_id', $categoryIds)
+			->where('owner_id', $this->handelaar_id)
+			->distinct()
+			->get(array('category_id'));
+		foreach($lists as $list)
+		{
+			array_push($custom, $list->category_id);
+		}
+		//fill $standard with ids that do not occur in custom
+		$standard = array_diff($categoryIds, $custom);
+		return compact(array('standard', 'custom'));
+	}
+
+	protected function addToCategoryMap($properties)
+	{
+		foreach($properties as $property)
+		{
+			if(!isset($this->categoryMap[$property->catid]))
+			{
+				$this->categoryMap[$property->catid] = array();
+			}
+			array_push($this->categoryMap[$property->catid], $property->catinvoerveldid);
 		}
 	}
 	

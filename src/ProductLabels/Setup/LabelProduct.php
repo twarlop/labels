@@ -26,6 +26,7 @@ class LabelProduct
 	protected $logoMerk;
 	protected $logoHandelaar;
 	protected $customLabel;
+	protected $properties = array();
 
 	public function __construct(array $data = array())
 	{
@@ -86,6 +87,8 @@ class LabelProduct
 		}
 	}
 
+
+
 	/**
 	 * expects a key-value array with the locale being the key, and the value being the custom label for that locale
 	 * @param array $label [description]
@@ -106,6 +109,16 @@ class LabelProduct
 	public function hasCustomLabel()
 	{
 		return is_array($this->customLabel);
+	}
+
+	public function addProperty($property)
+	{
+		$this->properties[$property['catinvoerveldid']] = $property;
+	}
+
+	public function getProperties()
+	{
+		return $this->properties;
 	}
 
 }

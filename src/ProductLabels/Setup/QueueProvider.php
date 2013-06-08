@@ -16,10 +16,10 @@ class QueueProvider implements ProviderInterface
 	 */
 	protected $connection;
 
-	public function __construct($handelaar_id)
+	public function __construct($handelaar_id, $connection)
 	{
 		$this->handelaar_id = $handelaar_id;
-		$this->connection = DB::connection('sos');
+		$this->connection = $connection;
 	}
 	
 	public function fetch()
