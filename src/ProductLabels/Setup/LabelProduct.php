@@ -69,13 +69,13 @@ class LabelProduct
 				switch($type)
 				{
 					case 'hand':
-						if($promotie['type'] === 'hand')
+						if($promotie->type === 'hand')
 						{
 							$this->promotie = $promotie;
 						}
 					break;
 					case 'groep':
-						if($promotie['type'] === 'groep' || $promotie['type'] === 'hand'){
+						if($promotie->type === 'groep' || $promotie->type === 'hand'){
 							$this->promotie = $promotie;
 						}
 					break;
