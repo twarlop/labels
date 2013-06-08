@@ -91,7 +91,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 					<? foreach($products as $product): ?>
 					<tr data-prodid='<?= $product->product_id ?>'>
 						<td>
-							<img src="/images/ez_prod/<?= $product->merkid?>/<?= $product->product_id?>/<?= $product->photo?>">
+							<img src="/images/ez_prod/<?= $product->merkid?>/<?= $product->product_id?>/tn1/<?= $product->photo?>">
 						</td>
 						<td>
 							<a href='#' class='inspectCategory'><?= $product->category ?></a><br>
