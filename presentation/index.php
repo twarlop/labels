@@ -33,7 +33,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 <div id="primary-app">
 	<div id='step1'>
-		<h5>Stap 1</h5>
+		<h3>Stap 1</h3>
 		<p>
 			<label for="etiketAfmeting">Afmeting</label>
 			<select name="etiketAfmeting" id="etiketAfmeting">
@@ -65,7 +65,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		</p>
 	</div>
 	<div id='step2'>
-		<h5>stap 2</h5>
+		<h3>stap 2</h3>
+		<label for="queueProduct">Product zoeken</label>
+		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
 			<table>
 				<thead>
@@ -106,8 +108,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 							<img src="/images/bo/icons/tick.png" alt="V">
 							<? endif; ?>
 						</td>
-						<td></td>
-						<td></td>
+						<td><img class='customise' src='/imageS/bo/icons/label_icon.gif'/></td>
+						<td><img class='dequeue' src='/images/bo/icons/cross.png'/></td>
 					</tr>
 					<? endforeach ?>
 				</tbody>
@@ -141,15 +143,15 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
 	<div class='left'>
-		<h5>Gebruik</h5>
+		<h3>Gebruik</h3>
 		<ul id="addedContainer"></ul>
 	</div>
 	<div class='left'>
-		<h5>Niet gebruiken</h5>
+		<h3>Niet gebruiken</h3>
 		<ul id="addableContainer"></ul>
 	</div>
 	<div class='left'>
-		<h5>Standaard volgorde</h5>
+		<h3>Standaard volgorde</h3>
 		<ul id='standard'></ul>
 	</div>
 </div>
