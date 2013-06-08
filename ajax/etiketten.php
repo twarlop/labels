@@ -39,4 +39,20 @@ switch($action){
 		$provider->sync($categoryId, $properties);
 
 	break;
+
+	case 'suggestProduct':
+		$products = $provider->suggestProducts($_GET['query']);
+		echo json_encode($products);
+	break;
+
+	case 'addProduct':
+		$prodid = $_POST['prodid'];
+		$provider->queue($prodid);
+		$product = $provider->fetchProductById($prodid);
+		echo $product->toJson();
+	break;
+
+	case 'removeProduct':
+		$provider->dequeue($_POST['prodid']);
+	break;
 }

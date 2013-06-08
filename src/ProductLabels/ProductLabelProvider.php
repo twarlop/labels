@@ -27,12 +27,19 @@ class ProductLabelProvider implements ProviderInterface{
 		return $this->categoryProvider->suggest($query);
 	}
 
+	public function suggestProducts($query)
+	{
+		$excludeIds = $this->queueProvider->fetchProdids();
+		$products = $this->productProvider->suggest($query, $excludeIds);
+		return $products;
+	}
+
 	/**
 	 * Fetch the products that are in the queue
 	 */
 	public function fetchProducts()
 	{
-		$prodids = $this->queueProvider->fetch();
+		$prodids = $this->queueProvider->fetchProdids();
 		$products = $this->productProvider->find($prodids);
 		return $products;
 	}
@@ -50,6 +57,18 @@ class ProductLabelProvider implements ProviderInterface{
 	public function sync($categoryId, $properties)
 	{
 		$this->propertyProvider->sync($categoryId, $properties);
+	}
+
+	public function queue($prodid)
+	{
+		$this->queueProvider->queue($prodid);
+		$product = $this->productProvider->findById($prodid);
+		return $product;
+	}
+
+	public function dequeue($prodid)
+	{
+		$this->queueProvider->dequeue($prodid);
 	}
 
 }

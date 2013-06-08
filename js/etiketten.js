@@ -10,6 +10,53 @@ window.sos = sos;
 
 	'use strict';
 
+	function Queue()
+	{
+
+	}
+
+	Queue.prototype = {
+		add: function(prodid)
+		{
+			$.ajax({
+				url:'ajax/etiketten.php',
+				type:'POST',
+				dataType:'json',
+				data:
+				{
+					action: 'addProduct',
+					prodid: prodid
+				},
+				success: function()
+				{}
+			});
+		},
+		remove: function(prodid)
+		{
+			var confirmed = window.confirm('Zeker verwijderen?');
+			if(confirmed)
+			{
+				$.ajax({
+					url:'ajax/etiketten.php',
+					type:'POST',
+					dataType:'json',
+					data:
+					{
+						action:'removeProduct',
+						prodid :prodid
+					}
+				});
+			}
+		}
+	};
+
+	sos.etiketten.queue = new Queue();
+
+})(window.jQuery, window.sos);
+(function($, sos){
+
+	'use strict';
+
 	var CategoryInspect = function()
 	{
 		this.plugin = $('#propertyPicker').hide();
@@ -274,6 +321,52 @@ window.sos = sos;
 	{
 		instance.inspect(categoryId);
 	};
+
+})(window.jQuery, window.sos);
+(function($, sos){
+
+	'use strict';
+
+	$(document).ready(function(){
+
+		$('#queueProduct').autocomplete({
+			source: function(item, response){
+				$.ajax({
+					url:'ajax/etiketten.php',
+					data:{
+						action:'suggestProduct',
+						query: item.term
+					},
+					dataType:'json',
+					type:'GET',
+					success: function(products){
+						response($.map(products, function(item) {
+							return {
+								'value': item.prodid,
+								'label': item.name
+							};
+						}));
+					}
+				});
+			},
+			messages:{
+				noResults: '',
+				results: function(){}
+			},
+			minLenght: 3,
+			select: function(event, ui)
+			{
+				sos.etiketten.queue.add(ui.item.value);
+				$(this).val('');
+				return false;
+			},
+			focus: function(){
+				return false;
+			}
+		});
+
+	});
+
 
 })(window.jQuery, window.sos);
 (function($, sos){

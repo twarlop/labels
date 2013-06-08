@@ -1,5 +1,5 @@
 # This will concatenate the javascript files specified in :files to public/js/all.js
-guard :concat, type: "js", files: %w(init CategoryInspect suggestCategory), input_dir: "js/src", output: "js/etiketten"
+guard :concat, type: "js", files: %w(init queue CategoryInspect suggestProduct suggestCategory), input_dir: "js/src", output: "js/etiketten"
 
 guard 'less',
   :all_on_start => true,

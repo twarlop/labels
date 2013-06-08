@@ -57,6 +57,12 @@ class LabelProductProvider implements ProviderInterface
 		return $products;
 	}
 
+	public function findById($prodid)
+	{
+		$products = $this->find(array($prodid));
+		return $products[$prodid];
+	}
+
 	protected function findBases(array $prodids)
 	{
 		$query = $this->connection->table('prod');
@@ -110,6 +116,20 @@ class LabelProductProvider implements ProviderInterface
 				));
 			}
 		}
+	}
+
+	public function suggest($term, array $excludeIds = array())
+	{
+		$query = $this->connection->table('prod');
+		$products = $query->where('ArtName_nl', 'like', '%' . $term . '%')
+			->where(function($query) use ($excludeIds){
+				if(!empty($excludeIds))
+					$query->whereNotIn('ID', $excludeIds);
+			})
+			->take(10)
+			->orderBy('ArtName_nl')
+			->get(array('ArtName_nl as name', 'ID as prodid'));
+		return $products;
 	}
 
 	/**
