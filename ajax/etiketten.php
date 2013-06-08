@@ -47,8 +47,7 @@ switch($action){
 
 	case 'addProduct':
 		$prodid = $_POST['prodid'];
-		$provider->queue($prodid);
-		$product = $provider->fetchProductById($prodid);
+		$product = $provider->queue($prodid);
 		echo $product->toJson();
 	break;
 

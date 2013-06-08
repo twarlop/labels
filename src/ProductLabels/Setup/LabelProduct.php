@@ -121,4 +121,22 @@ class LabelProduct
 		return $this->properties;
 	}
 
+	public function toJson()
+	{
+		$properties = get_object_vars($this);
+		$json = array();
+		foreach($properties as $property => $value)
+		{
+			if(is_object($value))
+			{
+				$json[$property] = $value->toJson();
+			}
+			else
+			{
+				$json[$property] = $value;
+			}
+		}
+		return json_encode($json);
+	}
+
 }

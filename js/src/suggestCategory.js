@@ -40,6 +40,12 @@
 			});
 		}
 
+		$("#queueTable").on('click', '.categoryInspect', function()
+		{
+			var categoryId = $(this).data('category-id');
+			sos.etiketten.categoryInspect(categoryId);
+		});
+
 	});
 
 })(window.jQuery, window.sos);

@@ -32,5 +32,16 @@ class Prijs
 		}
 	}
 
+	public function toJson()
+	{
+		$properties = get_object_vars($this);
+		$json = array();
+		foreach($properties as $property => $value)
+		{
+			$json[$property] = $value;
+		}
+		return $json;
+	}
+
 
 }

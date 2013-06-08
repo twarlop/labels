@@ -64,12 +64,16 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 		</p>
 	</div>
+	<div>
+		implementeren van de zoek functie aanpassen zodat het de juiste voorwaarden gebruikt. nu wordt er nog geen rekening
+		gehouden met het al dan niet klant zijn van shoponsite en dergelijke.
+	</div>
 	<div id='step2'>
 		<h3>stap 2</h3>
 		<label for="queueProduct">Product zoeken</label>
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
-			<table>
+			<table id='queueTable'>
 				<thead>
 					<tr>
 						<th>foto</th>
@@ -87,15 +91,20 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 					<? foreach($products as $product): ?>
 					<tr data-prodid='<?= $product->product_id ?>'>
 						<td>
+							<img src="/images/ez_prod/<?= $product->merkid?>/<?= $product->product_id?>/<?= $product->photo?>">
 						</td>
 						<td>
-							<?= $product->category ?><br>
+							<a href='#' class='inspectCategory'><?= $product->category ?></a><br>
 							<a href='#' class='inspect'><?= $product->title ?></a>
 						</td>
 						<td>
 							<?= $product->merknaam ?>
 						</td>
-						<td><?= money_format('%n', $product->prijs->prijs) ?></td>
+						<td>
+							<? if($product->prijs):
+							money_format('%n', $product->prijs->prijs);
+							endif; ?>
+						</td>
 						<? if($product->promotie): ?>
 							<td><?= money_format('%n', $product->promotie->promo) ?></td>
 							<td><?= $product->promotie->stop?></td>
@@ -108,28 +117,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 							<img src="/images/bo/icons/tick.png" alt="V">
 							<? endif; ?>
 						</td>
-						<td><img class='customise' src='/imageS/bo/icons/label_icon.gif'/></td>
+						<td><img class='customise' src='/images/bo/icons/label_icon.gif'/></td>
 						<td><img class='dequeue' src='/images/bo/icons/cross.png'/></td>
 					</tr>
 					<? endforeach ?>
 				</tbody>
-				<tfoot>
-					<tr class='template-row'>
-						<td>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tfoot>
 			</table>
 		</p>
 	</div>
