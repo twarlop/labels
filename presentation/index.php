@@ -102,11 +102,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 						</td>
 						<td>
 							<? if($product->prijs):
-							money_format('%n', $product->prijs->prijs);
+							echo '&euro;&nbsp;' . $product->prijs->prijs;
 							endif; ?>
 						</td>
 						<? if($product->promotie): ?>
-							<td><?= money_format('%n', $product->promotie->promo) ?></td>
+							<td><?='&euro;&nbsp;' . $product->promotie->promo;?></td>
 							<td><?= $product->promotie->stop?></td>
 						<? else: ?>
 							<td>&nbsp;</td>

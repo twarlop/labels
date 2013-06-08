@@ -71,7 +71,7 @@ window.sos = sos;
 		addFoto: function(tr, product)
 		{
 			var img = $('<img/>', {
-				'src': '/images/ez_prod/' + product.merkid + '/' + product.product_id + '/' + product.photo
+				'src': '/images/ez_prod/' + product.merkid + '/' + product.product_id + '/tn1/' + product.photo
 			});
 			tr.append($('<td/>').append(img));
 			return this;
