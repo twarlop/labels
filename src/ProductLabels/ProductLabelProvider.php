@@ -73,7 +73,7 @@ class ProductLabelProvider implements ProviderInterface{
 
 	public function reloadProduct($prodid)
 	{
-		$this->productProvider->findById($prodid);
+		$product = $this->productProvider->findById($prodid);
 		return $product;
 	}
 
