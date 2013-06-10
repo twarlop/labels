@@ -13,7 +13,7 @@ window.sos = sos;
 
 	$(document).ready(function(){
 
-		$("#queueTable").on('click', '.inspect', function(){
+		$('#queueTable').on('click', '.inspect', function(){
 			var prodid = parseInt($(this).closest('tr').data('prodid'), 10);
 			$.inspectReborn({
 				'prodid':prodid,
@@ -21,6 +21,15 @@ window.sos = sos;
 					sos.etiketten.queue.reload(prodid);
 				}
 			});
+		});
+
+		$('#primary-app').on('click', '.downloadPdf', function(){
+			$.ajax({
+				url:'ajax/etiketten.php',
+				data:{
+					action:'downloadPdf'
+				}
+			})
 		});
 
 	})
