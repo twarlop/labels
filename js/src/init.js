@@ -14,7 +14,7 @@ window.sos = sos;
 	$(document).ready(function(){
 
 		$("#queueTable").on('click', '.inspect', function(){
-			var prodid = parseInt($(this).closest('tr').data('product'), 10);
+			var prodid = parseInt($(this).closest('tr').data('prodid'), 10);
 			$.inspectReborn({
 				'prodid':prodid
 			});
