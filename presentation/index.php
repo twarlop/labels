@@ -49,7 +49,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<select name="etiketAfmeting" id="etiketAfmeting">
 				<option value="">Kies een afmeting</option>
 				<? foreach($afmetingen as $afmeting): ?>
-				<option value="<?= $afmeting->id ?>"><?= $afmeting->name ?></option>
+				<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
 				<? endforeach; ?>
 			</select>
 
@@ -140,6 +140,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		</p>
 		<p>
 			<a href="/sos_tools/etiketten.php" class='button'>Download pdf</a>
+			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>			
 		</p>
 	</div>
 </div>

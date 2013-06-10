@@ -14,34 +14,21 @@ use ArrayAccess;
 * A collection of pages that will be passed to a document, each page has its own products
 */
 
-class PageCollection implements CollectionInterface, ArrayAccess, Countable, IteratorAggregate
+class PageCollection implements CollectionInterface, Countable, IteratorAggregate
 {
 
 	protected $items;
 
-	public function __construct(array $items = array())
-	{
-		$this->items = $items;
-	}
+	protected $itemsPerPage;
 
-	public function offsetExists($offset)
-	{
-		return isset($this->items[$offset]);
-	}
+	/**
+	 *	Zero indexed
+	 */
+	protected $position;
 
-	public function offsetSet($offset, $value)
+	public function __construct($pages)
 	{
-		$this->items[$offset] = $value;
-	}
-
-	public function offsetGet($offset)
-	{
-		return $this->items[$offset];
-	}
-
-	public function offsetUnset($offset)
-	{
-		unset($this->items[$offset]);
+		$this->items = $pages;
 	}
 
 	public function count()
@@ -52,6 +39,49 @@ class PageCollection implements CollectionInterface, ArrayAccess, Countable, Ite
 	public function getIterator()
 	{
 		return new ArrayIterator($this->items);
+	}
+
+	public function toJson()
+	{
+		return json_encode($this->toArray());
+	}
+
+	public function toArray()
+	{
+		echo 'to implement';
+	}
+
+	public function addProduct(LabelProduct $product)
+	{
+		$page = $this->lastPage();
+	}
+
+	public function currentPage()
+	{
+		$this->items[$this->position];
+	}
+
+	public function last()
+	{
+		return $this->items[count($this->items)-1];
+	}
+
+	public function next()
+	{
+		if($this->position < ($this->count() - 1))
+		{
+			return $this->items[$this->position];
+		}
+		else
+			return false;
+	}
+
+	public function render()
+	{
+		foreach($this->items as $item)
+		{
+			$item->render();
+		}
 	}
 
 }

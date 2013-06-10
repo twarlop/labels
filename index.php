@@ -1,3 +1,34 @@
+<?php
+//mock settings here, so we can use them in our dev environment
+
+
+
+class Setting
+{
+	protected $value;
+
+	public function __construct($value)
+	{
+		$this->value = $value;
+	}
+
+	public function setValue($value)
+	{
+		$this->$value = $value;
+	}
+
+	public function getValue()
+	{
+		return $this->value;
+	}
+}
+
+$SETTINGS = [
+	'label_type' => new Setting(1),
+	'label_taal' => new Setting(1),
+	'label_mode' => new Setting(1)
+];
+?>
 <html>
 	<head>
 		<link rel="stylesheet" href="css/ui.css">

@@ -22,10 +22,8 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->queueProvider = new Setup\QueueProvider($this->handelaarid, $this->connection);
 		$this->propertyProvider = new Properties\PropertyProvider($this->handelaarid, $this->connection);
 		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider);
-		$this->pageProvider = new Pages\PageProvider();
 		$this->categoryProvider = new Categories\CategoryProvider();
 		$this->labelProvider = new Label\LabelProvider();
-		$this->documentProvider = new Document\DocumentProvider($this->handelaarid, $this->pageProvider, $this->labelProvider);
 	}
 
 	public function suggestCategory($query)
@@ -96,7 +94,10 @@ class ProductLabelProvider implements ProviderInterface{
 
 	public function downloadPdf()
 	{
-		$this->documentProvider->download();
+		$pageProvider = new Pages\PageProvider($this->handelaarid);
+		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider);
+		$document = $documentProvider->createDocument($this->fetchProducts());
+		$document->download();
 	}
 
 }

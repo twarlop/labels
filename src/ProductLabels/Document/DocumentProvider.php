@@ -2,6 +2,7 @@
 namespace ProductLabels\Document;
 
 use ProductLabels\Contract\ProviderInterface;
+use ProductLabels\Pages\PageCollection;
 use TCPDF;
 
 /**
@@ -32,21 +33,21 @@ class DocumentProvider implements ProviderInterface
 	public function __construct($handelaar_id, $pageProvider, $labelProvider)
 	{
 		$this->handelaar_id = $handelaar_id;
-		$this->labelProvider = $pageProvider;
-		$this->pageProvider = $labelProvider;
+		$this->labelProvider = $labelProvider;
+		$this->pageProvider = $pageProvider;
 	}
 
-	protected function init()
+	protected function layout()
 	{
-		$this->pdf = new TCPDF();
-		$this->layout = $this->labelProvider->fetchLayout($this->layout->id);
-		$this->pages = $this->pageProvider->loadPages($this->layout, $this->handelaar_id);
+		return $this->labelProvider->fetchLayout();
 	}
 
-	public function download()
+	public function createDocument($products)
 	{
-		$this->init();
-		$this->pdf->Output('etiketten.pdf', 'D');
+		$layout = $this->layout();
+		$pdf = new TCPDF;
+		$document = new Document($pdf, $layout, $this->pageProvider->collection($layout->itemsPerPage(), $products));
+		return $document;
 	}
 	
 }

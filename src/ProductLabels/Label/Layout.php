@@ -21,4 +21,9 @@ class Layout extends Eloquent
 		return $this->belongsToMany('ProductLabels\Dimension\Dimension', 'label_layout_dimensions', 'layout_id', 'dimension_id');
 	}
 
+	public function itemsPerPage()
+	{
+		return $this->rows * $this->columns;
+	}
+
 }

@@ -15,4 +15,9 @@ class Dimension extends Eloquent implements DimensionInterface
 	protected $table = 'label_dimensions';
 
 	protected $fillable = array('type_id', 'left','top', 'width', 'height', 'font_size', 'fill', 'color');
+
+	public function type()
+	{
+		return $this->belongsTo('ProductLabels\Dimension\DimensionType', 'type_id');
+	}
 }
