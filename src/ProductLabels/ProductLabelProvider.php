@@ -95,7 +95,7 @@ class ProductLabelProvider implements ProviderInterface{
 	public function downloadPdf()
 	{
 		$document = new Document();
-		$document->downloadPdf();	
+		$document->download();
 	}
 
 }
