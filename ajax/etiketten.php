@@ -65,4 +65,8 @@ switch($action){
 		$provider->clearQueue();
 	break;
 
+	case 'downloadPdf':
+		$provider->downloadPdf();
+	break;
+
 }

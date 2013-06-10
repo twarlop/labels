@@ -86,7 +86,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<label for="queueProduct">Product zoeken</label>
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
-			<a href='#' class="emptyQueue">Queue leegmaken</a>
+			<a href='#' class="button emptyQueue">Queue leegmaken</a>
 			<table id='queueTable'>
 				<thead>
 					<tr>
@@ -137,6 +137,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 					<? endforeach ?>
 				</tbody>
 			</table>
+		</p>
+		<p>
+			<a href="#" class='button'>Download pdf</a>
 		</p>
 	</div>
 </div>

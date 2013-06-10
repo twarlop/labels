@@ -1,6 +1,9 @@
 <?php
 namespace ProductLabels;
 
+use ProductLabels\Label\LabelProvider;
+use ProductLabels\Pages\PageProvider;
+
 /**
 * Document
 *
@@ -10,13 +13,41 @@ class Document
 {
 	/**
 	 * 
-	 * @var ProductLabels\Layout
+	 * @var ProductLabels\Label\LabelProvider
 	 */
 	protected $layout;
 
 	/**
-	 * @var ProductLabels\Pages\PageCollection
+	 * @var ProductLabels\Pages\PageProvider
 	 */
-	protected $pageCollection;
+	protected $pageProvider;
+
+	/**
+	 * @var TCPDF;
+	 */
+	protected $pdf;
+
+
+	/*
+	 * PDF element
+	 */
+	protected $pdf;
+
+	public function __construct()
+	{
+		$this->labelProvider = new LabelProvider();
+		$this->pageProvider = new PageProvider();
+		$this->init();
+	}
+
+	protected function init()
+	{
+		$this->pdf = new TCPDF();
+	}
+
+	public function download()
+	{
+
+	}
 	
 }
