@@ -54,6 +54,10 @@ class Promotie
 		$json = array();
 		foreach($properties as $property => $value)
 		{
+			if(method_exists($this, 'get'.ucfirst($name)))
+			{
+				$value = $this->{'get' . ucfirst($name)}();
+			}
 			$json[$property] = $value;
 		}
 		return $json;
