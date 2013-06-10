@@ -17,11 +17,15 @@ __important__ Do not forget to include the images and ui.css file that belongs t
 
 run composer install/update
 
+at the moment, the css and js files are included from the vendor dir, so no need to copy. Except for the ajax and sos_tools file
+
 copy the css dir to the appropriate css dir
 
 copy the js dir to the appropriate js dir
 
 copy the ajax dir to the appropriate ajax dir
+
+copy the sos_tools file to the appropriate dir
 
 make sure you have a wrapping page (read: controller-file) and include presentation/index.php in it between the html-top and html-bottom
 

@@ -23,15 +23,6 @@ window.sos = sos;
 			});
 		});
 
-		$('#primary-app').on('click', '.downloadPdf', function(){
-			$.ajax({
-				url:'ajax/etiketten.php',
-				data:{
-					action:'downloadPdf'
-				}
-			})
-		});
-
 	})
 
 })(window.jQuery, window.sos);
