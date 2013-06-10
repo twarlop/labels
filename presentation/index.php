@@ -139,7 +139,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			</table>
 		</p>
 		<p>
-			<a href="#" class='downloadPdf button'>Download pdf</a>
+			<a href="/sos_tools/etiketten.php" class='button'>Download pdf</a>
 		</p>
 	</div>
 </div>
