@@ -48,4 +48,11 @@ class QueueProvider implements ProviderInterface
 			->delete();
 	}
 
+	public function clear()
+	{
+		$query = $this->connection->table('handelaars_labels_queue');
+		$query->where('handelaar_id', $this->handelaar_id)
+			->delete();
+	}
+
 }

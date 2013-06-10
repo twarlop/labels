@@ -9,7 +9,7 @@ use ProductLabels\Contract\MigrationInterface;
 /**
 * Base
 */
-class Base implements MigrationInterface
+abstract class Base implements MigrationInterface
 {
 	protected $builder;
 

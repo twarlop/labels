@@ -230,4 +230,8 @@
 		sos.etiketten.queue.delete($(this).closest('tr'));
 	});
 
+	$("#primary-app").on('click', '.emptyQueue', function(){
+		sos.etiketten.queue.clear();
+	})
+
 })(window.jQuery, window.sos);

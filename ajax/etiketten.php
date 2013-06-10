@@ -61,4 +61,8 @@ switch($action){
 		echo $product->toJson();
 	break;
 
+	case 'clearQueue':
+		$provider->clearQueue();
+	break;
+
 }

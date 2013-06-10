@@ -90,6 +90,7 @@ class Dimensions extends Base
 		$this->builder->create('label_layout', function($t){
 			$t->engine = 'InnoDB';
 			$t->increments('id');
+			$t->string('name', 40);
 			$t->boolean('landscape');
 			$t->boolean('is_single_label');
 			$t->decimal('width');
@@ -242,6 +243,7 @@ class Dimensions extends Base
 	protected function moveLayout($links, $oldLabel)
 	{
 		$layout = Layout::create(array(
+			'name' => $oldLabel['afmeting'],
 			'landscape' => $oldLabel['landscape'],
 			'rows' => $oldLabel['rows'],
 			'columns' => $oldLabel['columns'],

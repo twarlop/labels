@@ -10,6 +10,10 @@ setLocale(LC_MONETARY, 'nl_BE');
 
 // include('tests/classes.php');
 
+/**
+ * UNCOMMENT THE FOLLOWING TO RUN THE MIGRATION
+ */
+
 // $migration = new ProductLabels\Migration\Dimensions();
 // $migration->run();
 // $migration = new ProductLabels\Migration\Queue();
@@ -18,9 +22,13 @@ setLocale(LC_MONETARY, 'nl_BE');
 // $migration = new ProductLabels\Migration\Properties();
 // $migration->run();
 
+// exit();
+
 
 $provider = new ProductLabels\ProductLabelProvider(477);
 $products = $provider->fetchProducts();
+
+$afmetingen = $provider->fetchAfmetingen();
 
 $today = new DateTime();
 
@@ -40,15 +48,18 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<label for="etiketAfmeting">Afmeting</label>
 			<select name="etiketAfmeting" id="etiketAfmeting">
 				<option value="">Kies een afmeting</option>
+				<? foreach($afmetingen as $afmeting): ?>
+				<option value="<?= $afmeting->id ?>"><?= $afmeting->name ?></option>
+				<? endforeach; ?>
 			</select>
 
 			<br>
 
 			<label for="etiketType">Soort inhoud</label>
 			<select name="etiketType" id="etiketType">
-				<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected':'' ?>>Volledig tekst</option>
-				<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected':'' ?>>Eigenschappen</option>
-				<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected':'' ?>>Korte tekst</option>
+				<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>>Volledig tekst</option>
+				<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>>Eigenschappen</option>
+				<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Korte tekst</option>
 			</select>
 
 			<br>

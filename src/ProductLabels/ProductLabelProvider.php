@@ -5,11 +5,14 @@ use ProductLabels\Contract\ProviderInterface;
 
 class ProductLabelProvider implements ProviderInterface{
 
+	protected $connection;
 	protected $handelaarid;
 	protected $queueProvider;
+	protected $propertyProvider;
 	protected $productProvider;
 	protected $pageProvider;
 	protected $categoryProvider;
+	protected $labelProvider;
 
 	public function __construct($handelaarid)
 	{
@@ -20,6 +23,7 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider);
 		$this->pageProvider = new Pages\PageProvider();
 		$this->categoryProvider = new Categories\CategoryProvider();
+		$this->labelProvider = new Label\LabelProvider();
 	}
 
 	public function suggestCategory($query)
@@ -75,6 +79,17 @@ class ProductLabelProvider implements ProviderInterface{
 	{
 		$product = $this->productProvider->findById($prodid);
 		return $product;
+	}
+
+	public function clearQueue()
+	{
+		$this->queueProvider->clear();
+	}
+
+	public function fetchAfmetingen()
+	{
+		$layouts = $this->labelProvider->fetchAfmetingen();
+		return $layouts;
 	}
 
 }

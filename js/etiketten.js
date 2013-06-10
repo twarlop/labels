@@ -235,8 +235,20 @@ window.sos = sos;
 			else{
 				customLabel.html('&nbsp;');
 			}
+		},
+		clear: function(){
+			$.ajax({
+				url : 'ajax/etiketten.php',
+				type: 'POST',
+				dataType:'json',
+				data: {
+					action:'clearQueue'
+				},
+				success: function(){
+					$("#queueTable").find('tbody').html('');
+				}
+			});
 		}
-
 
 	};
 
@@ -246,6 +258,10 @@ window.sos = sos;
 		sos.etiketten.queue.delete($(this).closest('tr'));
 	});
 
+	$("#primary-app").on('click', '.emptyQueue', function(){
+		sos.etiketten.queue.clear();
+	})
+
 })(window.jQuery, window.sos);
 (function($, sos){
 
@@ -253,7 +269,7 @@ window.sos = sos;
 
 	$(document).ready(function(){
 
-		$("#optionsEtiket").on('change', 'select, input', function(){
+		$("#optionsEtiket").on('change', 'select', function(){
 			switch($(this).attr('id'))
 			{
 				case 'etiketAfmeting':
@@ -277,16 +293,6 @@ window.sos = sos;
 				case 'etiketLang':
 					save({
 						setting: 'label_taal',
-						value: $(this).val()
-					}, function(response){
-
-					});
-
-				break;
-
-				case 'etiketDatum':
-					save({
-						setting:'label_datum',
 						value: $(this).val()
 					}, function(response){
 
