@@ -60,4 +60,5 @@ switch($action){
 		$product = $provider->reloadProduct($prodid);
 		echo $product->toJson();
 	break;
+
 }

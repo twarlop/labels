@@ -34,7 +34,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 <div id="primary-app">
 	<div id='step1'>
 		<h3>Stap 1</h3>
-		<p>
+		<p id='optionsEtiket'>
 			<label for="etiketAfmeting">Afmeting</label>
 			<select name="etiketAfmeting" id="etiketAfmeting">
 				<option value="">Kies een afmeting</option>
