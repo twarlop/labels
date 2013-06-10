@@ -312,7 +312,6 @@ window.sos = sos;
 	function save(data, callback)
 	{
 		data = $.extend({'action':'setValue'}, data);
-		console.log(data);
 		$.ajax({
 			url: 'ajax/settings.php',
 			type: 'POST',
