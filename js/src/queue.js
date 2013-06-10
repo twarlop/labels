@@ -154,6 +154,59 @@
 			}));
 			tr.append(td);
 			return this;
+		},
+		reload: function(prodid)
+		{
+			var that = this;
+			$.ajax({
+				url: 'ajax/etiketten.php',
+				type: 'GET',
+				dataType:'json',
+				data: {
+					action: 'reloadProduct',
+					'product-id': prodid
+				},
+				success: function(product){
+					var tr = $('#queueTable').find('tr[data-prodid=' + prodid + ']');
+					that.reloadRow(tr, product);
+				}
+			});
+		},
+		reloadRow: function(tr, product)
+		{
+			//enkel de prijs, promotie en promotot en custom label kolom kan anders zijn.
+			var prijs = tr.find('td:nth-child(4)');
+			if(product.prijs)
+			{
+				prijs.html('&euro;&nbsp;' + product.prijs.prijs);
+			}
+			else{
+				prijs.html('&nbsp;');
+			}
+			var promo = tr.find('td:nth-child(5)');
+			var promotot = tr.find('td:nth-child(6)');
+			if(product.promotie)
+			{
+				promo.html('&euro;&nbsp;' + product.promotie.promo);
+				promotot.html(product.promotie.stop);
+			}
+			else
+			{
+				promo.html('&nbsp;');
+				promotot.html('&nbsp;');
+			}
+			var customLabel = tr.find('td:nth-child(7)');
+			if(product.customLabel)
+			{
+				customLabel.html('');
+				var img = $('<img/>', {
+					'src':'/images/bo/icons/tick.png'
+				});
+				customLabel.append(img);
+			}
+			else{
+				customLabel.html('&nbsp;');
+			}
 		}
 
 

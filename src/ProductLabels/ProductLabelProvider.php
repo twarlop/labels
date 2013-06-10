@@ -71,4 +71,10 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->queueProvider->dequeue($prodid);
 	}
 
+	public function reloadProduct($prodid)
+	{
+		$this->productProvider->findById($prodid);
+		return $product;
+	}
+
 }

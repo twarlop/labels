@@ -54,4 +54,10 @@ switch($action){
 	case 'removeProduct':
 		$provider->dequeue($_POST['prodid']);
 	break;
+
+	case 'reloadProduct':
+		$prodid = intval($_GET['product-id']);
+		$product = $provider->reloadProduct($prodid);
+		echo $product->toJson();
+	break;
 }
