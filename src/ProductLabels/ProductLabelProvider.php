@@ -13,6 +13,7 @@ class ProductLabelProvider implements ProviderInterface{
 	protected $pageProvider;
 	protected $categoryProvider;
 	protected $labelProvider;
+	protected $documentProvider;
 
 	public function __construct($handelaarid)
 	{
@@ -24,6 +25,7 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->pageProvider = new Pages\PageProvider();
 		$this->categoryProvider = new Categories\CategoryProvider();
 		$this->labelProvider = new Label\LabelProvider();
+		$this->documentProvider = new Document\DocumentProvider($this->handelaarid, $this->pageProvider, $this->labelProvider);
 	}
 
 	public function suggestCategory($query)
@@ -94,8 +96,7 @@ class ProductLabelProvider implements ProviderInterface{
 
 	public function downloadPdf()
 	{
-		$document = new Document();
-		$document->download();
+		$this->documentProvider->download();
 	}
 
 }

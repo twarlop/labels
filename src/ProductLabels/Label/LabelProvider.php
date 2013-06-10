@@ -24,4 +24,12 @@ class LabelProvider implements ProviderInterface
 		return $layouts;
 	}
 
+	/**
+	 *
+	 */
+	public function fetchLayout($layoutid)
+	{
+		$this->layout->find($layoutid);
+	}
+
 }
