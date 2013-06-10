@@ -18,7 +18,7 @@ window.sos = sos;
 			$.inspectReborn({
 				'prodid':prodid,
 				'after': function(){
-					sos.queue.reload(prodid);
+					sos.etiketten.queue.reload(prodid);
 				}
 			});
 		});
