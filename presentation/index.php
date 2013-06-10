@@ -22,6 +22,8 @@ setLocale(LC_MONETARY, 'nl_BE');
 $provider = new ProductLabels\ProductLabelProvider(477);
 $products = $provider->fetchProducts();
 
+$today = new DateTime();
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
 <p>
@@ -60,7 +62,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<br>
 
 			<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
-			<input type="text" id='etiketDatum' value='<?= $SETTINGS['label_datum']->getValue() ?>'>
+			<input type="text" id='etiketDatum' value='<?= $today->format('d/m/Y') ?>'>
 
 		</p>
 	</div>
@@ -73,6 +75,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<label for="queueProduct">Product zoeken</label>
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
+			<a href='#' class="emptyQueue">Queue leegmaken</a>
 			<table id='queueTable'>
 				<thead>
 					<tr>

@@ -207,8 +207,20 @@
 			else{
 				customLabel.html('&nbsp;');
 			}
+		},
+		clear: function(){
+			$.ajax({
+				url : 'ajax/etiketten.php',
+				type: 'POST',
+				dataType:'json',
+				data: {
+					action:'clearQueue'
+				},
+				success: function(){
+					$("#queueTable").find('tbody').html('');
+				}
+			});
 		}
-
 
 	};
 

@@ -4,7 +4,7 @@
 
 	$(document).ready(function(){
 
-		$("#optionsEtiket").on('change', 'select, input', function(){
+		$("#optionsEtiket").on('change', 'select', function(){
 			switch($(this).attr('id'))
 			{
 				case 'etiketAfmeting':
@@ -28,16 +28,6 @@
 				case 'etiketLang':
 					save({
 						setting: 'label_taal',
-						value: $(this).val()
-					}, function(response){
-
-					});
-
-				break;
-
-				case 'etiketDatum':
-					save({
-						setting:'label_datum',
 						value: $(this).val()
 					}, function(response){
 
