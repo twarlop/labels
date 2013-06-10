@@ -8,7 +8,7 @@ var sos = {
 window.sos = sos;
 
 
-(function(){
+(function($, sos){
 	'use strict';
 
 	$(document).ready(function(){
@@ -18,7 +18,7 @@ window.sos = sos;
 			$.inspectReborn({
 				'prodid':prodid,
 				'after': function(){
-					window.sos.queue.reload(prodid);
+					sos.queue.reload(prodid);
 				}
 			});
 		});
