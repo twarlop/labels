@@ -40,7 +40,7 @@
 			});
 		}
 
-		$("#queueTable").on('click', '.categoryInspect', function()
+		$("#queueTable").on('click', '.inspectCategory', function()
 		{
 			var categoryId = $(this).data('category-id');
 			sos.etiketten.categoryInspect(categoryId);

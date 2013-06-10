@@ -10,3 +10,4 @@
 #propertyPicker li.added{border:1px solid #529138;background-image:-webkit-linear-gradient(top, #dff0d8, #a3d48e);background-image:-moz-linear-gradient(top, #dff0d8, #a3d48e);background-image:-o-linear-gradient(top, #dff0d8, #a3d48e);background-image:-ms-linear-gradient(top, #dff0d8, #a3d48e);background-image:linear-gradient(top, #dff0d8, #a3d48e);}
 #propertyPicker li.removed{border:1px solid #963b3b;background-image:-webkit-linear-gradient(top, #f2dede, #d59595);background-image:-moz-linear-gradient(top, #f2dede, #d59595);background-image:-o-linear-gradient(top, #f2dede, #d59595);background-image:-ms-linear-gradient(top, #f2dede, #d59595);background-image:linear-gradient(top, #f2dede, #d59595);}
 #propertyPicker #addableContainer .addable{padding-left:30px;}
+.dequeue{cursor:pointer;}

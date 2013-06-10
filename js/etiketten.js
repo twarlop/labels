@@ -6,6 +6,23 @@ var sos = {
 };
 
 window.sos = sos;
+
+
+(function(){
+	'use strict';
+
+	$(document).ready(function(){
+
+		$("#queueTable").on('click', '.inspect', function(){
+			var prodid = parseInt($(this).closest('tr').data('product'), 10);
+			$.inspectReborn({
+				'prodid':prodid
+			});
+		});
+
+	})
+
+})(window.jQuery, window.sos);
 (function($, sos){
 
 	'use strict';
@@ -151,7 +168,8 @@ window.sos = sos;
 			td.append($('<a/>', {
 				'href': '#',
 				'class': 'inspectCategory',
-				'text': product.category
+				'text': product.category,
+				'data-category-id': product.category_id
 			}));
 			td.append($('<br/>'));
 			td.append($('<a/>',{
@@ -531,7 +549,7 @@ window.sos = sos;
 			});
 		}
 
-		$("#queueTable").on('click', '.categoryInspect', function()
+		$("#queueTable").on('click', '.inspectCategory', function()
 		{
 			var categoryId = $(this).data('category-id');
 			sos.etiketten.categoryInspect(categoryId);

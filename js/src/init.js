@@ -6,3 +6,20 @@ var sos = {
 };
 
 window.sos = sos;
+
+
+(function(){
+	'use strict';
+
+	$(document).ready(function(){
+
+		$("#queueTable").on('click', '.inspect', function(){
+			var prodid = parseInt($(this).closest('tr').data('product'), 10);
+			$.inspectReborn({
+				'prodid':prodid
+			});
+		});
+
+	})
+
+})(window.jQuery, window.sos);

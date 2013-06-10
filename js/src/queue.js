@@ -143,7 +143,8 @@
 			td.append($('<a/>', {
 				'href': '#',
 				'class': 'inspectCategory',
-				'text': product.category
+				'text': product.category,
+				'data-category-id': product.category_id
 			}));
 			td.append($('<br/>'));
 			td.append($('<a/>',{
