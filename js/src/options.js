@@ -15,6 +15,7 @@
 						
 					});
 				break;
+
 				case 'etiketType':
 					save({
 						setting: 'label_mode',
@@ -23,6 +24,7 @@
 
 					});
 				break;
+
 				case 'etiketLang':
 					save({
 						setting: 'label_taal',
@@ -32,9 +34,7 @@
 					});
 
 				break;
-				default:
-					alert('test');
-				break;
+
 			}
 		});
 

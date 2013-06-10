@@ -264,6 +264,7 @@ window.sos = sos;
 						
 					});
 				break;
+
 				case 'etiketType':
 					save({
 						setting: 'label_mode',
@@ -272,6 +273,7 @@ window.sos = sos;
 
 					});
 				break;
+
 				case 'etiketLang':
 					save({
 						setting: 'label_taal',
@@ -281,9 +283,7 @@ window.sos = sos;
 					});
 
 				break;
-				default:
-					alert('test');
-				break;
+
 			}
 		});
 
