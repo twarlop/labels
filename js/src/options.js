@@ -37,7 +37,7 @@
 
 				case 'etiketDatum':
 					save({
-						setting:'label_date',
+						setting:'label_datum',
 						value: $(this).val()
 					}, function(response){
 
