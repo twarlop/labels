@@ -124,7 +124,7 @@ window.sos = sos;
 				html: function(){
 					if(product.promotie)
 					{
-						return product.promotie.promo;
+						return '&euro;&nbsp;' + product.promotie.promo;
 					}
 				}
 			});
