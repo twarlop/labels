@@ -42,7 +42,7 @@ class Document
 
 	public function download()
 	{
-
+		$this->pdf->Output('etiketten.pdf', 'D');
 	}
 	
 }
