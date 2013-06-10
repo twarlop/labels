@@ -3,6 +3,7 @@ namespace ProductLabels;
 
 use ProductLabels\Label\LabelProvider;
 use ProductLabels\Pages\PageProvider;
+use TCPDF;
 
 /**
 * Document
