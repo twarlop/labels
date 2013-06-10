@@ -253,7 +253,7 @@ window.sos = sos;
 
 	$(document).ready(function(){
 
-		$("#optionsEtiket").on('change', 'select', function(){
+		$("#optionsEtiket").on('change', 'select, input', function(){
 			switch($(this).attr('id'))
 			{
 				case 'etiketAfmeting':
@@ -284,10 +284,27 @@ window.sos = sos;
 
 				break;
 
+				case 'etiketDatum':
+					save({
+						setting:'label_date',
+						value: $(this).val()
+					}, function(response){
+
+					});
+
+				break;
+
 			}
 		});
 
+
+		$('#etiketDatum').datepicker({
+			dateFormat: 'dd/mm/yy'
+        });
+
 	});
+
+
 
 	/**
 	 * Helper function to allow us to save the settings for printing labels

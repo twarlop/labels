@@ -44,17 +44,17 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 			<label for="etiketType">Soort inhoud</label>
 			<select name="etiketType" id="etiketType">
-				<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected':'' ?>>Volledig tekst</option>
-				<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected':'' ?>>Eigenschappen</option>
-				<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected':'' ?>>Korte tekst</option>
+				<option value="1">Volledig tekst</option>
+				<option value="2">Eigenschappen</option>
+				<option value="3">Korte tekst</option>
 			</select>
 
 			<br>
 
 			<label for="etiketLang">Taal</label>
 			<select name="etiketLang" id="etiketLang">
-				<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>>Nederlands</option>
-				<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>>Frans</option>
+				<option value="1">Nederlands</option>
+				<option value="2">Frans</option>
 			</select>
 
 			<br>
