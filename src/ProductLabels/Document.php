@@ -27,12 +27,6 @@ class Document
 	 */
 	protected $pdf;
 
-
-	/*
-	 * PDF element
-	 */
-	protected $pdf;
-
 	public function __construct()
 	{
 		$this->labelProvider = new LabelProvider();
