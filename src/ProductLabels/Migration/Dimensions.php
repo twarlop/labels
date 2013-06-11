@@ -82,7 +82,7 @@ class Dimensions extends Base
 			 * Text
 			 */
 			$t->integer('font_size')->nullable();
-			$t->integer('fill')->nullabel();
+			$t->integer('fill')->nullable();
 			$t->string('color', '7')->nullable();
 
 			$t->timestamps();

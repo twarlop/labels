@@ -162,6 +162,9 @@ class Document
 	protected function setCoordinates($dimension)
 	{
 		$this->pdf->setXY($this->x + $dimension->left, $this->y + $dimension->top);
+		// var_dump($this->pdf->getX());
+		// var_dump($this->pdf->getY());
+		// var_dump($this->x);
 	}
 
 	protected function setFont($size, $bold = false)
