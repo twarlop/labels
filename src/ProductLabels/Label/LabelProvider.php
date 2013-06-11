@@ -32,6 +32,7 @@ class LabelProvider implements ProviderInterface
 		$this->setupSettings();
 		$this->layout = new Layout();
 		$this->layoutDimension = new LayoutDimension();
+		var_dump($this);
 	}
 
 	public function fetchAfmetingen()
