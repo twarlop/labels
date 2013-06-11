@@ -82,8 +82,8 @@ class Dimensions extends Base
 			 * Text
 			 */
 			$t->integer('font_size')->nullable();
-			$t->integer('fill')->nullable();
-			$t->string('color', '7')->nullable();
+			$t->string('fill', 11)->nullable();
+			$t->string('color', 11)->nullable();
 
 			$t->timestamps();
 		});
@@ -167,7 +167,9 @@ class Dimensions extends Base
 			'top' => $oldLabel['yPrijs'],
 			'width'=> $oldLabel['wPrijs'],
 			'height' => $oldLabel['hPrijs'],
-			'font_size' => $oldLabel['fPrijs']
+			'font_size' => $oldLabel['fPrijs'],
+			'fill' => '204,204,204',
+			'color' => '0,0,0'
 		));
 		return $dimension;
 	}
@@ -180,7 +182,9 @@ class Dimensions extends Base
 			'top' => $oldLabel['yTitel'],
 			'width'=> $oldLabel['wTitel'],
 			'height' => $oldLabel['hTitel'],
-			'font_size' => $oldLabel['fTitel']
+			'font_size' => $oldLabel['fTitel'],
+			'fill' => '0,0,0',
+			'color' => '255,255,255'
 		));
 		return $dimension;
 	}
@@ -193,14 +197,17 @@ class Dimensions extends Base
 			'top' => $oldLabel['yPrijs'] + 10,
 			'width'=> $oldLabel['wPrijs'],
 			'height' => $oldLabel['hPrijs'],
-			'font_size' => $oldLabel['fPrijs']
+			'font_size' => $oldLabel['fPrijs'],
+			'color' => '153,0,0',
+			'fill' => '204,204,204'
 		));
 		return $dimension;
 	}
 
 	protected function movePromotionText($oldLabel)
 	{
-
+		echo 'need to create dimensions for promotionText';
+		echo 'dont forget to use the proper collor settings';
 	}
 
 	protected function moveLogoHandelaar($oldLabel)

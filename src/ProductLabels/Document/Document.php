@@ -100,7 +100,7 @@ class Document
 
 	protected function renderTitle($dimension, $product)
 	{
-		$this->pdf->Cell($dimension->width, $dimension->height, $product->title);
+		$this->pdf->Cell($dimension->width, $dimension->height, $product->title, 0, 0, 'C', 1);
 	}
 
 	protected function renderLogoHandelaar()
@@ -131,7 +131,7 @@ class Document
 	{
 		if($product->hasPromotie())
 		{
-			$this->pdf->Cell($dimension->width, $dimension->height, '€  ' . $product->promotie->promo);
+			$this->pdf->Cell($dimension->width, $dimension->height, '€  ' . $product->promotie->promo, 1, 0, 'C', 1);
 		}
 	}
 
@@ -162,9 +162,6 @@ class Document
 	protected function setCoordinates($dimension)
 	{
 		$this->pdf->setXY($this->x + $dimension->left, $this->y + $dimension->top);
-		// var_dump($this->pdf->getX());
-		// var_dump($this->pdf->getY());
-		// var_dump($this->x);
 	}
 
 	protected function setFont($size, $bold = false)
@@ -181,20 +178,28 @@ class Document
 
 	protected function setFill($fill)
 	{
+		if(!$fill)
+		{
+			$fill = '0,0,0';
+		}
 		list($r, $g, $b) = $this->rgb($fill);
 		$this->pdf->SetFillColor($r, $g, $b);
 	}
 
 	protected function setColor($color)
 	{
+		if(!$color)
+		{
+			$color = '255,255,255';
+		}
 		list($r, $g, $b) = $this->rgb($color);
 		$this->pdf->SetTextColor($r, $g, $b);
 	}
 
 	protected function rgb($color)
 	{
-		//check if the color is a valid color.
-		//hexadecimal form: 6 chars, might be prefixed with #
+		$color = explode(',', $color);
+		return $color;
 	}
 
 }
