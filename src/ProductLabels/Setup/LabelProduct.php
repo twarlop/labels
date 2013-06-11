@@ -139,4 +139,16 @@ class LabelProduct
 		return json_encode($json);
 	}
 
+	public function hasPromotie()
+	{
+		return !empty($this->promotie);
+	}
+
+	public function getPathPhoto()
+	{
+		$base = $_SERVER['DOCUMENT_ROOT'] . 'images/ez_prod/' . $this->merkid . '/' . $this->product_id . '/';
+		if(is_file($base . $this->photo))
+			return $base . $this->photo;
+	}
+
 }
