@@ -28,7 +28,6 @@ class Document
 		$this->pdf->SetPrintHeader(false);
 		$this->layout = $layout;
 		$this->pages = $pages;
-		var_dump($layout);
 	}
 
 	public function download()

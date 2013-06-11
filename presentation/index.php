@@ -14,15 +14,15 @@ setLocale(LC_MONETARY, 'nl_BE');
  * UNCOMMENT THE FOLLOWING TO RUN THE MIGRATION
  */
 
-// $migration = new ProductLabels\Migration\Dimensions();
-// $migration->run();
-// $migration = new ProductLabels\Migration\Queue();
-// $migration->run();
+$migration = new ProductLabels\Migration\Dimensions();
+$migration->run();
+$migration = new ProductLabels\Migration\Queue();
+$migration->run();
 
-// $migration = new ProductLabels\Migration\Properties();
-// $migration->run();
+$migration = new ProductLabels\Migration\Properties();
+$migration->run();
 
-// exit();
+exit();
 
 
 $provider = new ProductLabels\ProductLabelProvider(477);

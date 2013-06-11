@@ -45,7 +45,7 @@ class LabelProvider implements ProviderInterface
 	 */
 	public function fetchLayout()
 	{
-		$layout = $this->layout->with(array('dimensions', 'dimensions.type'))->find($this->mode);
+		$layout = $this->layout->with(array('dimensions', 'dimensions.type'))->find($this->type);
 		return $layout;
 	}
 
