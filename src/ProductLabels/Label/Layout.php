@@ -14,7 +14,7 @@ class Layout extends Eloquent
 
 	protected $table = 'label_layout';
 
-	protected $fillable = array('name', 'width', 'height', 'landscape', 'widthLabel', 'heightLabel', 'isA4', 'rows', 'columns');
+	protected $fillable = array('name', 'width', 'height', 'landscape', 'widthLabel', 'heightLabel', 'isA4', 'rows', 'columns', 'is_single_label');
 
 	public function dimensions()
 	{

@@ -143,6 +143,11 @@ class Document
 		}
 	}
 
+	public function renderPromotionStop($dimension, $product)
+	{
+		
+	}
+
 	protected function renderText($dimension, $product)
 	{
 		$this->pdf->Cell($dimension->width, $dimension->height, $product->text);

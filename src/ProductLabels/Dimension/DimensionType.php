@@ -20,8 +20,9 @@ class DimensionType extends Eloquent
 	const PRICE = 3;
 	const PROMOTION = 4;
 	const PROMOTION_TEXT = 5;
-	const TEXT = 6;
-	const LOGO_HANDELAAR = 7;
-	const LOGO_MERK = 8;
+	const PROMOTION_STOP = 6;
+	const TEXT = 7;
+	const LOGO_HANDELAAR = 8;
+	const LOGO_MERK = 9;
 
 }

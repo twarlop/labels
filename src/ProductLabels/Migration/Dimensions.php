@@ -38,12 +38,12 @@ class Dimensions extends Base
 		$this->dropTables();
 		$this->createTables();
 		$this->createTypes();
-		$oldLabels = $this->getOldLabels();
-		foreach($oldLabels as $v)
-		{
-			$this->moveDimension($v);
-		}
-
+		// $oldLabels = $this->getOldLabels();
+		// foreach($oldLabels as $v)
+		// {
+		// 	$this->moveDimension($v);
+		// }
+		$this->migrateDimensions();
 	}
 
 	protected function dropTables()
@@ -114,7 +114,7 @@ class Dimensions extends Base
 
 	protected function createTypes()
 	{
-		$types = array('photo','title','price','promotion', 'promotionText', 'text', 'logoHandelaar', 'logoMerk');
+		$types = array('photo','title','price','promotion', 'promotionText', 'promotionStop', 'text', 'logoHandelaar', 'logoMerk');
 		foreach($types as $value)
 		{
 			DimensionType::create(array(
@@ -263,6 +263,37 @@ class Dimensions extends Base
 		foreach($links as $link)
 		{
 			$layout->dimensions()->attach($link->id);
+		}
+	}
+
+	protected function migrateDimensions()
+	{
+		$files = scandir(__DIR__ . '/Labels');
+		$exclude = array('.', '..', '.DS_STORE');
+		$files = array_diff($files, $exclude);
+		foreach($files as $file)
+		{
+			$file = 'ProductLabels\\Migration\\Labels\\' . substr($file, 0, strlen($file) - 4);
+			$migrator = new $file();
+			$layout = $migrator->layout();
+			$photo = $migrator->photo();
+			$text = $migrator->text();
+			$price = $migrator->price();
+			$promo = $migrator->promotion();
+			$stop = $migrator->promotionStop();
+			$promotext = $migrator->promotionText();
+			$title = $migrator->title();
+			$merk = $migrator->logoMerk();
+			$handelaar = $migrator->logoHandelaar();
+			$dimensions = compact('photo', 'text', 'price', 'promo','stop','promotext','title','merk', 'handelaar');
+			$dimensionIds = array();
+			array_walk($dimensions, function($item) use (&$dimensionIds){
+				if($item)
+				{
+					array_push($dimensionIds, $item);
+				}
+			});
+			$layout->dimensions()->sync($dimensionIds);
 		}
 	}
 	
