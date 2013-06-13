@@ -19,9 +19,10 @@ class ProductLabelProvider implements ProviderInterface{
 	{
 		$this->connection = DB::connection('sos');
 		$this->handelaarid = $handelaarid;
+		$this->labelProvider = new Label\LabelProvider();
 		$this->queueProvider = new Setup\QueueProvider($this->handelaarid, $this->connection);
 		$this->propertyProvider = new Properties\PropertyProvider($this->handelaarid, $this->connection);
-		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider);
+		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider, $this->labelProvider);
 		$this->categoryProvider = new Categories\CategoryProvider();
 		$this->labelProvider = new Label\LabelProvider();
 	}

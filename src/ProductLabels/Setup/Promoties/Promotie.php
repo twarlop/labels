@@ -15,6 +15,8 @@ class Promotie
 	protected $start;
 	protected $stop;
 	protected $promo;
+	protected $tekstnl;
+	protected $tekstfr;
 
 
 	public function __construct(array $data = array())

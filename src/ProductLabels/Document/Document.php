@@ -99,6 +99,7 @@ abstract class Document
 	{
 		$path = $product->getPathPhoto();
 		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height);
+		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
 	protected function renderTitle($dimension, $product)
@@ -140,9 +141,9 @@ abstract class Document
 
 	public function renderPromotionText($dimension, $product)
 	{
-		if($product->promotie && $product->promotie->text)
+		if($product->promotie && $product->promotietext)
 		{
-			$this->pdf->Cell($dimension->width, $dimension->height, $product->promotie->promotietext);
+			$this->pdf->Cell($dimension->width, $dimension->height, $product->promotietext);
 		}
 	}
 
@@ -163,7 +164,7 @@ abstract class Document
 	{
 		$this->setFill($dimension->fill);
 		$this->setColor($dimension->color);
-		$this->setFont($dimension->font_size, true);
+		$this->setFont($dimension->font_size, $dimension->bold);
 		$this->setCoordinates($dimension);
 	}
 
@@ -235,10 +236,6 @@ abstract class Document
 		if($product->hasPromotie())
 		{
 			if($product->promotietext)
-			{
-				$max_lines--;
-			}
-			if($product->promotie->stop)
 			{
 				$max_lines--;
 			}

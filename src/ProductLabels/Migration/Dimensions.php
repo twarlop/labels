@@ -82,6 +82,7 @@ class Dimensions extends Base
 			 * Text
 			 */
 			$t->integer('font_size')->nullable();
+			$t->boolean('bold');
 			$t->integer('max_lines')->nullable();
 			$t->string('fill', 11)->nullable();
 			$t->string('color', 11)->nullable();

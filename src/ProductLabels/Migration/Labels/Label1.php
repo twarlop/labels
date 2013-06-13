@@ -52,6 +52,7 @@ class Label1 implements LabelMigrationInterface
 			'height' => '5',
 			'width' => '68',
 			'font_size' => '12',
+			'bold' => '1',
 			'fill' => '0,0,0',
 			'color' => '255,255,255'
 		));
@@ -63,11 +64,12 @@ class Label1 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::TEXT,
 			'left' => '35',
-			'top' => '7',
+			'top' => '10',
 			'height' => '35',
 			'width' => '68',
 			'font_size' => '8',
-			'max_lines' => '10',
+			'bold' => '0',
+			'max_lines' => '9',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
@@ -79,10 +81,11 @@ class Label1 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION,
 			'left' => '5',
-			'top' => '33',
+			'top' => '29',
 			'height' => '6',
 			'width' => '25',
 			'font_size' => '16',
+			'bold' => '1',
 			'fill' => '153,0,0',
 			'color' => '204,204,204'
 		));
@@ -93,11 +96,12 @@ class Label1 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION_TEXT,
-			'left' => '',
-			'top' => '',
-			'height' => '',
-			'width' => '',
-			'font_size' => '',
+			'left' => '35',
+			'top' => '6',
+			'height' => '4',
+			'width' => '68',
+			'font_size' => '8',
+			'bold' => '1',
 			'fill' => '255,255,255',
 			'color' => '255,0,0'
 		));
@@ -108,11 +112,12 @@ class Label1 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION_STOP,
-			'left' => '35',
-			'top' => '38',
+			'left' => '5',
+			'top' => '37',
 			'height' => '4',
 			'width' => '68',
-			'font_size' => '8',
+			'font_size' => '10',
+			'bold' => '1',
 			'fill' => '255,255,255',
 			'color' => '255,0,0'
 		));	
@@ -124,10 +129,11 @@ class Label1 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PRICE,
 			'left' => '1',
-			'top' => '25',
+			'top' => '21',
 			'height' => '6',
 			'width' => '30',
 			'font_size' => '16',
+			'bold' => '1',
 			'fill' => '204,204,204',
 			'color' => '0,0,0'
 		));

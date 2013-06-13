@@ -76,4 +76,17 @@ class LabelProvider implements ProviderInterface
 		}
 	}
 
+	public function getTaal()
+	{
+		switch($this->taal)
+		{
+			case 1:
+				return 'nl';
+			break;
+			case 2:
+				return 'fr';
+			break;
+		}
+	}
+
 }

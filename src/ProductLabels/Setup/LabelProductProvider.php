@@ -33,14 +33,16 @@ class LabelProductProvider implements ProviderInterface
 	protected $prijsProvider;
 	protected $promotieProvider;
 	protected $propertyProvider;
+	protected $labelProvider;
 
-	public function __construct($handelaarid, $propertyProvider)
+	public function __construct($handelaarid, $propertyProvider, $labelProvider)
 	{
 		$this->handelaarid = $handelaarid;
 		$this->connection = DB::connection('sos');
 		$this->prijsProvider = new PrijsProvider($this->handelaarid, $this->connection, $this->groeperingen);
-		$this->promotieProvider = new PromotieProvider($this->handelaarid, $this->connection, $this->groeperingen);
+		$this->promotieProvider = new PromotieProvider($this->handelaarid, $this->connection, $this->groeperingen, $labelProvider);
 		$this->propertyProvider = $propertyProvider;
+		$this->labelProvider = $labelProvider;
 	}
 
 	public function find(array $prodids)

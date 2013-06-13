@@ -15,8 +15,9 @@ class PromotieProvider implements ProviderInterface
 	protected $connection;
 	protected $groeperingen;
 
-	public function __construct($handelaarid, $connection, $groeperingen)
+	public function __construct($handelaarid, $connection, $groeperingen, $labelProvider)
 	{
+		$this->labelProvider = $labelProvider;
 		$this->handelaarid = $handelaarid;
 		$this->groeperingen = $groeperingen;
 		$this->connection = $connection;
@@ -41,21 +42,21 @@ class PromotieProvider implements ProviderInterface
 		{
 			if(isset($products[$promo->prodid]))
 			{
-				$products[$promo->prodid]->setPromotie($promo);
+				$products[$promo->prodid]->setPromotie($promo, $this->labelProvider->getTaal());
 			}
 		}
 		foreach($promosgroep as $promo)
 		{
 			if(isset($products[$promo->prodid]))
 			{
-				$products[$promo->prodid]->setPromotie($promo);
+				$products[$promo->prodid]->setPromotie($promo, $this->labelProvider->getTaal());
 			}
 		}
 		foreach($promoshand as $promo)
 		{
 			if(isset($products[$promo->prodid]))
 			{
-				$products[$promo->prodid]->setPromotie($promo);
+				$products[$promo->prodid]->setPromotie($promo, $this->labelProvider->getTaal());
 			}
 		}
 	}

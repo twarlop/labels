@@ -59,7 +59,7 @@ class LabelProduct
 	 * -> the same or higher then the level of the price for the product
 	 * @param [type] $promotie [description]
 	 */
-	public function setPromotie($promotie)
+	public function setPromotie($promotie, $taal)
 	{
 		if(empty($this->promotie))
 		{
@@ -72,15 +72,18 @@ class LabelProduct
 						if($promotie->type === 'hand')
 						{
 							$this->promotie = $promotie;
+							$this->setPromotieTekst($promotie, $taal);
 						}
 					break;
 					case 'groep':
 						if($promotie->type === 'groep' || $promotie->type === 'hand'){
 							$this->promotie = $promotie;
+							$this->setPromotieTekst($promotie, $taal);
 						}
 					break;
 					case 'fab':
 						$this->promotie = $promotie;
+						$this->setPromotieTekst($promotie, $taal);
 					break;
 				}
 			}
@@ -159,6 +162,18 @@ class LabelProduct
 		{
 			return $this->text;
 		}	
+	}
+
+	protected function setPromotieTekst($promotie, $taal)
+	{
+		if($taal === 'nl')
+		{
+			$this->promotietext = $promotie->tekstnl;
+		}
+		else if($taal === 'fr')
+		{
+			$this->promotietext = $promotie->tekstfr;
+		}
 	}
 
 }
