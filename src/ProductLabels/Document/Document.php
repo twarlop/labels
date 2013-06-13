@@ -99,24 +99,8 @@ abstract class Document
 	protected function renderPhoto($dimension, $product)
 	{
 		$path = $product->getPathPhoto();
-		list($leftOffset, $rightOffset, $width, $height) = $this->imageDimensions($dimension, $product);
-		// $this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false);
-		$this->pdf->Image($path, $this->x + $dimension->left + $leftOffset, $this->y + $dimension->top + $topOffset, $width, $height, '', '', 'C', false);
+		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
 		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
-	}
-
-	protected function resizeImage()
-	{
-		if ($file && is_file($file))
-            list($width, $height) = getimagesize($file);
-        if ($width && $height) {
-            if (($width / $height) > ($width_max / $height_max)) {
-                $this->Image($file, $x, $y, $width_max, 0);
-            } else {
-                $this->Image($file, $x, $y, 0, $height_max);
-            }
-        }	
-		return compact(array('leftOffset','rightOffset','width','height'));
 	}
 
 	protected function renderTitle($dimension, $product)
@@ -131,7 +115,7 @@ abstract class Document
 
 	protected function renderLogoMerk()
 	{
-
+		
 	}
 
 	protected function renderPrice($dimension, $product)
