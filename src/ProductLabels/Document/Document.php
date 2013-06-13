@@ -98,7 +98,8 @@ abstract class Document
 	protected function renderPhoto($dimension, $product)
 	{
 		$path = $product->getPathPhoto();
-		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', 'C', false);
+		// $this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false);
+		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false);
 		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
