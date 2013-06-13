@@ -99,7 +99,7 @@ abstract class Document
 	{
 		$path = $product->getPathPhoto();
 		// $this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false);
-		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', true);
+		$this->pdf->Image($path, '', '', $dimension->width, $dimension->height, '', '', '', true);
 		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
