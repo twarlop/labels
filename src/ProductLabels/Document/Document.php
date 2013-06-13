@@ -5,12 +5,14 @@ namespace ProductLabels\Document;
 /**
 * Document
 */
-class Document
+abstract class Document
 {
 
 	protected $layout;
 
 	protected $pdf;
+
+	protected $pages;
 
 	/**
 	 *	Coordinates for the current label to be displayed.
@@ -54,6 +56,7 @@ class Document
 		foreach($page as $product)
 		{
 			$this->calculateCoordinates($teller);
+			$this->cuttingLines();
 			$this->renderProduct($product);
 			$teller++;
 		}
@@ -145,13 +148,13 @@ class Document
 
 	public function renderPromotionStop($dimension, $product)
 	{
-		
+		if($product->hasPromotie() && $product->promotie->stop)
+		{
+			$this->pdf->Cell($dimension->width, $dimension->height, $product->promotie->stop);
+		}
 	}
 
-	protected function renderText($dimension, $product)
-	{
-		$this->pdf->Cell($dimension->width, $dimension->height, $product->text);
-	}
+	abstract protected function renderText($dimension, $product);
 
 	/**
 	 * Set everything for the pdf for the current dimension
@@ -205,6 +208,49 @@ class Document
 	{
 		$color = explode(',', $color);
 		return $color;
+	}
+
+
+	protected function cellPadding()
+	{
+		$margins = $this->pdf->getMargins();
+		return $margins['cell']['L'] + $margins['cell']['R'];
+	}
+
+	protected function toWords($tekst)
+	{
+		$tekst = preg_split('/\s/', $tekst);
+		return $tekst;
+	}
+
+	protected function toText($tekst)
+	{
+		$tekst = preg_replace("/\n\s/", "\n", $tekst);
+		return $tekst;
+	}
+
+	protected function maxLines($dimension, $product)
+	{
+		$max_lines = intval($dimension->max_lines);
+		if($product->hasPromotie())
+		{
+			if($product->promotietext)
+			{
+				$max_lines--;
+			}
+			if($product->promotie->stop)
+			{
+				$max_lines--;
+			}
+		}
+		return $max_lines;
+	}
+
+	protected function cuttingLines()
+	{
+		$this->pdf->setXY($this->x, $this->y);
+		$this->pdf->SetLineStyle(array('width' => 0.0001));
+		$this->pdf->Cell($this->layout->widthLabel, $this->layout->heightLabel, null, 1);
 	}
 
 }

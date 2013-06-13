@@ -14,8 +14,8 @@ setLocale(LC_MONETARY, 'nl_BE');
  * UNCOMMENT THE FOLLOWING TO RUN THE MIGRATION
  */
 
-// $migration = new ProductLabels\Migration\Dimensions();
-// $migration->run();
+$migration = new ProductLabels\Migration\Dimensions();
+$migration->run();
 
 // $migration = new ProductLabels\Migration\Queue();
 // $migration->run();

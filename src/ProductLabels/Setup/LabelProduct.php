@@ -151,4 +151,14 @@ class LabelProduct
 			return $base . $this->photo;
 	}
 
+	public function textToPrint()
+	{
+		if($this->customLabel['nl'])
+			return $this->customLabel['nl'];
+		else
+		{
+			return $this->text;
+		}	
+	}
+
 }

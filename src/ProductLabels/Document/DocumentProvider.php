@@ -46,8 +46,23 @@ class DocumentProvider implements ProviderInterface
 	{
 		$layout = $this->layout();
 		$pdf = new TCPDF;
-		$document = new Document($pdf, $layout, $this->pageProvider->collection($layout->itemsPerPage(), $products));
+		$collection = $this->pageProvider->collection($layout->itemsPerPage(), $products);
+		switch($this->docType())
+		{
+			case 'tekst':
+				$document = new TextDocument($pdf, $layout, $collection);
+			break;
+
+			case 'eigenschappen':
+				$document = new EigenschapDocument($pdf, $layout, $collection);
+			break;
+		}
 		return $document;
+	}
+
+	protected function docType()
+	{
+		return $this->labelProvider->getMode();
 	}
 	
 }

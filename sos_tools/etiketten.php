@@ -38,6 +38,6 @@ else
 
 
 
-$provider = new ProductLabels\ProductLabelProvider(477, ProductLabels\Map::$layouts[$SETTINGS['label_type']->getValue()]);
+$provider = new ProductLabels\ProductLabelProvider(477);
 $provider->downloadPdf();
 

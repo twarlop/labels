@@ -2,6 +2,7 @@
 namespace ProductLabels\Label;
 
 use ProductLabels\Contract\ProviderInterface;
+use Exception;
 
 /**
 * LabelProvider
@@ -10,6 +11,7 @@ class LabelProvider implements ProviderInterface
 {
 
 	protected $layout;
+	
 	protected $layoutDimension;
 
 	/**
@@ -55,6 +57,23 @@ class LabelProvider implements ProviderInterface
 		$this->type = $SETTINGS['label_type']->getValue();
 		$this->taal = $SETTINGS['label_taal']->getValue();
 		$this->mode = $SETTINGS['label_mode']->getValue();
+	}
+
+	public function getMode()
+	{
+		switch($this->mode)
+		{
+			case '3':
+			case '1':
+				return 'tekst';
+			break;
+			case '2':
+				return 'eigenschappen';
+			break;
+			default:
+				throw new Exception('Invalid mode');
+			break;
+		}
 	}
 
 }
