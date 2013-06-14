@@ -28,7 +28,7 @@ class EigenschapDocument extends Document
 
 	protected function li($property, $value)
 	{
-		return '<li>' . $property->invoernl . ': ' . $value[inhoudnl] . '</li>';
+		return '<li>' . $property->invoernl . ': ' . $value['inhoudnl'] . '</li>';
 	}
 
 	/**

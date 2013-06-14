@@ -103,7 +103,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 				<tbody>
 					<? foreach($products as $product): ?>
 					<tr data-prodid='<?= $product->product_id ?>'>
-						<td>
+						<td align='center'>
 							<img src="/images/ez_prod/<?= $product->merkid?>/<?= $product->product_id?>/tn1/<?= $product->photo?>">
 						</td>
 						<td>
@@ -151,6 +151,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button reset-properties">Ongedaan maken</a>
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
+
 	<div class='left'>
 		<h3>Gebruik</h3>
 		<ul id="addedContainer"></ul>

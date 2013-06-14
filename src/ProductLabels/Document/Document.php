@@ -25,7 +25,7 @@ abstract class Document
 	public function __construct($pdf, $layout, $pages)
 	{
 		$this->pdf = $pdf;
-		$this->pdf->SetFont('times', '', 10);
+		$this->pdf->SetFont('helvetica', '', 10);
 		$this->pdf->SetAutoPageBreak(false);
 		$this->pdf->SetPrintHeader(false);
 		$this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -136,7 +136,7 @@ abstract class Document
 	{
 		if($product->hasPromotie())
 		{
-			$this->pdf->Cell($dimension->width, $dimension->height, '€  ' . $product->promotie->promo, 1, 0, 'C', 1);
+			$this->pdf->Cell($dimension->width, $dimension->height, '€  ' . $product->promotie->promo, 0, 0, 'C', 1);
 		}
 	}
 
@@ -178,11 +178,11 @@ abstract class Document
 	{
 		if($bold)
 		{
-			$this->pdf->SetFont('times', 'B', $size);
+			$this->pdf->SetFont('helvetica', 'B', $size);
 		}
 		else
 		{
-			$this->pdf->SetFont('times', '', $size);
+			$this->pdf->SetFont('helvetica', '', $size);
 		}
 	}
 
@@ -247,7 +247,7 @@ abstract class Document
 	protected function cuttingLines()
 	{
 		$this->pdf->setXY($this->x, $this->y);
-		$this->pdf->SetLineStyle(array('width' => 0.0001));
+		$this->pdf->SetLineStyle(array('width' => 0.0001, 'color' => array(224, 224, 224)));
 		$this->pdf->Cell($this->layout->widthLabel, $this->layout->heightLabel, null, 1);
 	}
 

@@ -86,8 +86,8 @@ class Label1 implements LabelMigrationInterface
 			'width' => '25',
 			'font_size' => '16',
 			'bold' => '1',
-			'fill' => '153,0,0',
-			'color' => '204,204,204'
+			'fill' => '255,255,255',
+			'color' => '255,0,0'
 		));
 		return $dimension->id;
 	}
