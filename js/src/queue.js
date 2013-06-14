@@ -65,7 +65,9 @@
 			var img = $('<img/>', {
 				'src': '/images/ez_prod/' + product.merkid + '/' + product.product_id + '/tn1/' + product.photo
 			});
-			tr.append($('<td/>').append(img));
+			tr.append($('<td/>', {
+				'align': 'center'
+			}).append(img));
 			return this;
 		},
 		addMerk: function(tr, product)

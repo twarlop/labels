@@ -124,6 +124,7 @@ abstract class Document
 		{
 			if($product->hasPromotie())
 			{
+				$this->setFont($dimension->font_size - 4, $dimension->bold);
 				$this->pdf->writeHtmlCell($dimension->width, $dimension->height, $this->pdf->getX(), $this->pdf->getY(), '<s>€  ' . $product->prijs->prijs . '</s>');
 			}
 			else{
