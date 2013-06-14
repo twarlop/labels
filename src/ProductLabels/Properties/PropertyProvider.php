@@ -43,6 +43,7 @@ class PropertyProvider implements ProviderInterface
 		$lists = $this->listCustomAndStandard($categoryIds);
 		extract($lists);
 		$properties = $this->fetchCustomPropertyOrders($custom);
+		$this->addToCategoryMap($properties);
 		$properties = $this->fetchStandardPropertyOrders($standard);
 		$this->addToCategoryMap($properties);
 		$properties = $this->productPropertyProvider->findForProducts($prodids);
@@ -195,8 +196,35 @@ class PropertyProvider implements ProviderInterface
 			{
 				$this->categoryMap[$property->catid] = array();
 			}
-			array_push($this->categoryMap[$property->catid], $property->catinvoerveldid);
+			array_push($this->categoryMap[$property->catid], $property);
 		}
+	}
+
+	protected function getCategoriesFromMap($category_id)
+	{
+		if(isset($this->categoryMap[$category_id]))
+		{
+			return $this->categoryMap[$category_id];
+		}
+		return array();
+	}
+
+	public function propertiesFromMap($product)
+	{
+		$answer = array();
+		$properties = $product->properties;
+		$map  = $this->getCategoriesFromMap($product->category_id);
+		foreach($map as $property)
+		{
+			if(isset($properties[$property->catinvoerveldid]))
+			{
+				array_push($answer, array(
+					'property' => $property,
+					'value' => $properties[$property->catinvoerveldid]
+				));
+			}
+		}
+		return $answer;
 	}
 	
 }

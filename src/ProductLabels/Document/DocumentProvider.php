@@ -23,6 +23,8 @@ class DocumentProvider implements ProviderInterface
 	 */
 	protected $pageProvider;
 
+	protected $propertyProvider;
+
 	protected $handelaar_id;
 
 	/**
@@ -30,11 +32,12 @@ class DocumentProvider implements ProviderInterface
 	 */
 	protected $pdf;
 
-	public function __construct($handelaar_id, $pageProvider, $labelProvider)
+	public function __construct($handelaar_id, $pageProvider, $labelProvider, $propertyProvider)
 	{
 		$this->handelaar_id = $handelaar_id;
 		$this->labelProvider = $labelProvider;
 		$this->pageProvider = $pageProvider;
+		$this->propertyProvider = $propertyProvider;
 	}
 
 	protected function layout()
@@ -54,7 +57,7 @@ class DocumentProvider implements ProviderInterface
 			break;
 
 			case 'eigenschappen':
-				$document = new EigenschapDocument($pdf, $layout, $collection);
+				$document = new EigenschapDocument($pdf, $layout, $collection, $this->propertyProvider);
 			break;
 		}
 		return $document;

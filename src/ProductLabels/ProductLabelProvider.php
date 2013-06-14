@@ -96,7 +96,7 @@ class ProductLabelProvider implements ProviderInterface{
 	public function downloadPdf()
 	{
 		$pageProvider = new Pages\PageProvider($this->handelaarid);
-		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider);
+		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider, $this->propertyProvider);
 		$document = $documentProvider->createDocument($this->fetchProducts());
 		$document->download();
 	}
