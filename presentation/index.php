@@ -86,6 +86,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
 			<a href='#' class="button emptyQueue">Queue leegmaken</a>
+			<a href="/sos_tools/etiketten.php" class='button'>Download pdf</a>
+			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>			
+		</p>
+			
 			<table id='queueTable'>
 				<thead>
 					<tr>
@@ -136,11 +140,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 					<? endforeach ?>
 				</tbody>
 			</table>
-		</p>
-		<p>
-			<a href="/sos_tools/etiketten.php" class='button'>Download pdf</a>
-			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>			
-		</p>
+
 	</div>
 </div>
 
