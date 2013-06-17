@@ -80,7 +80,14 @@ switch($action){
 
 	case 'addProduct':
 		$prodid = $_POST['prodid'];
-		$datum = DateTime::createFromFormat('d/m/Y', $_POST['datum']);
+		if(isset($_POST['datum']))
+		{
+			$datum = DateTime::createFromFormat('d/m/Y', $_POST['datum']);
+		}
+		else
+		{
+			$datum = new DateTime();
+		}
 		$product = $provider->queue($prodid, $datum);
 		echo $product->toJson();
 	break;
@@ -98,6 +105,13 @@ switch($action){
 
 	case 'clearQueue':
 		$provider->clearQueue();
+	break;
+
+	case 'saveMijnTekst':
+		$prodid = intval($_POST['prodid']);
+		$nl = isset($_POST['tekstnl']) ? $_POST['tekstnl'] : '';
+		$fr = isset($_POST['tekstfr']) ? $_POST['tekstfr'] : '';
+		$provider->customiseText($prodid, $nl, $fr);
 	break;
 
 }

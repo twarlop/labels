@@ -128,18 +128,11 @@
 		{
 			var td = $('<td/>');
 			td.append($('<img/>', {
-				'src':  '/images/bo/icons/label_icon.gif',
-				'class': 'customise'
-			}));
-			tr.append(td);
-			td = $('<td/>');
-			td.append($('<img/>', {
 				'src':  '/images/bo/icons/cross.png',
 				'class': 'dequeue'
 			}));
 			tr.append(td);
 			return this;
-
 		},
 		addArtikelInfo: function(tr, product)
 		{

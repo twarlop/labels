@@ -177,4 +177,49 @@ class LabelProductProvider implements ProviderInterface
 			return $item['groeperingid'];
 		}, $groeperingen);
 	}
+
+	public function customiseText($prodid, $nl, $fr)
+	{
+		$query = $this->connection->table('handelaars_labels');
+		$label = $query->where('handelaarid', $this->handelaarid)
+			->where('prodid', $prodid)
+			->first();
+		//ready query object
+		$query = $this->connection->table('handelaars_labels');
+		if($label)
+		{
+			//needs deletion?
+			if($nl === '' && $fr === '')
+			{
+				echo '1';
+				$query->where('handelaarid', $this->handelaarid)
+					->where('prodid', $prodid)
+					->delete();
+			}
+			//else update it
+			else
+			{
+				$query->where('handelaarid', $this->handelaarid)
+					->where('prodid', $prodid)
+					->update(array(
+						'tekstnl' => $nl,
+						'tekstfr' => $fr
+					));
+			}
+		}
+		else{
+			//needs insertion?
+			if(!($nl === '' && $fr === ''))
+			{
+				echo '3';
+				$query->insert(array(
+					'handelaarid' => $this->handelaarid,
+					'prodid' => $prodid,
+					'tekstnl' => $nl,
+					'tekstfr' => $fr
+				));
+			}
+			//else do nothing
+		}
+	}
 }

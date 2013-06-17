@@ -105,4 +105,9 @@ class ProductLabelProvider implements ProviderInterface{
 		$document->download();
 	}
 
+	public function customiseText($prodid, $nl, $fr)
+	{
+		$this->productProvider->customiseText($prodid, $nl, $fr);
+	}
+
 }

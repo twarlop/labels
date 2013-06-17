@@ -106,7 +106,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 						<th>promo tot</th>
 						<th>eigen label</th>
 						<th></th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -139,7 +138,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 							<img src="/images/bo/icons/tick.png" alt="V">
 							<? endif; ?>
 						</td>
-						<td><img class='customise' src='/images/bo/icons/label_icon.gif'/></td>
 						<td><img class='dequeue' src='/images/bo/icons/cross.png'/></td>
 					</tr>
 					<? endforeach ?>
