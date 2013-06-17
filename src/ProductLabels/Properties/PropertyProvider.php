@@ -209,7 +209,10 @@ class PropertyProvider implements ProviderInterface
 		return array();
 	}
 
-	public function propertiesFromMap($product)
+	/**
+	 * Filter properties that do not have a value for the given language
+	 */
+	public function propertiesFromMap($product, $language)
 	{
 		$answer = array();
 		$properties = $product->properties;
@@ -218,10 +221,13 @@ class PropertyProvider implements ProviderInterface
 		{
 			if(isset($properties[$property->catinvoerveldid]))
 			{
-				array_push($answer, array(
-					'property' => $property,
-					'value' => $properties[$property->catinvoerveldid]
-				));
+				if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
+				{
+					array_push($answer, array(
+						'property' => $property,
+						'value' => $properties[$property->catinvoerveldid]
+					));
+				}
 			}
 		}
 		return $answer;

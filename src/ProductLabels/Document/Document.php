@@ -32,7 +32,7 @@ class Document
 	protected $x = 0;
 	protected $y = 0;
 
-	public function __construct($pdf, $layout, $pages, $propertyProvider, $categoryProvider, $mode)
+	public function __construct($pdf, $layout, $pages, $propertyProvider, $categoryProvider, $mode, $language)
 	{
 		$this->pdf = $pdf;
 		$this->pdf->SetFont('helvetica', '', 10);
@@ -42,6 +42,7 @@ class Document
 		$this->layout = $layout;
 		$this->pages = $pages;
 		$this->mode = $mode;
+		$this->language = $language;
 		$this->categoryProvider = $categoryProvider;
 		$this->propertyProvider = $propertyProvider;
 	}
@@ -286,7 +287,7 @@ class Document
 		{
 			case 'text':
 				$maxLines = $this->maxLines($dimension, $product);
-				$text = $this->trimRegularText($maxLines, $product->textToPrint(), $dimension->width);
+				$text = $this->trimRegularText($maxLines, $product->textToPrint($this->language), $dimension->width);
 				$this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
 			break;
 			case 'properties':
@@ -368,7 +369,15 @@ class Document
 
 	protected function li($property, $value)
 	{
-		return '<li>' . $property->invoernl . ': ' . $value['inhoudnl'] . '</li>';
+		switch ($this->language) {
+			case 'nl':
+				return '<li>' . $property->invoernl . ': ' . $value['inhoudnl'] . '</li>';
+				break;
+			case 'fr':
+				return '<li>' . $property->invoerfr . ': ' . $value['inhoudfr'] . '</li>';
+				break;
+			
+		}
 	}
 
 	/**
@@ -377,7 +386,7 @@ class Document
 	protected function propertiesToRender($dimension, $product)
 	{
 		$answer = array();
-		$properties = $this->propertyProvider->propertiesFromMap($product);
+		$properties = $this->propertyProvider->propertiesFromMap($product, $this->language);
 		$maxLines = $this->maxLinesProperties($dimension, $product);
 		while(count($answer) < $maxLines && count($properties) > 0)
 		{

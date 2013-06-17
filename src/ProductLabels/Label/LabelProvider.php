@@ -78,7 +78,7 @@ class LabelProvider implements ProviderInterface
 
 	public function getTaal()
 	{
-		switch($this->taal)
+		switch(intval($this->taal))
 		{
 			case 1:
 				return 'nl';
