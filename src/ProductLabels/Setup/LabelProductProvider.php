@@ -80,7 +80,9 @@ class LabelProductProvider implements ProviderInterface
 				'prod.Image_small as photo',
 				'fabrikanten.logo_small as logoMerk', 
 				'prod.primairecatid as category_id', 
-				'categories.Title_short_nl as category'
+				'categories.Title_short_nl as category',
+				'ez_content', 'ez_content_fr',
+				'kortnl', 'kortfr'
 			));
 		return $products;
 	}
@@ -142,10 +144,20 @@ class LabelProductProvider implements ProviderInterface
 		$results = array();
 		foreach($products as $product)
 		{
+			$product = $this->mergeText($product);
 			$product = new LabelProduct($product);
 			$results[$product->product_id] = $product;
 		}
 		return $results;
+	}
+
+	protected function mergeText($product)
+	{
+		$nl = !empty($product['ez_content']) ? $product['ez_content'] : $product['kortnl'];
+		$fr = !empty($product['ez_content_fr']) ? $product['ez_content_fr'] : $product['kortfr'];
+		unset($product['ez_content'], $product['ez_content_fr'], $product['kortnl'], $product['kortfr']);
+		$product['text'] = compact(array('nl', 'fr'));
+		return $product;
 	}
 
 	/**

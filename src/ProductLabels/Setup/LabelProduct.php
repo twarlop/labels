@@ -160,7 +160,7 @@ class LabelProduct
 			return $this->customLabel['nl'];
 		else
 		{
-			return $this->text;
+			return $this->text['nl'];
 		}	
 	}
 
