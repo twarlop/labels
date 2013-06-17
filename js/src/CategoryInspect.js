@@ -55,11 +55,14 @@
 		{
 			if(needConfirm === true)
 			{
-				var confirmed = window.confirm('You are about to loose changed');
-				if(confirmed)
-				{
-					this.hide();
-				}
+				var that = this;
+				sos.confirmation({
+					textNl: 'Je staat op het punt alle wijzigingen te verliezen',
+					confirm: function()
+					{
+						that.hide();
+					}
+				})
 			}
 			else
 			{

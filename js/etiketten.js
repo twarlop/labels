@@ -70,24 +70,25 @@ window.sos = sos;
 		},
 		delete: function(tr)
 		{
-			var prodid = tr.data('prodid');
-			var confirmed = window.confirm('Zeker verwijderen?');
-			if(confirmed)
-			{
-				$.ajax({
-					url:'ajax/etiketten.php',
-					type:'POST',
-					dataType:'json',
-					data:
-					{
-						action: 'removeProduct',
-						prodid: prodid
-					},
-					success: function(){
-						tr.remove();
-					}
-				});
-			}
+			sos.confirmation({
+				textNl: 'Wilt u dit product uit de lijst verwijderen?',
+				confirm: function(){
+					var prodid = tr.data('prodid');
+					$.ajax({
+						url:'ajax/etiketten.php',
+						type:'POST',
+						dataType:'json',
+						data:
+						{
+							action: 'removeProduct',
+							prodid: prodid
+						},
+						success: function(){
+							tr.remove();
+						}
+					});	
+				}
+			});
 		},
 		addRow: function(product){
 			var tr =  $('<tr/>', {
@@ -531,11 +532,14 @@ window.sos = sos;
 		{
 			if(needConfirm === true)
 			{
-				var confirmed = window.confirm('You are about to loose changed');
-				if(confirmed)
-				{
-					this.hide();
-				}
+				var that = this;
+				sos.confirmation({
+					textNl: 'Je staat op het punt alle wijzigingen te verliezen',
+					confirm: function()
+					{
+						that.hide();
+					}
+				})
 			}
 			else
 			{
