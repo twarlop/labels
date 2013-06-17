@@ -1,7 +1,11 @@
 #propertyPicker{float:left;position:relative;}#propertyPicker .close-app{position:absolute;z-index:1100;right:5px;top:5px;}
-#propertyPicker .left{padding-top:10px;float:left;margin-left:20px;}
+#propertyPicker .left{float:left;margin-left:20px;}
 #propertyPicker .left:first-child{margin-left:0;}
 #propertyPicker .left:last-child{border-left:1px solid #DDD;padding-left:10px;}
+#propertyPicker .left h3{margin-top:0;}
+#propertyPicker .info{padding:10px;background-color:#DDD;margin-bottom:10px;}
+#propertyPicker #info_type_settings label{margin-right:10px;}
+#propertyPicker #info_type_settings{margin:15px;}
 #propertyPicker ul{list-style:none;padding:5px;min-width:400px;}
 #propertyPicker li{margin:3px 0;padding:2px 0;border:1px solid #DDD;background-color:#EEE;}#propertyPicker li>.ui-icon:first-child,#propertyPicker li>span{float:left;}
 #propertyPicker li>.ui-icon:last-child{float:right;cursor:pointer;}

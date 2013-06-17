@@ -70,12 +70,14 @@
 		{
 			var that = this;
 			var sorting = that.getSorting();
+			var type = that.getType();
 			$.ajax({
 				url:'ajax/etiketten.php',
 				data:{
 					action: 'saveCategory',
 					categoryId: that.categoryId,
-					properties: sorting
+					properties: sorting,
+					type: type
 				},
 				type:'POST',
 				dataType: 'json',
@@ -91,6 +93,10 @@
 				sorting.push($(element).data('property-id'));
 			});
 			return sorting;
+		},
+		getType: function(){
+			var value = $("input[name=info_type]:checked").val();
+			return value;
 		},
 		/**
 		 * Use to fetch the properties for this category from the server
@@ -111,6 +117,7 @@
 					//save original to be able to reset to original
 					that.original = response;
 					that.displayStandard(response.standard);
+					that.displayInfoTypes(response.type);
 					that.show(response.custom, response.standard);
 				}
 			});
@@ -140,6 +147,21 @@
 			that.plugin.fadeOut(function(){
 				that.primaryApp.fadeIn();
 			});
+		},
+		displayInfoTypes: function(type)
+		{
+			if(type !== undefined)
+			{
+				$("input:radio").each(function(i, element){
+					$(element).attr('checked', type === $(element).val());
+				});
+			}
+			else
+			{
+				$("input:radio").each(function(i, element){
+					$(element).attr('checked', false);
+				});
+			}
 		},
 		/**
 		 * Display properties which have been added to the custom sorting in a sortable list

@@ -60,7 +60,7 @@ switch($action){
 	break;
 
 	case 'loadCategory':
-		$answer = $provider->fetchSortingsForCategory($_GET['categoryId']);
+		$answer = $provider->loadForInspect($_GET['categoryId']);
 		echo json_encode($answer);
 	break;
 
@@ -68,7 +68,8 @@ switch($action){
 
 		$categoryId = $_POST['categoryId'];
 		$properties = isset($_POST['properties']) ? $_POST['properties'] : array();
-		$provider->sync($categoryId, $properties);
+		$type = $_POST['type'];
+		$provider->sync($categoryId, $properties, $type);
 
 	break;
 

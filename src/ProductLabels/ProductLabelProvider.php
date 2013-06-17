@@ -23,7 +23,7 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->queueProvider = new Setup\QueueProvider($this->handelaarid, $this->connection);
 		$this->propertyProvider = new Properties\PropertyProvider($this->handelaarid, $this->connection);
 		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider, $this->labelProvider);
-		$this->categoryProvider = new Categories\CategoryProvider();
+		$this->categoryProvider = new Categories\CategoryProvider($this->handelaarid);
 		$this->labelProvider = new Label\LabelProvider();
 	}
 
@@ -49,18 +49,21 @@ class ProductLabelProvider implements ProviderInterface{
 		return $products;
 	}
 
-	public function fetchSortingsForCategory($category_id)
+	public function loadForInspect($category_id)
 	{
 		$standardProperties = $this->propertyProvider->fetchStandardPropertyOrder($category_id);
 		$customProperties = $this->propertyProvider->fetchCustomPropertyOrder($category_id);
+		$type = $this->categoryProvider->getInfoType($category_id);
 		return array(
 			'custom' => $customProperties->toArray(),
-			'standard' => $standardProperties->toArray()
+			'standard' => $standardProperties->toArray(),
+			'type' => is_object($type) ? $type->type : null
 		);
 	}
 
-	public function sync($categoryId, $properties)
+	public function sync($categoryId, $properties, $type)
 	{
+		$this->categoryProvider->setInfoType($categoryId, $type);
 		$this->propertyProvider->sync($categoryId, $properties);
 	}
 

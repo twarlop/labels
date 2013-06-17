@@ -14,6 +14,9 @@ setLocale(LC_MONETARY, 'nl_BE');
  * UNCOMMENT THE FOLLOWING TO RUN THE MIGRATION
  */
 
+// $migration = new ProductLabels\Migration\CategoryTypes();
+// $migration->run();
+
 $migration = new ProductLabels\Migration\Dimensions();
 $migration->run();
 
@@ -151,7 +154,19 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<a href="#" class="button reset-properties">Ongedaan maken</a>
 		<a href="#" class="button full-reset-properties">Volledige reset</a>
 	</div>
-
+	<div id='info_type_settings'>
+		<p class="info">Bepaal hier welk soort informatie er op het etiket moet verschijnen voor deze categorie.
+			Indien u eigenschappen selecteert, kan u hieronder vervolgens ook de volgorde bepalen.
+		</p>
+		<label for="info_type_text">
+			<input type="radio" name='info_type' id='info_type_text' value='text'/>
+			Text
+		</label>
+		<label for="info_type_properties">
+			<input type="radio" name='info_type' id='info_type_properties' value='properties'/>
+			Eigenschappen
+		</label>
+	</div>
 	<div class='left'>
 		<h3>Gebruik</h3>
 		<ul id="addedContainer"></ul>

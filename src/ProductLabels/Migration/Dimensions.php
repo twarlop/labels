@@ -71,15 +71,9 @@ class Dimensions extends Base
 			$t->decimal('top');
 			$t->decimal('height');
 			$t->decimal('width');
-
-			//optional columns which define the type of dimension
-		
-			/**
-			 * we don't need anything at the moment for photos
-			 */
 			
 			/**
-			 * Text
+			 * Text only columns
 			 */
 			$t->integer('font_size')->nullable();
 			$t->boolean('bold');
