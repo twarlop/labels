@@ -16,8 +16,11 @@ class Document
 
 	protected $propertyProvider;
 
+	protected $categoryProvider;
+
 	/**
 	 * Text or eigenschappen?
+	 * This is the global setting and might be overriden by the category setting itself
 	 */
 	protected $mode;
 
@@ -29,7 +32,7 @@ class Document
 	protected $x = 0;
 	protected $y = 0;
 
-	public function __construct($pdf, $layout, $pages, $propertyProvider, $mode)
+	public function __construct($pdf, $layout, $pages, $propertyProvider, $categoryProvider, $mode)
 	{
 		$this->pdf = $pdf;
 		$this->pdf->SetFont('helvetica', '', 10);
@@ -39,6 +42,7 @@ class Document
 		$this->layout = $layout;
 		$this->pages = $pages;
 		$this->mode = $mode;
+		$this->categoryProvider = $categoryProvider;
 		$this->propertyProvider = $propertyProvider;
 	}
 
@@ -277,19 +281,15 @@ class Document
 	 */
 	protected function renderText($dimension, $product)
 	{
-		$mode = $this->mode;
-		if($product->hasCustomLabel())
-		{
-			$mode = 'tekst';
-		}
+		$mode = $this->getMode($product, $dimension);
 		switch($mode)
 		{
-			case 'tekst':
+			case 'text':
 				$maxLines = $this->maxLines($dimension, $product);
 				$text = $this->trimRegularText($maxLines, $product->textToPrint(), $dimension->width);
 				$this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
 			break;
-			case 'eigenschappen':
+			case 'properties':
 				$properties = $this->propertiesToRender($dimension, $product);
 				$ul = array();
 				foreach($properties as $data)
@@ -300,6 +300,30 @@ class Document
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $list);
 			break;
 		}
+	}
+
+	/**
+	 * Returns the mode for the current label
+	 * If the category of the product has a mode set, we use that one instead of the global one.
+	 * If the product has a custom label -> we always use the text mode!
+	 */
+	protected function getMode($product, $dimension)
+	{
+		//global mode
+		$mode = $this->mode;
+		//cat specific mode
+		$mode = $this->categoryProvider->getInfoType($product->category_id);
+		//if empty properties -> set mode to text
+		$properties = $this->propertiesToRender($dimension, $product);
+		if($mode === 'properties' && empty($properties))
+		{
+			$mode = 'text';
+		}
+		if($product->hasCustomLabel())
+		{
+			$mode = 'text';
+		}
+		return $mode;
 	}
 
 	protected function trimRegularText($maxLines, $tekst, $lineWidth)

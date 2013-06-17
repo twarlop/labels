@@ -9,6 +9,7 @@ use ProductLabels\Contract\ProviderInterface;
 class CategoryProvider implements ProviderInterface
 {
 	protected $handelaar_id;
+	protected $infoTypes = array();
 
 	public function __construct($handelaarid)
 	{
@@ -54,12 +55,45 @@ class CategoryProvider implements ProviderInterface
 
 	}
 
-	public function getInfoType($categoryId)
+	public function findInfoType($categoryId)
 	{
 		$record = CategoryType::where('owner_id', $this->handelaar_id)
 			->where('category_id', $categoryId)
 			->first();
 		return $record;
+	}
+
+	public function loadInfoTypes(array $products = array())
+	{
+		$categoryIds = $this->categoryIds($products);
+		if(!empty($categoryIds))
+		{
+			$types = CategoryType::where('owner_id', $this->handelaar_id)
+				->whereIn('category_id', $categoryIds)
+				->get();
+			foreach($types as $type)
+			{
+				$this->infoTypes[$type->category_id] = $type;
+			}
+		}
+	}
+
+	public function getInfoType($categoryId)
+	{
+		if(isset($this->infoTypes[$categoryId])){
+			return $this->infoTypes[$categoryId]->type;
+		}
+		return;
+	}
+
+	protected function categoryIds(array $products = array())
+	{
+		$categoryIds = array();
+		array_walk($products, function($product) use(&$categoryIds){
+			array_push($categoryIds, $product->category_id);
+		});
+		$categoryIds = array_unique($categoryIds);
+		return $categoryIds;
 	}
 
 }

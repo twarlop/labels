@@ -34,8 +34,9 @@ class LabelProductProvider implements ProviderInterface
 	protected $promotieProvider;
 	protected $propertyProvider;
 	protected $labelProvider;
+	protected $categoryProvider;
 
-	public function __construct($handelaarid, $propertyProvider, $labelProvider)
+	public function __construct($handelaarid, $propertyProvider, $labelProvider, $categoryProvider)
 	{
 		$this->handelaarid = $handelaarid;
 		$this->connection = DB::connection('sos');
@@ -43,6 +44,7 @@ class LabelProductProvider implements ProviderInterface
 		$this->promotieProvider = new PromotieProvider($this->handelaarid, $this->connection, $this->groeperingen, $labelProvider);
 		$this->propertyProvider = $propertyProvider;
 		$this->labelProvider = $labelProvider;
+		$this->categoryProvider = $categoryProvider;
 	}
 
 	public function find(array $prodids)
@@ -56,6 +58,7 @@ class LabelProductProvider implements ProviderInterface
 		$this->promotieProvider->find($prodids, $products);
 		$this->propertyProvider->propertiesForProducts($prodids, $products);
 		$this->findCustomLabels($prodids, $products);
+		$this->categoryProvider->loadInfoTypes($products);
 		return $products;
 	}
 

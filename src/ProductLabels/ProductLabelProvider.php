@@ -22,8 +22,8 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->labelProvider = new Label\LabelProvider();
 		$this->queueProvider = new Setup\QueueProvider($this->handelaarid, $this->connection);
 		$this->propertyProvider = new Properties\PropertyProvider($this->handelaarid, $this->connection);
-		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider, $this->labelProvider);
 		$this->categoryProvider = new Categories\CategoryProvider($this->handelaarid);
+		$this->productProvider = new Setup\LabelProductProvider($this->handelaarid, $this->propertyProvider, $this->labelProvider, $this->categoryProvider);
 		$this->labelProvider = new Label\LabelProvider();
 	}
 
@@ -53,7 +53,7 @@ class ProductLabelProvider implements ProviderInterface{
 	{
 		$standardProperties = $this->propertyProvider->fetchStandardPropertyOrder($category_id);
 		$customProperties = $this->propertyProvider->fetchCustomPropertyOrder($category_id);
-		$type = $this->categoryProvider->getInfoType($category_id);
+		$type = $this->categoryProvider->findInfoType($category_id);
 		return array(
 			'custom' => $customProperties->toArray(),
 			'standard' => $standardProperties->toArray(),
@@ -99,7 +99,7 @@ class ProductLabelProvider implements ProviderInterface{
 	public function downloadPdf()
 	{
 		$pageProvider = new Pages\PageProvider($this->handelaarid);
-		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider, $this->propertyProvider);
+		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider, $this->propertyProvider, $this->categoryProvider);
 		$document = $documentProvider->createDocument($this->fetchProducts());
 		$document->download();
 	}

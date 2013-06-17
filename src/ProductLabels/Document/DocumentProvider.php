@@ -25,6 +25,8 @@ class DocumentProvider implements ProviderInterface
 
 	protected $propertyProvider;
 
+	protected $categoryProvider;
+
 	protected $handelaar_id;
 
 	/**
@@ -32,12 +34,13 @@ class DocumentProvider implements ProviderInterface
 	 */
 	protected $pdf;
 
-	public function __construct($handelaar_id, $pageProvider, $labelProvider, $propertyProvider)
+	public function __construct($handelaar_id, $pageProvider, $labelProvider, $propertyProvider, $categoryProvider)
 	{
 		$this->handelaar_id = $handelaar_id;
 		$this->labelProvider = $labelProvider;
 		$this->pageProvider = $pageProvider;
 		$this->propertyProvider = $propertyProvider;
+		$this->categoryProvider = $categoryProvider;
 	}
 
 	protected function layout()
@@ -50,7 +53,7 @@ class DocumentProvider implements ProviderInterface
 		$layout = $this->layout();
 		$pdf = new TCPDF;
 		$collection = $this->pageProvider->collection($layout->itemsPerPage(), $products);
-		return new Document($pdf, $layout, $collection, $this->propertyProvider, $this->docType());
+		return new Document($pdf, $layout, $collection, $this->propertyProvider, $this->categoryProvider, $this->docType());
 	}
 
 	protected function docType()

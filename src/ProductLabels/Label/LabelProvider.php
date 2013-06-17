@@ -65,10 +65,10 @@ class LabelProvider implements ProviderInterface
 		{
 			case '3':
 			case '1':
-				return 'tekst';
+				return 'text';
 			break;
 			case '2':
-				return 'eigenschappen';
+				return 'properties';
 			break;
 			default:
 				throw new Exception('Invalid mode');
