@@ -40,7 +40,11 @@
 
 
 		$('#etiketDatum').datepicker({
-			dateFormat: 'dd/mm/yy'
+			dateFormat: 'dd/mm/yy',
+			onSelect: function(datum, datepicker)
+			{
+				window.location = '?datum=' + datum;
+			}
         });
 
 	});

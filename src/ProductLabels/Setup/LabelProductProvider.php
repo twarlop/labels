@@ -6,6 +6,7 @@ use ProductLabels\Contract\ProviderInterface;
 use ProductLabels\DB;
 use ProductLabels\Setup\Prijzen\PrijsProvider;
 use ProductLabels\Setup\Promoties\PromotieProvider;
+use DateTime;
 
 /**
 * LabelProductProvider
@@ -47,15 +48,15 @@ class LabelProductProvider implements ProviderInterface
 		$this->categoryProvider = $categoryProvider;
 	}
 
-	public function find(array $prodids)
+	public function find(array $prodids, DateTime $datum)
 	{
 		if(count($prodids) === 0)
 			return array();
 		$products = $this->findBases($prodids);
 		$products = $this->instantiate($products);
 		$this->groeperingen = $this->groeperingen();
-		$this->prijsProvider->find($prodids, $products);
-		$this->promotieProvider->find($prodids, $products);
+		$this->prijsProvider->find($prodids, $products, $datum);
+		$this->promotieProvider->find($prodids, $products, $datum);
 		$this->propertyProvider->propertiesForProducts($prodids, $products);
 		$this->findCustomLabels($prodids, $products);
 		$this->categoryProvider->loadInfoTypes($products);

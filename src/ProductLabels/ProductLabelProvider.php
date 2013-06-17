@@ -2,6 +2,7 @@
 namespace ProductLabels;
 
 use ProductLabels\Contract\ProviderInterface;
+use DateTime;
 
 class ProductLabelProvider implements ProviderInterface{
 
@@ -42,10 +43,10 @@ class ProductLabelProvider implements ProviderInterface{
 	/**
 	 * Fetch the products that are in the queue
 	 */
-	public function fetchProducts()
+	public function fetchProducts($datum)
 	{
 		$prodids = $this->queueProvider->fetchProdids();
-		$products = $this->productProvider->find($prodids);
+		$products = $this->productProvider->find($prodids, $datum);
 		return $products;
 	}
 
@@ -96,11 +97,11 @@ class ProductLabelProvider implements ProviderInterface{
 		return $layouts;
 	}
 
-	public function downloadPdf()
+	public function downloadPdf(DateTime $datum)
 	{
 		$pageProvider = new Pages\PageProvider($this->handelaarid);
 		$documentProvider = new Document\DocumentProvider($this->handelaarid, $pageProvider, $this->labelProvider, $this->propertyProvider, $this->categoryProvider);
-		$document = $documentProvider->createDocument($this->fetchProducts());
+		$document = $documentProvider->createDocument($this->fetchProducts($datum));
 		$document->download();
 	}
 

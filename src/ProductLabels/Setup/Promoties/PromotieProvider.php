@@ -29,12 +29,8 @@ class PromotieProvider implements ProviderInterface
 	 * Find the promoties for certain products active on a certain date.
 	 * Make sure to only use the promotion from the correct instance.
 	 */
-	public function find(array $prodids, array $products, $datum = null)
+	public function find(array $prodids, array $products, DateTime $datum)
 	{
-		if(empty($datum))
-		{
-			$datum = new DateTime();
-		}
 		$promoshand = $this->promosHand($prodids, $datum);
 		$promosgroep = $this->promosGroep($prodids, $datum);
 		$promosfab = $this->promosFab($prodids, $datum);

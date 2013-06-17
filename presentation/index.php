@@ -26,13 +26,19 @@ $migration->run();
 // $migration = new ProductLabels\Migration\Properties();
 // $migration->run();
 
+if(isset($_GET['datum']))
+{
+	$datum = $_GET['datum'];
+	$datum = DateTime::createFromFormat('d/m/Y', $datum);
+}
+else
+{
+	$datum = new DateTime();
+}
 
 $provider = new ProductLabels\ProductLabelProvider(477);
-$products = $provider->fetchProducts();
-
+$products = $provider->fetchProducts($datum);
 $afmetingen = $provider->fetchAfmetingen();
-
-$today = new DateTime();
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
@@ -75,7 +81,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<br>
 
 			<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
-			<input type="text" id='etiketDatum' value='<?= $today->format('d/m/Y') ?>'>
+			<input type="text" id='etiketDatum' value='<?= $datum->format('d/m/Y') ?>'>
 
 		</p>
 	</div>
@@ -85,8 +91,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
 			<a href='#' class="button emptyQueue">Queue leegmaken</a>
-			<a href="/sos_tools/etiketten.php" class='button'>Download pdf</a>
-			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>			
+			<a href="/sos_tools/etiketten.php?datum=<?= $datum->format('d/m/Y')?>" class='button'>Download pdf</a>
+			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>
 		</p>
 			
 			<table id='queueTable'>

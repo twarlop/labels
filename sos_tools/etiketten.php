@@ -35,9 +35,16 @@ if(is_file('../handelaars2/vendor/autoload.php'))
 else
 	require_once('../vendor/autoload.php');
 
-
-
+if(isset($_GET['datum']))
+{
+	$datum = $_GET['datum'];
+	$datum = DateTime::createFromFormat('d/m/Y', $datum);
+}
+else
+{
+	$datum = new DateTime();
+}
 
 $provider = new ProductLabels\ProductLabelProvider(477);
-$provider->downloadPdf();
+$provider->downloadPdf($datum);
 

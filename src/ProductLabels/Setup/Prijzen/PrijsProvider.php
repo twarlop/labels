@@ -2,6 +2,7 @@
 
 namespace ProductLabels\Setup\Prijzen;
 use ProductLabels\Contract\ProviderInterface;
+use DateTime;
 
 /**
 * PrijsProvider
@@ -20,11 +21,17 @@ class PrijsProvider implements ProviderInterface
 		$this->groeperingen = $groeperingen;
 	}
 
-	public function find(array $prodids, array $products, $datum = null)
+	/**
+	 * Prices can't be selected by a date that they should be active, 
+	 * since a product can still only have one price at a time for an owner.
+	 * This was added however to allow for future implementation,
+	 * if the implementation fits the current database structure.
+	 */
+	public function find(array $prodids, array $products, DateTime $datum)
 	{
-		$prijzenHand = $this->prijzenHand($prodids);
-		$prijzenGroep = $this->prijzenGroep($prodids);
-		$prijzenFab = $this->prijzenFab($prodids);
+		$prijzenHand = $this->prijzenHand($prodids, $datum);
+		$prijzenGroep = $this->prijzenGroep($prodids, $datum);
+		$prijzenFab = $this->prijzenFab($prodids, $datum);
 		foreach($prijzenHand as $prijs)
 		{
 			if(isset($products[$prijs->prodid]))
@@ -49,7 +56,7 @@ class PrijsProvider implements ProviderInterface
 		}
 	}
 
-	protected function prijzenHand(array $prodids)
+	protected function prijzenHand(array $prodids, DateTime $datum)
 	{
 		$query = $this->connection->table('prod_prijzen');
 		$prijzen = $query->whereType('hand')
@@ -60,7 +67,7 @@ class PrijsProvider implements ProviderInterface
 		return $prijzen;
 	}
 
-	protected function prijzenGroep(array $prodids)
+	protected function prijzenGroep(array $prodids, DateTime $datum)
 	{
 		if(count($this->groeperingen))
 		{
@@ -74,7 +81,7 @@ class PrijsProvider implements ProviderInterface
 		return array();
 	}
 
-	protected function prijzenFab(array $prodids)
+	protected function prijzenFab(array $prodids, DateTime $datum)
 	{
 		$query = $this->connection->table('prod_prijzen');
 		$query->join('prod', function($query)
