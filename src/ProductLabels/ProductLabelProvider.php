@@ -68,10 +68,10 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->propertyProvider->sync($categoryId, $properties);
 	}
 
-	public function queue($prodid)
+	public function queue($prodid, DateTime $datum)
 	{
 		$this->queueProvider->queue($prodid);
-		$product = $this->productProvider->findById($prodid);
+		$product = $this->productProvider->findById($prodid, $datum);
 		return $product;
 	}
 
@@ -80,9 +80,9 @@ class ProductLabelProvider implements ProviderInterface{
 		$this->queueProvider->dequeue($prodid);
 	}
 
-	public function reloadProduct($prodid)
+	public function reloadProduct($prodid, DateTime $datum)
 	{
-		$product = $this->productProvider->findById($prodid);
+		$product = $this->productProvider->findById($prodid, $datum);
 		return $product;
 	}
 

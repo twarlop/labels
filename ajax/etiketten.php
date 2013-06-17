@@ -80,7 +80,8 @@ switch($action){
 
 	case 'addProduct':
 		$prodid = $_POST['prodid'];
-		$product = $provider->queue($prodid);
+		$datum = DateTime::createFromFormat('d/m/Y', $_POST['datum']);
+		$product = $provider->queue($prodid, $datum);
 		echo $product->toJson();
 	break;
 
@@ -90,7 +91,8 @@ switch($action){
 
 	case 'reloadProduct':
 		$prodid = intval($_GET['product-id']);
-		$product = $provider->reloadProduct($prodid);
+		$datum = DateTime::createFromFormat('d/m/Y', $_GET['datum']);
+		$product = $provider->reloadProduct($prodid, $datum);
 		echo $product->toJson();
 	break;
 

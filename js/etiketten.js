@@ -59,7 +59,8 @@ window.sos = sos;
 				data:
 				{
 					action: 'addProduct',
-					prodid: prodid
+					prodid: prodid,
+					datum: that.getDatum()
 				},
 				success: function(product)
 				{
@@ -207,13 +208,20 @@ window.sos = sos;
 				dataType:'json',
 				data: {
 					action: 'reloadProduct',
-					'product-id': prodid
+					'product-id': prodid,
+					datum: that.getDatum()
 				},
 				success: function(product){
 					var tr = $('#queueTable').find('tr[data-prodid=' + prodid + ']');
 					that.reloadRow(tr, product);
 				}
 			});
+		},
+		getDatum: function(){
+			var datum = $("#etiketDatum").datepicker('getDate');
+			var format = $("#etiketDatum").datepicker('option', 'dateFormat');
+			datum = $.datepicker.formatDate( format, datum);
+			return datum;
 		},
 		reloadRow: function(tr, product)
 		{

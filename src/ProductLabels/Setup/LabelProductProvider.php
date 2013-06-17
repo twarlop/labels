@@ -63,9 +63,9 @@ class LabelProductProvider implements ProviderInterface
 		return $products;
 	}
 
-	public function findById($prodid)
+	public function findById($prodid, DateTime $datum)
 	{
-		$products = $this->find(array($prodid));
+		$products = $this->find(array($prodid), $datum);
 		return $products[$prodid];
 	}
 
