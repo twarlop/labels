@@ -2,6 +2,19 @@ var sos = {
 	'author': 'Thomas Warlop',
 	'etiketten':{
 		'version': '1.0.0'
+	},
+	language: function()
+	{
+		var lang = parseInt($('#lang').val(), 10);
+		switch(lang)
+		{
+			case 1:
+				return 'nl';
+			break;
+			case 2:
+				return 'fr';
+			break;
+		}
 	}
 };
 
@@ -23,6 +36,6 @@ window.sos = sos;
 			});
 		});
 
-	})
+	});
 
 })(window.jQuery, window.sos);

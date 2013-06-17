@@ -79,10 +79,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 		</p>
 	</div>
-	<div>
-		implementeren van de zoek functie aanpassen zodat het de juiste voorwaarden gebruikt. nu wordt er nog geen rekening
-		gehouden met het al dan niet klant zijn van shoponsite en dergelijke.
-	</div>
 	<div id='step2'>
 		<h3>stap 2</h3>
 		<label for="queueProduct">Product zoeken</label>

@@ -5,3 +5,5 @@ js/jquery*
 js/modernizr*
 css/ui.css
 css/images/*
+css/*.css
+css/src/*.css

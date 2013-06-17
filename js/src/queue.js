@@ -233,7 +233,12 @@
 	});
 
 	$("#primary-app").on('click', '.emptyQueue', function(){
-		sos.etiketten.queue.clear();
+		sos.confirmation({
+			textNl: 'Bent u zeker dat u de lijst met af te drukken producten wil leegmaken?',
+			confirm: function(){
+				sos.etiketten.queue.clear();
+			}
+		});
 	})
 
 })(window.jQuery, window.sos);
