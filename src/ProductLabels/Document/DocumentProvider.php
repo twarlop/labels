@@ -53,11 +53,11 @@ class DocumentProvider implements ProviderInterface
 		$layout = $this->layout();
 		if($layout->landscape)
 		{
-			$pdf = new TCPDF('L');
+			$pdf = new TCPDF('L', 'mm', array($layout->width, $layout->height));
 		}
 		else
 		{
-			$pdf = new TCPDF('P');
+			$pdf = new TCPDF('P', 'mm', array($layout->width, $layout->height));
 		}
 		$collection = $this->pageProvider->collection($layout->itemsPerPage(), $products);
 		return new Document($pdf, $layout, $collection, $this->propertyProvider, $this->categoryProvider, $this->labelProvider);
