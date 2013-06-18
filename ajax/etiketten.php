@@ -36,7 +36,9 @@ class Setting
 $SETTINGS = [
 	'label_type' => new Setting(1),
 	'label_taal' => new Setting(1),
-	'label_mode' => new Setting(1)
+	'label_mode' => new Setting(1),
+	'label_disclaimer_nl' => new Setting('some text'),
+	'label_disclaimer_fr' => new Setting('some text fr')
 ];
 }
 
