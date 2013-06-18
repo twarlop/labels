@@ -134,9 +134,14 @@ class Document
 		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
-	protected function renderLogoMerk()
+	protected function renderLogoMerk($dimension, $product)
 	{
-		
+		$path = $product->getPathMerk();
+		if($path)
+		{
+			$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
+			$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
+		}
 	}
 
 	protected function renderPrice($dimension, $product)

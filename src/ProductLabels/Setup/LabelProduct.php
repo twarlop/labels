@@ -176,4 +176,12 @@ class LabelProduct
 		}
 	}
 
+	public function getPathMerk()
+	{
+		$path = rtrim($_SERVER['DOCUMENT_ROOT'], '/') . "/images/merken/" . $this->merkid . '/foto2/orig/' . $this->logoMerk; 
+		if(is_file($path))
+			return $path;
+		return false;
+	}
+
 }

@@ -82,7 +82,7 @@ class LabelProductProvider implements ProviderInterface
 				'merken.merk_nl as merknaam', 
 				'merken.merkid', 
 				'prod.Image_small as photo',
-				'fabrikanten.logo_small as logoMerk', 
+				'fabrikanten.logo_big as logoMerk', 
 				'prod.primairecatid as category_id', 
 				'categories.Title_short_nl as category',
 				'ez_content', 'ez_content_fr',
