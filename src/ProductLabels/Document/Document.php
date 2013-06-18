@@ -259,6 +259,8 @@ class Document
 				$max_lines--;
 			}
 		}
+		if($this->disclaimer)
+			$max_lines--;
 		return $max_lines;
 	}
 
@@ -272,6 +274,8 @@ class Document
 	{
 		$max_lines = intval($dimension->max_lines);
 		$max_lines--;
+		if($this->disclaimer)
+			$max_lines--;
 		return $max_lines;
 	}
 
@@ -293,6 +297,10 @@ class Document
 			case 'text':
 				$maxLines = $this->maxLines($dimension, $product);
 				$text = $this->trimRegularText($maxLines, $product->textToPrint($this->language), $dimension->width);
+				if($this->disclaimer)
+				{
+					$text .= PHP_EOL . $this->disclaimer;
+				}
 				$this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
 			break;
 			case 'properties':
@@ -304,6 +312,10 @@ class Document
 				}
 				$list = '<ul>' . implode('', $ul) . '</ul>';
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $list);
+				if($this->disclaimer)
+				{
+					$this->pdf->writeHtMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, $this->disclaimer);
+				}
 			break;
 		}
 	}

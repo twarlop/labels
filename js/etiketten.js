@@ -291,7 +291,7 @@ window.sos = sos;
 
 	$(document).ready(function(){
 
-		$("#optionsEtiket").on('change', 'select', function(){
+		$("#optionsEtiket").on('change', 'select, input', function(){
 			switch($(this).attr('id'))
 			{
 				case 'etiketAfmeting':
@@ -320,6 +320,20 @@ window.sos = sos;
 
 					});
 
+				break;
+
+				case 'etiketDisclaimerNl':
+					save({
+						setting: 'label_disclaimer_nl',
+						value: $(this).val()
+					});
+				break;
+
+				case 'etiketDisclaimerFr':
+					save({
+						setting: 'label_disclaimer_fr',
+						value: $(this).val()
+					});
 				break;
 
 			}

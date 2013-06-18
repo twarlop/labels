@@ -52,38 +52,49 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 <div id="primary-app">
 	<div id='step1'>
 		<h3>Stap 1</h3>
-		<p id='optionsEtiket'>
-			<label for="etiketAfmeting">Afmeting</label>
-			<select name="etiketAfmeting" id="etiketAfmeting">
-				<option value="">Kies een afmeting</option>
-				<? foreach($afmetingen as $afmeting): ?>
-				<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
-				<? endforeach; ?>
-			</select>
+		<div id='optionsEtiket'>
+			<p>
+				<label for="etiketAfmeting">Afmeting</label>
+				<select name="etiketAfmeting" id="etiketAfmeting">
+					<option value="">Kies een afmeting</option>
+					<? foreach($afmetingen as $afmeting): ?>
+					<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
+					<? endforeach; ?>
+				</select>
+			</p>
+			
+			<p>
+				<label for="etiketType">Soort inhoud</label>
+				<select name="etiketType" id="etiketType">
+					<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>>Volledig tekst</option>
+					<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>>Eigenschappen</option>
+					<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Korte tekst</option>
+				</select>
+			</p>
 
-			<br>
+			<p>
+				<label for="etiketLang">Taal</label>
+				<select name="etiketLang" id="etiketLang">
+					<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>>Nederlands</option>
+					<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>>Frans</option>
+				</select>
+			</p>
 
-			<label for="etiketType">Soort inhoud</label>
-			<select name="etiketType" id="etiketType">
-				<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>>Volledig tekst</option>
-				<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>>Eigenschappen</option>
-				<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Korte tekst</option>
-			</select>
+			<p>
+				<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
+				<input type="text" id='etiketDatum' value='<?= $datum->format('d/m/Y') ?>'>
+			</p>
 
-			<br>
+			<p>
+				<label for='etiketDisclaimerNl'>Automatische disclaimer nl:</label>
+				<input type="text" id='etiketDisclaimerNl' value='<?= $SETTINGS['label_disclaimer_nl']->getValue() ?>'/>
+			</p>
+			<p>
+				<label for='etiketDisclaimerFr'>Automatische disclaimer fr:</label>
+				<input type="text" id='etiketDisclaimerFr' value='<?= $SETTINGS['label_disclaimer_fr']->getValue() ?>'/>
+			</p>
 
-			<label for="etiketLang">Taal</label>
-			<select name="etiketLang" id="etiketLang">
-				<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>>Nederlands</option>
-				<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>>Frans</option>
-			</select>
-
-			<br>
-
-			<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
-			<input type="text" id='etiketDatum' value='<?= $datum->format('d/m/Y') ?>'>
-
-		</p>
+		</div>
 	</div>
 	<div id='step2'>
 		<h3>stap 2</h3>

@@ -29,6 +29,9 @@ class LabelProvider implements ProviderInterface
 	 */
 	protected $mode;
 
+	protected $disclaimer_nl;
+	protected $disclaimer_fr;
+
 	public function __construct()
 	{
 		$this->setupSettings();
@@ -57,6 +60,12 @@ class LabelProvider implements ProviderInterface
 		$this->type = $SETTINGS['label_type']->getValue();
 		$this->taal = $SETTINGS['label_taal']->getValue();
 		$this->mode = $SETTINGS['label_mode']->getValue();
+		$this->disclaimer_nl = $SETTINGS['label_disclaimer_nl']->getValue();
+		if($this->disclaimer_nl === '')
+			$this->disclaimer_nl = false;
+		$this->disclaimer_fr = $SETTINGS['label_disclaimer_fr']->getValue();
+		if($this->disclaimer_fr === '')
+			$this->disclaimer_fr = false;
 	}
 
 	public function getMode()
@@ -85,6 +94,19 @@ class LabelProvider implements ProviderInterface
 			break;
 			case 2:
 				return 'fr';
+			break;
+		}
+	}
+
+	public function getDisclaimer()
+	{
+		switch(intval($this->taal)){
+			case 1:
+				return $this->disclaimer_nl;
+			break;
+
+			case 2:
+				return $this->disclaimer_fr;
 			break;
 		}
 	}
