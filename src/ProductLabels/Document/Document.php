@@ -127,9 +127,11 @@ class Document
 		$this->pdf->Cell($dimension->width, $dimension->height, $product->title, 0, 0, 'C', 1);
 	}
 
-	protected function renderLogoHandelaar()
+	protected function renderLogoHandelaar($dimension)
 	{
-
+		$path = $this->getHandelaarPath();
+		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
+		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
 	protected function renderLogoMerk()
@@ -410,6 +412,13 @@ class Document
 			array_push($answer, array_shift($properties));
 		}
 		return $answer;
+	}
+
+	protected function getHandelaarPath()
+	{
+		global $HANDINFO;
+		$sos_pagina = $HANDINFO['sos_pagina'];
+		return $_SERVER['DOCUMENT_ROOT'] . "/shops/" . $sos_pagina . "/images/logo_shop.png";
 	}
 
 }
