@@ -51,7 +51,14 @@ class DocumentProvider implements ProviderInterface
 	public function createDocument($products)
 	{
 		$layout = $this->layout();
-		$pdf = new TCPDF;
+		if($layout->landscape)
+		{
+			$pdf = new TCPDF('L');
+		}
+		else
+		{
+			$pdf = new TCPDF('P');
+		}
 		$collection = $this->pageProvider->collection($layout->itemsPerPage(), $products);
 		return new Document($pdf, $layout, $collection, $this->propertyProvider, $this->categoryProvider, $this->labelProvider);
 	}
