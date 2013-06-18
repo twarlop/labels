@@ -24,6 +24,10 @@ class Document
 	 */
 	protected $mode;
 
+	protected $language;
+
+	protected $disclaimer;
+
 	/**
 	 *	Coordinates for the current label to be displayed.
 	 *	Of course this is the top left coordinate of the label
@@ -32,7 +36,7 @@ class Document
 	protected $x = 0;
 	protected $y = 0;
 
-	public function __construct($pdf, $layout, $pages, $propertyProvider, $categoryProvider, $mode, $language)
+	public function __construct($pdf, $layout, $pages, $propertyProvider, $categoryProvider, $labelProvider)
 	{
 		$this->pdf = $pdf;
 		$this->pdf->SetFont('helvetica', '', 10);
@@ -41,8 +45,9 @@ class Document
 		$this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 		$this->layout = $layout;
 		$this->pages = $pages;
-		$this->mode = $mode;
-		$this->language = $language;
+		$this->mode = $labelProvider->getMode();
+		$this->language = $labelProvider->getTaal();
+		$this->disclaimer = $labelProvider->getDisclaimer();
 		$this->categoryProvider = $categoryProvider;
 		$this->propertyProvider = $propertyProvider;
 	}
