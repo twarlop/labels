@@ -11,7 +11,7 @@ use ProductLabels\Label\Layout;
 /**
 * Label9
 */
-class Label9 implements LabelMigrationInterface
+class Label09 implements LabelMigrationInterface
 {
 
 	public function layout()

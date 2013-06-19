@@ -9,48 +9,40 @@ use ProductLabels\Label\Layout;
 
 
 /**
-* Label4
+* Label8
 */
-class Label4 implements LabelMigrationInterface
+class Label08 implements LabelMigrationInterface
 {
 
 	public function layout()
 	{
 		$layout = Layout::create(array(
-			'name' => '105x72 (A4) x8',
-			'landscape' => '',
+			'name' => '88x36 (Label)',
+			'landscape' => '1',
 			'is_single_label' => false,
-			'width' => '210',
-			'height' => '297',
-			'widthLabel' => '106',
-			'heightLabel' => '74',
-			'rows' => '4',
-			'columns' => '2'
+			'width' => '36',
+			'height' => '88',
+			'widthLabel' => '88',
+			'heightLabel' => '36',
+			'rows' => '1',
+			'columns' => '1'
 		));
 		return $layout;
 	}
 
 	public function photo()
 	{
-		$dimension = Dimension::create(array(
-			'type_id' => DimensionType::PHOTO,
-			'left' => '1',
-			'top' => '1',
-			'height' => '30',
-			'width' => '40'
-		));
-		return $dimension->id;
 	}
 
 	public function title()
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::TITLE,
-			'left' => '42',
+			'left' => '1',
 			'top' => '1',
-			'height' => '5',
-			'width' => '61',
-			'font_size' => '8',
+			'height' => '8',
+			'width' => '86',
+			'font_size' => '12',
 			'bold' => '1',
 			'fill' => '0,0,0',
 			'color' => '255,255,255'
@@ -60,29 +52,17 @@ class Label4 implements LabelMigrationInterface
 
 	public function text()
 	{
-		$dimension = Dimension::create(array(
-			'type_id' => DimensionType::TEXT,
-			'left' => '40',
-			'top' => '11',
-			'height' => '65',
-			'width' => '63',
-			'font_size' => '8',
-			'bold' => '0',
-			'max_lines' => '16',
-			'fill' => '255,255,255',
-			'color' => '0,0,0'
-		));
-		return $dimension->id;
+		
 	}
 
 	public function promotion()
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION,
-			'left' => '1',
-			'top' => '42',
-			'height' => '5',
-			'width' => '35',
+			'left' => '5',
+			'top' => '20',
+			'height' => '10',
+			'width' => '33',
 			'font_size' => '20',
 			'bold' => '1',
 			'fill' => '255,255,255',
@@ -95,11 +75,11 @@ class Label4 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION_TEXT,
-			'left' => '42',
-			'top' => '6',
-			'height' => '5',
-			'width' => '61',
-			'font_size' => '8',
+			'left' => '',
+			'top' => '',
+			'height' => '',
+			'width' => '',
+			'font_size' => '',
 			'bold' => '1',
 			'fill' => '255,255,255',
 			'color' => '255,0,0'
@@ -111,10 +91,10 @@ class Label4 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION_STOP,
-			'left' => '1',
-			'top' => '53',
+			'left' => '42',
+			'top' => '10',
 			'height' => '5',
-			'width' => '35',
+			'width' => '45',
 			'font_size' => '12',
 			'bold' => '1',
 			'fill' => '255,255,255',
@@ -128,9 +108,9 @@ class Label4 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PRICE,
 			'left' => '1',
-			'top' => '35',
+			'top' => '10',
 			'height' => '10',
-			'width' => '35',
+			'width' => '38',
 			'font_size' => '20',
 			'bold' => '1',
 			'fill' => '204,204,204',
@@ -145,6 +125,14 @@ class Label4 implements LabelMigrationInterface
 
 	public function logoMerk()
 	{
+		$dimension = Dimension::create(array(
+			'type_id' => DimensionType::LOGO_MERK,
+			'left' => '42',
+			'top' => '17',
+			'height' => '18',
+			'width' => '45'
+		));
+		return $dimension->id;
 	}
 
 	
