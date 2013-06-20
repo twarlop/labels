@@ -27,7 +27,7 @@ class PageProvider implements ProviderInterface
 
 	protected function paginate($itemsPerPage, $products)
 	{
-		$answer = [];
+		$answer = array();
 		$count = 0;
 		$pageCount = 0;
 		while($count < $itemsPerPage && count($products))
