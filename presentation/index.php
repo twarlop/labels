@@ -103,7 +103,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<p>
 			<a href='#' class="button emptyQueue">Queue leegmaken</a>
 			<a href="/sos_tools/etiketten.php?datum=<?= $datum->format('d/m/Y')?>" class='button'>Download pdf</a>
-			<a href="sos_tools/etiketten.php" class='button'>Download pdf</a>
 		</p>
 			
 			<table id='queueTable'>
