@@ -299,6 +299,7 @@ class Document
 	protected function renderText($dimension, $product)
 	{
 		$mode = $this->getMode($product, $dimension);
+
 		switch($mode)
 		{
 			case 'text':
@@ -348,6 +349,8 @@ class Document
 		{
 			$mode = 'text';
 		}
+		if(empty($mode))
+			$mode = $this->mode;
 		return $mode;
 	}
 
