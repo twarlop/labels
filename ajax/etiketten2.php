@@ -1,6 +1,4 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 'on');
 if(is_file('../bootstrap/start.php'))
 	include '../bootstrap/start.php';
 else
@@ -13,33 +11,33 @@ if(is_file('../handelaars2/controller/handelaar.php'))
 else
 {
 	
-class Setting
-{
-	protected $value;
-
-	public function __construct($value)
+	class Setting
 	{
-		$this->value = $value;
+		protected $value;
+
+		public function __construct($value)
+		{
+			$this->value = $value;
+		}
+
+		public function setValue($value)
+		{
+			$this->$value = $value;
+		}
+
+		public function getValue()
+		{
+			return $this->value;
+		}
 	}
 
-	public function setValue($value)
-	{
-		$this->$value = $value;
-	}
-
-	public function getValue()
-	{
-		return $this->value;
-	}
-}
-
-$SETTINGS = [
-	'label_type' => new Setting(1),
-	'label_taal' => new Setting(1),
-	'label_mode' => new Setting(1),
-	'label_disclaimer_nl' => new Setting('some text'),
-	'label_disclaimer_fr' => new Setting('some text fr')
-];
+	$SETTINGS = array(
+		'label_type' => new Setting(1),
+		'label_taal' => new Setting(1),
+		'label_mode' => new Setting(1),
+		'label_disclaimer_nl' => new Setting('some text'),
+		'label_disclaimer_fr' => new Setting('some text fr')
+	);
 }
 
 $action = false;
