@@ -27,7 +27,7 @@
 		function suggest(item, response)
 		{
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action:'suggestCategory',
 					query: item.term

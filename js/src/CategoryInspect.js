@@ -75,7 +75,7 @@
 			var sorting = that.getSorting();
 			var type = that.getType();
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action: 'saveCategory',
 					categoryId: that.categoryId,
@@ -108,7 +108,7 @@
 		{
 			var that = this;
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action: 'loadCategory',
 					categoryId: this.categoryId

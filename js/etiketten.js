@@ -53,7 +53,7 @@ window.sos = sos;
 		{
 			var that = this;
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				type:'POST',
 				dataType:'json',
 				data:
@@ -75,7 +75,7 @@ window.sos = sos;
 				confirm: function(){
 					var prodid = tr.data('prodid');
 					$.ajax({
-						url:'ajax/etiketten.php',
+						url:'ajax/etiketten2.php',
 						type:'POST',
 						dataType:'json',
 						data:
@@ -197,7 +197,7 @@ window.sos = sos;
 		{
 			var that = this;
 			$.ajax({
-				url: 'ajax/etiketten.php',
+				url: 'ajax/etiketten2.php',
 				type: 'GET',
 				dataType:'json',
 				data: {
@@ -255,7 +255,7 @@ window.sos = sos;
 		},
 		clear: function(){
 			$.ajax({
-				url : 'ajax/etiketten.php',
+				url : 'ajax/etiketten2.php',
 				type: 'POST',
 				dataType:'json',
 				data: {
@@ -559,7 +559,7 @@ window.sos = sos;
 			var sorting = that.getSorting();
 			var type = that.getType();
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action: 'saveCategory',
 					categoryId: that.categoryId,
@@ -592,7 +592,7 @@ window.sos = sos;
 		{
 			var that = this;
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action: 'loadCategory',
 					categoryId: this.categoryId
@@ -786,7 +786,7 @@ window.sos = sos;
 		$('#queueProduct').autocomplete({
 			source: function(item, response){
 				$.ajax({
-					url:'ajax/etiketten.php',
+					url:'ajax/etiketten2.php',
 					data:{
 						action:'suggestProduct',
 						query: item.term
@@ -852,7 +852,7 @@ window.sos = sos;
 		function suggest(item, response)
 		{
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				data:{
 					action:'suggestCategory',
 					query: item.term

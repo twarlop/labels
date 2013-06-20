@@ -12,7 +12,7 @@
 		{
 			var that = this;
 			$.ajax({
-				url:'ajax/etiketten.php',
+				url:'ajax/etiketten2.php',
 				type:'POST',
 				dataType:'json',
 				data:
@@ -34,7 +34,7 @@
 				confirm: function(){
 					var prodid = tr.data('prodid');
 					$.ajax({
-						url:'ajax/etiketten.php',
+						url:'ajax/etiketten2.php',
 						type:'POST',
 						dataType:'json',
 						data:
@@ -156,7 +156,7 @@
 		{
 			var that = this;
 			$.ajax({
-				url: 'ajax/etiketten.php',
+				url: 'ajax/etiketten2.php',
 				type: 'GET',
 				dataType:'json',
 				data: {
@@ -214,7 +214,7 @@
 		},
 		clear: function(){
 			$.ajax({
-				url : 'ajax/etiketten.php',
+				url : 'ajax/etiketten2.php',
 				type: 'POST',
 				dataType:'json',
 				data: {

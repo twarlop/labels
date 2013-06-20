@@ -7,7 +7,7 @@
 		$('#queueProduct').autocomplete({
 			source: function(item, response){
 				$.ajax({
-					url:'ajax/etiketten.php',
+					url:'ajax/etiketten2.php',
 					data:{
 						action:'suggestProduct',
 						query: item.term
