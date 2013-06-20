@@ -10,9 +10,9 @@ else if(is_file(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/handelaars2/vendor/aut
 $settings = array(
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => DB_SOS,
-    'username' => DB_SOS_USER,
-    'password' => DB_SOS_PASSWORD,
+    'database' => 'elektro_sos',
+    'username' => 'ez_sos',
+    'password' => 'bert872',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => ''
