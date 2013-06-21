@@ -65,7 +65,7 @@ class Label01 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '35',
 			'top' => '10',
-			'height' => '35',
+			'height' => '36',
 			'width' => '68',
 			'font_size' => '8',
 			'bold' => '0',

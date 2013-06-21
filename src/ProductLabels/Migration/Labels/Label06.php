@@ -64,11 +64,11 @@ class Label06 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '1',
 			'top' => '79',
-			'height' => '43',
+			'height' => '45',
 			'width' => '195',
 			'font_size' => '12',
 			'bold' => '0',
-			'max_lines' => '8',
+			'max_lines' => '9',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
@@ -144,7 +144,7 @@ class Label06 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::LOGO_HANDELAAR,
 			'left' => '1',
-			'top' => '120',
+			'top' => '123',
 			'height' => '20',
 			'width' => '195'
 		));

@@ -63,12 +63,12 @@ class Label03 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::TEXT,
 			'left' => '1',
-			'top' => '41',
-			'height' => '42',
+			'top' => '45',
+			'height' => '44',
 			'width' => '70',
 			'font_size' => '8',
 			'bold' => '0',
-			'max_lines' => '14',
+			'max_lines' => '12',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
@@ -95,11 +95,11 @@ class Label03 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION_TEXT,
-			'left' => '',
-			'top' => '',
-			'height' => '',
-			'width' => '',
-			'font_size' => '',
+			'left' => '1',
+			'top' => '39',
+			'height' => '8',
+			'width' => '70',
+			'font_size' => '8',
 			'bold' => '1',
 			'fill' => '255,255,255',
 			'color' => '255,0,0'

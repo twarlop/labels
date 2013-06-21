@@ -64,11 +64,11 @@ class Label02 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '35',
 			'top' => '10',
-			'height' => '36',
+			'height' => '44',
 			'width' => '65',
 			'font_size' => '8',
 			'bold' => '0',
-			'max_lines' => '12',
+			'max_lines' => '10',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
