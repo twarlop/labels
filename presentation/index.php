@@ -35,7 +35,7 @@ else
 	$datum = new DateTime();
 }
 
-$provider = new ProductLabels\ProductLabelProvider(477);
+$provider = new ProductLabels\ProductLabelProvider($HANDELAARID);
 $products = $provider->fetchProducts($datum);
 $afmetingen = $provider->fetchAfmetingen();
 
