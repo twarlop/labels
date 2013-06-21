@@ -657,9 +657,8 @@ window.sos = sos;
 		{
 			var ul = $('#addedContainer').html('');
 			for(var i in properties){
-				var li = $('<li>' + properties[i].invoernl + '</li>', {
-					'class': 'removeable ui-icon ui-icon-arrowthick-2-n-s',
-					'text': properties[i].invoernl
+				var li = $('<li>' + (sos.language() === 'nl' ? properties[i].invoernl : properties[i].invoerfr) + '</li>', {
+					'class': 'removeable ui-icon ui-icon-arrowthick-2-n-s'
 				});
 				li.attr({
 					'data-property-id': properties[i].catinvoerveldid
@@ -676,7 +675,7 @@ window.sos = sos;
 			var container = this.plugin.find('#addableContainer');
 			for(var i in properties)
 			{
-				var li = $('<li>' + properties[i].invoernl + '</li>');
+				var li = $('<li>' + (sos.language() === 'nl' ? properties[i].invoernl : properties[i].invoerfr) + '</li>');
 				li.attr({
 					'class':'addable',
 					'data-property-id': properties[i].catinvoerveldid
@@ -694,7 +693,7 @@ window.sos = sos;
 			for(var i in properties)
 			{
 				var li = $('<li/>', {
-					text: properties[i].invoernl
+					text: (sos.language() === 'nl' ? properties[i].invoernl : properties[i].invoerfr)
 				});
 				container.append(li);
 			}
