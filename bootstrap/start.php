@@ -1,6 +1,6 @@
 <?php
-if(is_file(__DIR__. '/../vendor/autoload.php')){
-	require __DIR__. '/../vendor/autoload.php';
+if(is_file(rtrim(__DIR__, '/'). '../vendor/autoload.php')){
+	require rtrim(__DIR__, '/'). '../vendor/autoload.php';
 }
 else if(is_file(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/handelaars2/vendor/autoload.php')){
 	require rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/handelaars2/vendor/autoload.php';
