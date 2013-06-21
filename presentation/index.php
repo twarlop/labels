@@ -5,7 +5,6 @@
 
 include __DIR__ . '/../bootstrap/start.php';
 
-
 setLocale(LC_MONETARY, 'nl_BE');
 
 // include('tests/classes.php');
@@ -44,19 +43,19 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 ?>
 <p>
 	<label for="etiketCategorieSearch">
-		Bewerk Categorie
+		<?= trans('etiket.edit_cat'); ?>
 	</label>
 	<input id='etiketCategorieSearch' type='text'>
 </p>
 
 <div id="primary-app">
 	<div id='step1'>
-		<h3>Stap 1</h3>
+		<h3><?= trans('etiket.stap_1')?></h3>
 		<div id='optionsEtiket'>
 			<p>
-				<label for="etiketAfmeting">Afmeting</label>
+				<label for="etiketAfmeting"><?= trans('etiket.label') ?></label>
 				<select name="etiketAfmeting" id="etiketAfmeting">
-					<option value="">Kies een afmeting</option>
+					<option value=""><?= trans('etiket.kies_label') ?></option>
 					<? foreach($afmetingen as $afmeting): ?>
 					<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
 					<? endforeach; ?>
@@ -64,57 +63,57 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			</p>
 			
 			<p>
-				<label for="etiketType">Soort inhoud</label>
+				<label for="etiketType"><?= trans('etiket.type_content') ?></label>
 				<select name="etiketType" id="etiketType">
-					<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>>Volledig tekst</option>
-					<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>>Eigenschappen</option>
-					<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Korte tekst</option>
+					<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>><?= trans('etiket.tekst') ?></option>
+					<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>><?= trans('etiket.eigenschappen') ?></option>
+					<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Needs removing</option>
 				</select>
 			</p>
 
 			<p>
-				<label for="etiketLang">Taal</label>
+				<label for="etiketLang"><?= trans('etiket.taal') ?></label>
 				<select name="etiketLang" id="etiketLang">
-					<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>>Nederlands</option>
-					<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>>Frans</option>
+					<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>><?= trans('etiket.nederlands') ?></option>
+					<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>><?= trans('etiket.frans') ?></option>
 				</select>
 			</p>
 
 			<p>
-				<label for="etiketDatum">Gebruik prijzen geldig op:	</label>
+				<label for="etiketDatum"><?= trans('etiket.date_pick') ?></label>
 				<input type="text" id='etiketDatum' value='<?= $datum->format('d/m/Y') ?>'>
 			</p>
 
 			<p>
-				<label for='etiketDisclaimerNl'>Automatische disclaimer nl:</label>
+				<label for='etiketDisclaimerNl'><?= trans('etiket.auto_text_nl') ?></label>
 				<input type="text" id='etiketDisclaimerNl' value='<?= $SETTINGS['label_disclaimer_nl']->getValue() ?>'/>
 			</p>
 			<p>
-				<label for='etiketDisclaimerFr'>Automatische disclaimer fr:</label>
+				<label for='etiketDisclaimerFr'><?= trans('etiket.auto_text_fr') ?></label>
 				<input type="text" id='etiketDisclaimerFr' value='<?= $SETTINGS['label_disclaimer_fr']->getValue() ?>'/>
 			</p>
 
 		</div>
 	</div>
 	<div id='step2'>
-		<h3>stap 2</h3>
-		<label for="queueProduct">Product zoeken</label>
+		<h3><?= trans('etiket.stap_2') ?></h3>
+		<label for="queueProduct"><?= trans('etiket.search_product') ?></label>
 		<input type="text" id="queueProduct" placeholder='referentie'/>
 		<p>
-			<a href='#' class="button emptyQueue">Queue leegmaken</a>
-			<a href="/sos_tools/etiketten.php?datum=<?= $datum->format('d/m/Y')?>" class='button'>Download pdf</a>
+			<a href='#' class="button emptyQueue"><?= trans('etiket.empty_queue') ?></a>
+			<a href="/sos_tools/etiketten.php?datum=<?= $datum->format('d/m/Y')?>" class='button'><?= trans('etiket.download') ?></a>
 		</p>
 			
 			<table id='queueTable'>
 				<thead>
 					<tr>
-						<th>foto</th>
-						<th>artikelnaam</th>
-						<th>merk</th>
-						<th>prijs</th>
-						<th>promoprijs</th>
-						<th>promo tot</th>
-						<th>eigen label</th>
+						<th><?= trans('etiket.photo') ?></th>
+						<th><?= trans('etiket.article')?></th>
+						<th><?= trans('etiket.brand') ?></th>
+						<th><?= trans('etiket.price') ?></th>
+						<th><?= trans('etiket.promotion') ?></th>
+						<th><?= trans('etiket.promotion_stop') ?></th>
+						<th><?= trans('etiket.custom_label') ?></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -160,33 +159,32 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 <div id='propertyPicker' class='clearfix' style='display:none'>
 	<a href="#" class="close-app"><i class='ui-icon ui-icon-close'>&nbsp;</i></a>
 	<div id="action-holder">
-		<a href="#" class="button submit-properties">Bevestigen</a>
-		<a href="#" class="button reset-properties">Ongedaan maken</a>
-		<a href="#" class="button full-reset-properties">Volledige reset</a>
+		<a href="#" class="button submit-properties"><?= trans('etiket.confirm') ?></a>
+		<a href="#" class="button reset-properties"><?= trans('etiket.undo') ?></a>
+		<a href="#" class="button full-reset-properties"><?= trans('etiket.reset') ?></a>
 	</div>
 	<div id='info_type_settings'>
-		<p class="info">Bepaal hier welk soort informatie er op het etiket moet verschijnen voor deze categorie.
-			Indien u eigenschappen selecteert, kan u hieronder vervolgens ook de volgorde bepalen.
+		<p class="info"><?= trans('etiket.customise_info') ?>
 		</p>
 		<label for="info_type_text">
 			<input type="radio" name='info_type' id='info_type_text' value='text'/>
-			Text
+			<?= trans('etiket.tekst') ?>
 		</label>
 		<label for="info_type_properties">
 			<input type="radio" name='info_type' id='info_type_properties' value='properties'/>
-			Eigenschappen
+			<?= trans('etiket.eigenschappen') ?>
 		</label>
 	</div>
 	<div class='left'>
-		<h3>Gebruik</h3>
+		<h3><?= trans('etiket.gebruik') ?></h3>
 		<ul id="addedContainer"></ul>
 	</div>
 	<div class='left'>
-		<h3>Niet gebruiken</h3>
+		<h3><?= trans('etiket.niet_gebruiken') ?></h3>
 		<ul id="addableContainer"></ul>
 	</div>
 	<div class='left'>
-		<h3>Standaard volgorde</h3>
+		<h3><?= trans('etiket.standaard_volgorde') ?></h3>
 		<ul id='standard'></ul>
 	</div>
 </div>

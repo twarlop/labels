@@ -12,9 +12,9 @@
 			titleNl: 'Bevestiging',
 			titleFr: 'Confirmation',
 			confirmNl: 'Bevestigen',
-			confirmFr: 'Confirmez',
+			confirmFr: 'Confirmer',
 			cancelNl: 'Annuleren',
-			cancelFr: 'Annulez',
+			cancelFr: 'Annuler',
 			confirm : function(){
 
 			}
