@@ -102,6 +102,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 		<p>
 			<a href='#' class="button emptyQueue"><?= trans('etiket.empty_queue') ?></a>
 			<a href="/sos_tools/etiketten.php?datum=<?= $datum->format('d/m/Y')?>" class='button'><?= trans('etiket.download') ?></a>
+			<a href="/sos_tools/qrcodes.php?hid=<?= $HANDELAARID?>" class='button' target="_blank"><?= trans('etiket.download_qr') ?></a>
 		</p>
 			
 			<table id='queueTable'>
