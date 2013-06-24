@@ -67,7 +67,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 				<select name="etiketType" id="etiketType">
 					<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>><?= trans('etiket.tekst') ?></option>
 					<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>><?= trans('etiket.eigenschappen') ?></option>
-					<option value="3" <?= $SETTINGS['label_mode']->getValue() === '3' ? 'selected' : ''?>>Needs removing</option>
 				</select>
 			</p>
 
