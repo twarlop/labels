@@ -286,6 +286,33 @@ class Document
 		return $max_lines;
 	}
 
+	/**
+	 * Verify if the amount of properties fit the current dimension, taking into account that there might be 
+	 * properties which need more then 1 line to display.
+	 */
+	protected function confirmMaxlinesProperties($properties, $dimension)
+	{
+		$skip = 0;
+		$padding = $this->pdf->getCssPadding('40px')['L'];
+		$w = $dimension->width - $padding;
+		foreach($properties as $property)
+		{
+			$li = $this->li($property['property'], $property['value']);
+			preg_match_all('#<li>(.*)</li>#', $li, $matches);
+			$text = $matches[1][0];
+			$wText = $this->pdf->GetStringWidth($text);
+			if($wText > $w)
+			{
+				$skip++;
+			}
+		}
+		if($skip)
+		{
+			$properties = array_slice($properties, 0, count($properties) - $skip);
+		}
+		return $properties;
+	}
+
 	protected function cuttingLines()
 	{
 		$this->pdf->setXY($this->x, $this->y);
@@ -419,6 +446,7 @@ class Document
 		{
 			array_push($answer, array_shift($properties));
 		}
+		$answer = $this->confirmMaxlinesProperties($answer, $dimension);
 		return $answer;
 	}
 
