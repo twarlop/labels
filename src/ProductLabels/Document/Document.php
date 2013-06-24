@@ -119,7 +119,7 @@ class Document
 	{
 		$path = $product->getPathPhoto();
 		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
-		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
+		// $this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
 	protected function renderTitle($dimension, $product)
@@ -132,8 +132,8 @@ class Document
 		$path = $this->getHandelaarPath();
 		if($path){
 			$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
+			// $this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 		}
-		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
 	protected function renderLogoMerk($dimension, $product)
@@ -142,7 +142,7 @@ class Document
 		if($path)
 		{
 			$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
-			$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
+			// $this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 		}
 	}
 
