@@ -82,4 +82,11 @@ switch($action){
 		$provider->customiseText($prodid, $nl, $fr);
 	break;
 
+	case 'loadBaseText':
+		$type = intval($_POST['type']);
+		$productid = intval($_POST['prodid']);
+		$text = $provider->loadCustomText($productid, $type);
+		echo $text;
+	break;
+
 }

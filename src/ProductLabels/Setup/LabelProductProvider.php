@@ -178,6 +178,25 @@ class LabelProductProvider implements ProviderInterface
 		}, $groeperingen);
 	}
 
+	public function loadBaseText($productid, $type)
+	{
+		switch($type)
+		{
+			//elektrozine
+			case 1:
+			$fields = array('ez_content as nl', 'ez_content_fr as nl');
+			break;
+			//shoponsite
+			case 3:
+			$fields = array('kortnl as nl', 'kortfr as fr');
+			break;
+		}
+		$query = $this->connection->table('prod');
+		$product = $query->where('ID', $productid)
+			->first($fields);
+		return $product;
+	}
+
 	public function customiseText($prodid, $nl, $fr)
 	{
 		$query = $this->connection->table('handelaars_labels');

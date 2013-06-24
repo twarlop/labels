@@ -105,6 +105,16 @@ class ProductLabelProvider implements ProviderInterface{
 		$document->download();
 	}
 
+	public function loadCustomText($prodid, $type)
+	{
+		if(!is_int($prodid) || !is_int($type))
+		{
+			return false;
+		}
+		$product = $this->productProvider->loadBaseText($prodid, $type);
+		return json_encode($product);
+	}
+
 	public function customiseText($prodid, $nl, $fr)
 	{
 		$this->productProvider->customiseText($prodid, $nl, $fr);
