@@ -1,43 +1,11 @@
 <?php
-if(is_file('../bootstrap/start.php'))
-	include '../bootstrap/start.php';
-else
-{
-	include '../vendor/twarlop/productlabels/bootstrap/start.php';
+
+if(is_file('../controller/handelaar.php')){
+	require_once('../controller/handelaar.php');
 }
 
-if(is_file('../handelaars2/controller/handelaar.php'))
-	require_once('../handelaars2/controller/handelaar.php');
-else
-{
-	
-	class Setting
-	{
-		protected $value;
-
-		public function __construct($value)
-		{
-			$this->value = $value;
-		}
-
-		public function setValue($value)
-		{
-			$this->$value = $value;
-		}
-
-		public function getValue()
-		{
-			return $this->value;
-		}
-	}
-
-	$SETTINGS = array(
-		'label_type' => new Setting(1),
-		'label_taal' => new Setting(1),
-		'label_mode' => new Setting(1),
-		'label_disclaimer_nl' => new Setting('some text'),
-		'label_disclaimer_fr' => new Setting('some text fr')
-	);
+if(is_file('../vendor/twarlop/productlabels/bootstrap/start.php')){
+	include '../vendor/twarlop/productlabels/bootstrap/start.php';
 }
 
 $action = false;
