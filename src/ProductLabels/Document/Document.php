@@ -334,9 +334,10 @@ class Document
 				$text = $this->trimRegularText($maxLines, $product->textToPrint($this->language), $dimension->width);
 				if($this->disclaimer)
 				{
-					$text .= PHP_EOL . $this->disclaimer;
+					$text .= PHP_EOL . '<br/><b>' . $this->disclaimer . '</b>';
 				}
-				$this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
+				// $this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
+				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $text);
 			break;
 			case 'properties':
 				$properties = $this->propertiesToRender($dimension, $product);
@@ -349,7 +350,7 @@ class Document
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $list);
 				if($this->disclaimer)
 				{
-					$this->pdf->writeHtMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, $this->disclaimer);
+					$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, '<strong>' . $this->disclaimer . '</strong>');
 				}
 			break;
 		}
@@ -395,7 +396,7 @@ class Document
                     $line++;
                     $lineString = '';
                     $lastWordIndex = $i;
-                    $words[$i] = "\n";
+                    $words[$i] = "<br/>";
                 }
                 else{
                     if ($lineString != '')
