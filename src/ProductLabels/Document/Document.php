@@ -130,7 +130,9 @@ class Document
 	protected function renderLogoHandelaar($dimension)
 	{
 		$path = $this->getHandelaarPath();
-		$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
+		if($path){
+			$this->pdf->Image($path, $this->x + $dimension->left, $this->y + $dimension->top, $dimension->width, $dimension->height, '', '', '', false, 300, '', false, false, 0, 'CM');
+		}
 		$this->pdf->Cell($dimension->width, $dimension->height, '', 1);
 	}
 
@@ -455,7 +457,8 @@ class Document
 	{
 		global $HANDINFO;
 		$sos_pagina = $HANDINFO['sos_pagina'];
-		return $_SERVER['DOCUMENT_ROOT'] . "/shops/" . $sos_pagina . "/images/logo_shop.png";
+		$path = rtim($_SERVER['DOCUMENT_ROOT'], '/') . "/shops/" . $sos_pagina . "/images/logo_shop.png";
+		return is_file($path) ? $path : false;
 	}
 
 }
