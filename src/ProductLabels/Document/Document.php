@@ -388,7 +388,7 @@ class Document
         $lineString = '';
         $lastWordIndex = 0;
         for ($i = 0; $i < count($words); $i++) {
-            if ($line <= $maxLines) {
+            if ($line < $maxLines) {
                 $curString = $lineString;
                 if($words[$i] === ''){
                     //this value represents a new line
