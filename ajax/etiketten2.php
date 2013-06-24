@@ -50,7 +50,7 @@ else if( isset($_POST['action']))
 	$action = $_POST['action'];
 }
 
-$provider = new ProductLabels\ProductLabelProvider(477);
+$provider = new ProductLabels\ProductLabelProvider($HANDELAARID);
 
 
 switch($action){
