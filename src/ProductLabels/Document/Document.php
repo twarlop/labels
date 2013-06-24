@@ -293,8 +293,8 @@ class Document
 	protected function confirmMaxlinesProperties($properties, $dimension)
 	{
 		$skip = 0;
-		$padding = $this->pdf->getCssPadding('40px')['L'];
-		$w = $dimension->width - $padding;
+		$padding = $this->pdf->getCssPadding('40px');
+		$w = $dimension->width - $padding['L'];
 		foreach($properties as $property)
 		{
 			$li = $this->li($property['property'], $property['value']);
