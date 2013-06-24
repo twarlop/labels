@@ -457,7 +457,7 @@ class Document
 	{
 		global $HANDINFO;
 		$sos_pagina = $HANDINFO['sos_pagina'];
-		$path = rtim($_SERVER['DOCUMENT_ROOT'], '/') . "/shops/" . $sos_pagina . "/images/logo_shop.png";
+		$path = rtrim($_SERVER['DOCUMENT_ROOT'], '/') . "/shops/" . $sos_pagina . "/images/logo_shop.png";
 		return is_file($path) ? $path : false;
 	}
 
