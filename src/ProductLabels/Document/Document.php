@@ -173,7 +173,8 @@ class Document
 	{
 		if($product->promotie && $product->promotietext)
 		{
-			$this->pdf->Cell($dimension->width, $dimension->height, $product->promotietext);
+			$text = $this->trimRegularText(1, $product->promotietext, $dimension->width);
+			$this->pdf->Cell($dimension->width, $dimension->height, $text);
 		}
 	}
 
@@ -336,7 +337,7 @@ class Document
 				$text = $this->trimRegularText($maxLines, $product->textToPrint($this->language), $dimension->width);
 				if($this->disclaimer)
 				{
-					$text .= PHP_EOL . '<br/><p style="text-align:center"><b>' . $this->disclaimer . '</b></p>';
+					$text .= '<div style="text-align:center"><b>' . $this->disclaimer . '</b></div>';
 				}
 				// $this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $text);
@@ -352,7 +353,7 @@ class Document
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $list);
 				if($this->disclaimer)
 				{
-					$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, '<p style="text-align:center"><strong>' . $this->disclaimer . '</strong></p>');
+					$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, '<div style="text-align:center"><strong>' . $this->disclaimer . '</strong></div>');
 				}
 			break;
 		}
@@ -391,7 +392,7 @@ class Document
         $lineString = '';
         $lastWordIndex = 0;
         for ($i = 0; $i < count($words); $i++) {
-            if ($line < $maxLines) {
+            if ($line <= $maxLines) {
                 $curString = $lineString;
                 if($words[$i] === ''){
                     //this value represents a new line
