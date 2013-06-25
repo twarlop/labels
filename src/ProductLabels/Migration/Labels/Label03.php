@@ -79,7 +79,7 @@ class Label03 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION,
-			'left' => '42',
+			'left' => '40',
 			'top' => '12',
 			'height' => '10',
 			'width' => '35',
@@ -127,7 +127,7 @@ class Label03 implements LabelMigrationInterface
 	{
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PRICE,
-			'left' => '42',
+			'left' => '40',
 			'top' => '5',
 			'height' => '10',
 			'width' => '30',
