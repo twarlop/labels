@@ -20,6 +20,7 @@ class CategoryProvider implements ProviderInterface
 	{
 		$categories = Category::where('Title_short_nl', 'like', '%'. $term . '%')
 		->where('ParentID','<>', '0')
+		->where('Active', 1)
 		->orderBy('Title_short_nl')
 		->take(10)
 		->get(array('Title_short_nl as label', 'ID as value'));
