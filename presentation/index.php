@@ -16,8 +16,8 @@ setLocale(LC_MONETARY, 'nl_BE');
 // $migration = new ProductLabels\Migration\CategoryTypes();
 // $migration->run();
 
-// $migration = new ProductLabels\Migration\Dimensions();
-// $migration->run();
+$migration = new ProductLabels\Migration\Dimensions();
+$migration->run();
 
 // $migration = new ProductLabels\Migration\Queue();
 // $migration->run();
