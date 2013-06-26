@@ -47,17 +47,30 @@ switch($action){
 	break;
 
 	case 'addProduct':
-		$prodid = $_POST['prodid'];
-		if(isset($_POST['datum']))
-		{
-			$datum = DateTime::createFromFormat('d/m/Y', $_POST['datum']);
+		if($MODULES['sos_mod_etiket2']->getValue()){
+			$prodid = $_POST['prodid'];
+			if(isset($_POST['datum']))
+			{
+				$datum = DateTime::createFromFormat('d/m/Y', $_POST['datum']);
+			}
+			else
+			{
+				$datum = new DateTime();
+			}
+			$product = $provider->queue($prodid, $datum);
+			echo $product->toJson();
 		}
-		else
+		else if($MODULES['sos_mod_etiket']->getValue())
 		{
-			$datum = new DateTime();
+			$prod = Etiket::addProd($_POST['prodid']);
+	        if(!isset($_POST['noReload'])){
+	            $etiketten = Etiket::find_my_queue(Misc::formatDatumRev($_POST['datum']), "ArtName_nl ".$_POST['order']);
+	            foreach ($etiketten as $e) {
+	                $e->displayEtiketRow(Misc::formatDatumRev($_POST['datum']));
+	            }
+	        }
 		}
-		$product = $provider->queue($prodid, $datum);
-		echo $product->toJson();
+		
 	break;
 
 	case 'removeProduct':
