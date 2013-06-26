@@ -60,7 +60,7 @@ class Label24 implements LabelMigrationInterface
 			'width' => '133',
 			'font_size' => '11',
 			'bold' => '0',
-			'max_lines' => '10',
+			'max_lines' => '9',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
@@ -72,7 +72,7 @@ class Label24 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PROMOTION,
 			'left' => '80',
-			'top' => '12',
+			'top' => '15',
 			'height' => '8',
 			'width' => '70',
 			'font_size' => '30',
@@ -120,7 +120,7 @@ class Label24 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::PRICE,
 			'left' => '75',
-			'top' => '1',
+			'top' => '4',
 			'height' => '12',
 			'width' => '70',
 			'font_size' => '30',
@@ -136,7 +136,7 @@ class Label24 implements LabelMigrationInterface
 		$dimension = Dimension::create(array(
 			'type_id' => DimensionType::LOGO_HANDELAAR,
 			'left' => '75',
-			'top' => '89',
+			'top' => '87',
 			'height' => '15',
 			'width' => '70'
 		));
