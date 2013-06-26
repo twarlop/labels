@@ -56,7 +56,7 @@ class Label24 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '10',
 			'top' => '45',
-			'height' => '47',
+			'height' => '39',
 			'width' => '133',
 			'font_size' => '11',
 			'bold' => '0',
