@@ -56,11 +56,11 @@ class Label24 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '10',
 			'top' => '45',
-			'height' => '52',
+			'height' => '48',
 			'width' => '133',
 			'font_size' => '11',
 			'bold' => '0',
-			'max_lines' => '11',
+			'max_lines' => '10',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
