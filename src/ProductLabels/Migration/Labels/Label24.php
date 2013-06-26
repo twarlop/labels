@@ -56,11 +56,11 @@ class Label24 implements LabelMigrationInterface
 			'type_id' => DimensionType::TEXT,
 			'left' => '10',
 			'top' => '45',
-			'height' => '39',
+			'height' => '52',
 			'width' => '133',
 			'font_size' => '11',
 			'bold' => '0',
-			'max_lines' => '8',
+			'max_lines' => '11',
 			'fill' => '255,255,255',
 			'color' => '0,0,0'
 		));
@@ -133,14 +133,14 @@ class Label24 implements LabelMigrationInterface
 
 	public function logoHandelaar()
 	{
-		$dimension = Dimension::create(array(
-			'type_id' => DimensionType::LOGO_HANDELAAR,
-			'left' => '75',
-			'top' => '84',
-			'height' => '15',
-			'width' => '70'
-		));
-		return $dimension->id;
+		// $dimension = Dimension::create(array(
+		// 	'type_id' => DimensionType::LOGO_HANDELAAR,
+		// 	'left' => '75',
+		// 	'top' => '84',
+		// 	'height' => '15',
+		// 	'width' => '70'
+		// ));
+		// return $dimension->id;
 	}
 
 	public function logoMerk()
