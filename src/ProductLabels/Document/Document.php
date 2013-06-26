@@ -337,7 +337,7 @@ class Document
 				$text = $this->trimRegularText($maxLines, $product->textToPrint($this->language), $dimension->width);
 				if($this->disclaimer)
 				{
-					$text .= '<div style="text-align:center"><b>' . $this->disclaimer . '</b></div>';
+					$text .= '<div style=""><b>' . $this->disclaimer . '</b></div>';
 				}
 				// $this->pdf->MultiCell($dimension->width, $dimension->height, $text, 0, 'L');
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $text);
@@ -353,7 +353,7 @@ class Document
 				$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top, $list);
 				if($this->disclaimer)
 				{
-					$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, '<div style="text-align:center"><strong>' . $this->disclaimer . '</strong></div>');
+					$this->pdf->writeHTMLCell($dimension->width, $dimension->height, $this->x + $dimension->left, $this->y + $dimension->top + $dimension->height - 8, '<div style=""><strong>' . $this->disclaimer . '</strong></div>');
 				}
 			break;
 		}
