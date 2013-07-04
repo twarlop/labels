@@ -45,6 +45,6 @@ else
 	$datum = new DateTime();
 }
 
-$provider = new ProductLabels\ProductLabelProvider(477);
+$provider = new ProductLabels\ProductLabelProvider($HANDELAARID);
 $provider->downloadPdf($datum);
 
