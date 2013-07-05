@@ -3,7 +3,7 @@ INSERT INTO `sos_settings` (`id`, `skey`, `type`, `input`, `recht`, `title_nl`, 
 (NULL, 'label_disclaimer_fr', 'admin', 'text', 'hand', 'Automatische toevoeging fr', 'Addition automatique fr', 'Regel die automatisch aan elk etiket wordt toegevoegd.', 'Cette règle est automatiquement ajouté à chaque étiquette', '', '10', '0');
 
 
-INSERT INTO  `shoponsite`.`sos_settings` (
+INSERT INTO  `sos_settings` (
 `id` ,
 `skey` ,
 `type` ,
@@ -18,9 +18,9 @@ INSERT INTO  `shoponsite`.`sos_settings` (
 `locked`
 )
 VALUES (
-NULL ,  'label_type2',  'admin',  'select',  'hand',  'afmeting etiket',  'dimension d'etiquette',  '',  '',  '',  '10',  ''
+NULL ,  'label_type2',  'admin',  'select',  'hand',  'afmeting etiket',  'dimension d\'etiquette',  '',  '',  '',  '10',  ''
 ), (
-NULL ,  'label_taal2',  'admin',  'select',  'hand',  'taal etiket',  'language d''etiquette',  '',  '',  '',  '10',  ''
+NULL ,  'label_taal2',  'admin',  'select',  'hand',  'taal etiket',  'language d\etiquette',  '',  '',  '',  '10',  ''
 ), (
-NULL ,  'label_mode2',  'admin',  'select',  'hand',  'Inhoud etiket',  'Information d''etiquette',  '',  '',  '',  '10',  ''
+NULL ,  'label_mode2',  'admin',  'select',  'hand',  'Inhoud etiket',  'Information d\'etiquette',  '',  '',  '',  '10',  ''
 );
