@@ -65,7 +65,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<p>
 				<label for="etiketType"><?= trans('etiket.type_content') ?></label>
 				<select name="etiketType" id="etiketType">
-					<option value=""><?= trans('kies_content') ?></option>
+					<option value=""><?= trans('etiket.kies_content') ?></option>
 					<option value="1" <?= $SETTINGS['label_mode2']->getValue() === '1' ? 'selected' : ''?>><?= trans('etiket.tekst') ?></option>
 					<option value="2" <?= $SETTINGS['label_mode2']->getValue() === '2' ? 'selected' : ''?>><?= trans('etiket.eigenschappen') ?></option>
 				</select>
@@ -74,7 +74,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<p>
 				<label for="etiketLang"><?= trans('etiket.taal') ?></label>
 				<select name="etiketLang" id="etiketLang">
-					<option value=""><?= trans('kies_taal') ?></option>
+					<option value=""><?= trans('etiket.kies_taal') ?></option>
 					<option value="1" <?= $SETTINGS['label_taal2']->getValue() === '1' ? 'selected' : '' ?>><?= trans('etiket.nederlands') ?></option>
 					<option value="2" <?= $SETTINGS['label_taal2']->getValue() === '2' ? 'selected' : '' ?>><?= trans('etiket.frans') ?></option>
 				</select>
