@@ -24,9 +24,9 @@ class Setting
 }
 
 $SETTINGS = [
-	'label_type' => new Setting(1),
-	'label_taal' => new Setting(1),
-	'label_mode' => new Setting(1)
+	'label_type2' => new Setting(1),
+	'label_taal2' => new Setting(1),
+	'label_mode2' => new Setting(1)
 ];
 ?>
 <html>

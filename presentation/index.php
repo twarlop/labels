@@ -57,7 +57,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 				<select name="etiketAfmeting" id="etiketAfmeting">
 					<option value=""><?= trans('etiket.kies_label') ?></option>
 					<? foreach($afmetingen as $afmeting): ?>
-					<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
+					<option value="<?= $afmeting->id ?>" <?= $SETTINGS['label_type2']->getValue() == $afmeting->id ? 'selected' : '' ?>><?= $afmeting->name ?></option>
 					<? endforeach; ?>
 				</select>
 			</p>
@@ -65,16 +65,18 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 			<p>
 				<label for="etiketType"><?= trans('etiket.type_content') ?></label>
 				<select name="etiketType" id="etiketType">
-					<option value="1" <?= $SETTINGS['label_mode']->getValue() === '1' ? 'selected' : ''?>><?= trans('etiket.tekst') ?></option>
-					<option value="2" <?= $SETTINGS['label_mode']->getValue() === '2' ? 'selected' : ''?>><?= trans('etiket.eigenschappen') ?></option>
+					<option value=""><?= trans('kies_content') ?></option>
+					<option value="1" <?= $SETTINGS['label_mode2']->getValue() === '1' ? 'selected' : ''?>><?= trans('etiket.tekst') ?></option>
+					<option value="2" <?= $SETTINGS['label_mode2']->getValue() === '2' ? 'selected' : ''?>><?= trans('etiket.eigenschappen') ?></option>
 				</select>
 			</p>
 
 			<p>
 				<label for="etiketLang"><?= trans('etiket.taal') ?></label>
 				<select name="etiketLang" id="etiketLang">
-					<option value="1" <?= $SETTINGS['label_taal']->getValue() === '1' ? 'selected' : '' ?>><?= trans('etiket.nederlands') ?></option>
-					<option value="2" <?= $SETTINGS['label_taal']->getValue() === '2' ? 'selected' : '' ?>><?= trans('etiket.frans') ?></option>
+					<option value=""><?= trans('kies_taal') ?></option>
+					<option value="1" <?= $SETTINGS['label_taal2']->getValue() === '1' ? 'selected' : '' ?>><?= trans('etiket.nederlands') ?></option>
+					<option value="2" <?= $SETTINGS['label_taal2']->getValue() === '2' ? 'selected' : '' ?>><?= trans('etiket.frans') ?></option>
 				</select>
 			</p>
 

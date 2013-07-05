@@ -296,7 +296,7 @@ window.sos = sos;
 			{
 				case 'etiketAfmeting':
 					save({
-						setting:'label_type',
+						setting:'label_type2',
 						value: $(this).val()
 					}, function(response){
 						
@@ -305,7 +305,7 @@ window.sos = sos;
 
 				case 'etiketType':
 					save({
-						setting: 'label_mode',
+						setting: 'label_mode2',
 						value: $(this).val()
 					}, function(response){
 
@@ -314,7 +314,7 @@ window.sos = sos;
 
 				case 'etiketLang':
 					save({
-						setting: 'label_taal',
+						setting: 'label_taal2',
 						value: $(this).val()
 					}, function(response){
 

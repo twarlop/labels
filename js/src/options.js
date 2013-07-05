@@ -9,7 +9,7 @@
 			{
 				case 'etiketAfmeting':
 					save({
-						setting:'label_type',
+						setting:'label_type2',
 						value: $(this).val()
 					}, function(response){
 						
@@ -18,7 +18,7 @@
 
 				case 'etiketType':
 					save({
-						setting: 'label_mode',
+						setting: 'label_mode2',
 						value: $(this).val()
 					}, function(response){
 
@@ -27,7 +27,7 @@
 
 				case 'etiketLang':
 					save({
-						setting: 'label_taal',
+						setting: 'label_taal2',
 						value: $(this).val()
 					}, function(response){
 

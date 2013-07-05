@@ -57,9 +57,9 @@ class LabelProvider implements ProviderInterface
 	protected function setupSettings()
 	{
 		global $SETTINGS;
-		$this->type = $SETTINGS['label_type']->getValue();
-		$this->taal = $SETTINGS['label_taal']->getValue();
-		$this->mode = $SETTINGS['label_mode']->getValue();
+		$this->type = $SETTINGS['label_type2']->getValue();
+		$this->taal = $SETTINGS['label_taal2']->getValue();
+		$this->mode = $SETTINGS['label_mode2']->getValue();
 		$this->disclaimer_nl = $SETTINGS['label_disclaimer_nl']->getValue();
 		if($this->disclaimer_nl === '')
 			$this->disclaimer_nl = false;
