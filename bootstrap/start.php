@@ -7,7 +7,7 @@ else if(is_file(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/handelaars2/vendor/aut
 }
 
 //setup laravel connection
-if(preg_match('/local\.sos/', $_SERVER['HOST']))
+if(preg_match('/local\.sos/', $_SERVER['HTTP_HOST']))
 {
     $settings = array(
         'driver' => 'mysql',
