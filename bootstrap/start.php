@@ -7,16 +7,34 @@ else if(is_file(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/handelaars2/vendor/aut
 }
 
 //setup laravel connection
-$settings = array(
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'elektro_sos',
-    'username' => 'ez_sos',
-    'password' => 'bert872',
-    'charset' => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix' => ''
-);
+if(preg_match('/local\.sos/', $_SERVER['HOST']))
+{
+    $settings = array(
+        'driver' => 'mysql',
+        'host' => 'localhost',
+        'database' => 'shoponsite',
+        'username' => 'root',
+        'password' => 'root',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix' => ''
+    );
+}
+else{
+    $settings = array(
+        'driver' => 'mysql',
+        'host' => 'localhost',
+        'database' => 'elektro_sos',
+        'username' => 'ez_sos',
+        'password' => 'bert872',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix' => ''
+    );
+
+}
+
+
 
 $container = new Illuminate\Container\Container();
 
@@ -25,15 +43,6 @@ $conn = $connFactory->make($settings);
 
 //set event dispatcher
 $eventDispatcher = new Illuminate\Events\Dispatcher();
-// $eventDispatcher->listen('illuminate.query', function($query, $bindings, $time)
-// {
-//     echo '<div style=\'background-color:#ddd;margin: 5px;\'>';
-//     echo $query;
-//     echo '<pre>';
-//     print_r($bindings);
-//     echo '</pre>';
-//     echo '</div>';
-// });
 
 $conn->setEventDispatcher($eventDispatcher);
 
