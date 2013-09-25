@@ -242,7 +242,7 @@ class PropertyProvider implements ProviderInterface
             ->orWhere('owner_id', 0)
             ->lists('property_id');
         if(!empty($propertyids)){
-            $existingIds = Property::whereIn('catinvoerveldid', $propertyids)->get('catinvoerveldid');
+            $existingIds = Property::whereIn('catinvoerveldid', $propertyids)->lists('catinvoerveldid');
             $diff = array_diff($propertyids, $existingIds);
             if(!empty($diff)){
                 $selection = LabelCategoryProperty::whereIn('property_id', $diff)->delete();
