@@ -149,6 +149,7 @@ class LabelProductProvider implements ProviderInterface
 		foreach($products as $product)
 		{
 			$product = $this->mergeText($product);
+            $product['title'] = $product['merknaam'] . ': ' . $product['title'];
 			$product = new LabelProduct($product);
 			$results[$product->product_id] = $product;
 		}
