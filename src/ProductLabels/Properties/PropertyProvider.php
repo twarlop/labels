@@ -240,7 +240,6 @@ class PropertyProvider implements ProviderInterface
     {
         $propertyids = LabelCategoryProperty::where('owner_id', $this->handelaar_id)
             ->orWhere('owner_id', 0)
-            ->distinct()
             ->lists('property_id');
         if(!empty($propertyids)){
             $existingIds = Property::whereIn('catinvoerveldid', $propertyids)->get('catinvoerveldid');
