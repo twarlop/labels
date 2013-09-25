@@ -2,6 +2,8 @@
 namespace ProductLabels\Properties;
 
 use ProductLabels\Contract\ProviderInterface;
+use ProductLabels\Properties\Property;
+use ProductLabels\Properties\LabelCategoryProperty;
 use Exception;
 
 /**
@@ -29,6 +31,7 @@ class PropertyProvider implements ProviderInterface
 		$this->connection = $connection;
 		$this->productPropertyProvider = new ProductPropertyProvider($connection);
 		$this->handelaar_id = $handelaarid;
+        $this->cleanNonExisting();
 	}
 
 	/**
@@ -232,5 +235,21 @@ class PropertyProvider implements ProviderInterface
 		}
 		return $answer;
 	}
+
+    protected function cleanNonExisting()
+    {
+        $propertyids = LabelCategoryProperty::where('owner_id', $this->handelaar_id)
+            ->orWhere('owner_id', 0)
+            ->distinct()
+            ->lists('property_id');
+        if(!empty($propertyids)){
+            $existingIds = Property::whereIn('catinvoerveldid', $propertyids)->get('catinvoerveldid');
+            $diff = array_diff($propertyids, $existingIds);
+            if(!empty($diff)){
+                $selection = LabelCategoryProperty::whereIn('property_id', $diff)->delete();
+            }
+        }
+
+    }
 	
 }
