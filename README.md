@@ -15,6 +15,9 @@ __important__ Do not forget to include the images and ui.css file that belongs t
 
 ##installation instructions:
 
+edit: 4 oktober 2013
+FOR SOME REASON FILES ARE NOT AUTO INCLUDED FROM VENDOR DIR...
+
 run composer install/update
 
 at the moment, the css and js files are included from the vendor dir, so no need to copy. Except for the ajax and sos_tools file
