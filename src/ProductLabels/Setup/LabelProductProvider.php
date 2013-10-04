@@ -156,7 +156,7 @@ class LabelProductProvider implements ProviderInterface
 		return $results;
 	}
 
-	protected function mergeText($product)
+	protected function mergeText($product)w
 	{
 		$nl = !empty($product['ez_content']) ? $product['ez_content'] : $product['kortnl'];
 		$fr = !empty($product['ez_content_fr']) ? $product['ez_content_fr'] : $product['kortfr'];

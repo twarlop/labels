@@ -224,7 +224,24 @@
 					$("#queueTable").find('tbody').html('');
 				}
 			});
-		}
+		},
+        removeCustomLabel: function(prodid)
+        {
+            var that = this;
+            $.ajax({
+                url: 'ajax/etiketten2.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    action: 'removeCustomLabel',
+                    prodid: prodid
+                },
+                success: function()
+                {
+                    that.reload(prodid);
+                }
+            })
+        }
 
 	};
 
@@ -234,6 +251,11 @@
 		sos.etiketten.queue.delete($(this).closest('tr'));
 	});
 
+    $("#queueTable").on('click', '.removeCustomLabel', function(){
+        var prodid = $(this).closest('tr').data('prodid');
+        sos.etiketten.removeCustomLabel(prodid);
+    });
+
 	$("#primary-app").on('click', '.emptyQueue', function(){
 		sos.confirmation({
 			textNl: 'Bent u zeker dat u de lijst met af te drukken producten wil leegmaken?',
@@ -241,6 +263,6 @@
 				sos.etiketten.queue.clear();
 			}
 		});
-	})
+	});
 
 })(window.jQuery, window.sos);
