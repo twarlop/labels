@@ -298,7 +298,7 @@ window.sos = sos;
 
     $("#queueTable").on('click', '.removeCustomLabel', function(){
         var prodid = $(this).closest('tr').data('prodid');
-        sos.etiketten.removeCustomLabel(prodid);
+        sos.etiketten.queue.removeCustomLabel(prodid);
     });
 
 	$("#primary-app").on('click', '.emptyQueue', function(){
