@@ -249,7 +249,8 @@ window.sos = sos;
 					'src':'/images/bo/icons/tick.png'
 				});
                 var link = $("<a/>",{
-                    'class': 'button removeCustomLabel'
+                    'class': 'button removeCustomLabel',
+                    'text': $("#removeCustomLabel").val()
                 });
 				customLabel.append(img, link);
 			}

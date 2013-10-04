@@ -48,6 +48,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 	<input id='etiketCategorieSearch' type='text'>
 </p>
 
+<input id="removeCustomLabel" type="hidden" value="<?= trans('etiket.remove_custom_label') ?>"/>
+
 <div id="primary-app">
 	<div id='step1'>
 		<h3><?= trans('etiket.stap_1')?></h3>
