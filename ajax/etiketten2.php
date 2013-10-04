@@ -104,7 +104,7 @@ switch($action){
 
     case 'removeCustomLabel':
         $productid = intval($_POST['prodid']);
-        $provider->customiseText($prodid, '', '');
+        $provider->customiseText($productid, '', '');
     break;
 
 }
