@@ -199,6 +199,7 @@
 				promo.html('&nbsp;');
 				promotot.html('&nbsp;');
 			}
+
 			var customLabel = tr.find('td:nth-child(7)');
 			if(product.customLabel)
 			{
@@ -206,7 +207,10 @@
 				var img = $('<img/>', {
 					'src':'/images/bo/icons/tick.png'
 				});
-				customLabel.append(img);
+                var link = $("<a/>",{
+                    'class': 'button removeCustomLabel'
+                });
+				customLabel.append(img, link);
 			}
 			else{
 				customLabel.html('&nbsp;');

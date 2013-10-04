@@ -147,7 +147,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 						<td>
 							<? if($product->hasCustomLabel()) : ?>
 							<img src="/images/bo/icons/tick.png" alt="V">
-                            <a class="removeCustomLabel"><?= trans('etiket.remove_custom_label') ?></a>
+                            <a class="button removeCustomLabel"><?= trans('etiket.remove_custom_label') ?></a>
 							<? endif; ?>
 						</td>
 						<td><img class='dequeue' src='/images/bo/icons/cross.png'/></td>
