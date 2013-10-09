@@ -74,7 +74,7 @@ class LabelProductProvider implements ProviderInterface
 		$query = $this->connection->table('prod');
 		$products = $query->join('merken', 'merken.merkid', '=', 'prod.Brand')
 			->join('fabrikanten', 'merken.merkid', '=', 'fabrikanten.merkid')
-			->join('categories', 'categories.ID', '=', 'prod.primairecatid')
+			->leftJoin('categories', 'categories.ID', '=', 'prod.primairecatid')
 			->whereIn('prod.ID', $prodids)
 			->get(array(
 				'prod.ID as product_id',
