@@ -459,7 +459,19 @@ class Document
 		global $HANDINFO;
 		$sos_pagina = $HANDINFO['sos_pagina'];
 		$path = rtrim($_SERVER['DOCUMENT_ROOT'], '/') . "/shops/" . $sos_pagina . "/images/logo_shop.png";
-		return is_file($path) ? $path : false;
+        $alterPath = preg_replace('/\/images\//', '/img/', $path);
+        if(is_file($path))
+        {
+            return $path;
+        }
+        else if(is_file($alterPath))
+        {
+            return $alterPath;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
 }
