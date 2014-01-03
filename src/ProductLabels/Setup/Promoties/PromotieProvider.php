@@ -48,7 +48,7 @@ class PromotieProvider implements ProviderInterface
 				$products[$promo->prodid]->setPromotie($promo, $this->labelProvider->getTaal());
 			}
 		}
-		foreach($promoshand as $promo)
+		foreach($promosfab as $promo)
 		{
 			if(isset($products[$promo->prodid]))
 			{
