@@ -18,13 +18,25 @@ class CategoryProvider implements ProviderInterface
 
 	public function suggest($term)
 	{
-		$categories = Category::where('Title_short_nl', 'like', '%'. $term . '%')
-		->where('ParentID','<>', '0')
-		->where('Active', 1)
-		->orderBy('Title_short_nl')
-		->take(10)
-		->get(array('Title_short_nl as label', 'ID as value'));
-		return $categories;
+        global $LANG;
+        if($LANG === 2) {
+            $categories = Category::where('Title_short_fr', 'like', '%'. $term . '%')
+                ->where('ParentID','<>', '0')
+                ->where('Active', 1)
+                ->orderBy('Title_short_fr')
+                ->take(10)
+                ->get(array('Title_short_fr as label', 'ID as value'));
+            return $categories;
+        } else {
+            $categories = Category::where('Title_short_nl', 'like', '%'. $term . '%')
+                ->where('ParentID','<>', '0')
+                ->where('Active', 1)
+                ->orderBy('Title_short_nl')
+                ->take(10)
+                ->get(array('Title_short_nl as label', 'ID as value'));
+
+            return $categories;
+        }
 	}
 
 	public function setInfoType($categoryId, $type)
