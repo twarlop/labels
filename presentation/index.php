@@ -128,7 +128,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 							<img src="/images/ez_prod/<?= $product->merkid?>/<?= $product->product_id?>/tn1/<?= $product->photo?>">
 						</td>
 						<td>
-							<a href='#' class='inspectCategory' data-category-id='<?= $product->category_id ?>'><?= $product->category ?></a><br>
+							<a href='#' class='inspectCategory' data-category-id='<?= $product->category_id ?>'><?= $LANG == 2 ? $product->category_fr : $product->category_nl ?></a><br>
 							<a href='#' class='inspect'><?= $product->title ?></a>
 						</td>
 						<td>

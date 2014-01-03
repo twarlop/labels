@@ -71,24 +71,25 @@ class LabelProductProvider implements ProviderInterface
 
 	protected function findBases(array $prodids)
 	{
-		$query = $this->connection->table('prod');
-		$products = $query->join('merken', 'merken.merkid', '=', 'prod.Brand')
-			->join('fabrikanten', 'merken.merkid', '=', 'fabrikanten.merkid')
-			->leftJoin('categories', 'categories.ID', '=', 'prod.primairecatid')
-			->whereIn('prod.ID', $prodids)
-			->get(array(
-				'prod.ID as product_id',
-				'ArtName_nl as title', 
-				'merken.merk_nl as merknaam', 
-				'merken.merkid', 
-				'prod.Image_small as photo',
-				'fabrikanten.logo_big as logoMerk', 
-				'prod.primairecatid as category_id', 
-				'categories.Title_short_nl as category',
-				'ez_content', 'ez_content_fr',
-				'kortnl', 'kortfr'
-			));
-		return $products;
+        $query = $this->connection->table('prod');
+        $products = $query->join('merken', 'merken.merkid', '=', 'prod.Brand')
+            ->join('fabrikanten', 'merken.merkid', '=', 'fabrikanten.merkid')
+            ->leftJoin('categories', 'categories.ID', '=', 'prod.primairecatid')
+            ->whereIn('prod.ID', $prodids)
+            ->get(array(
+                'prod.ID as product_id',
+                'ArtName_nl as title',
+                'merken.merk_nl as merknaam',
+                'merken.merkid',
+                'prod.Image_small as photo',
+                'fabrikanten.logo_big as logoMerk',
+                'prod.primairecatid as category_id',
+                'categories.Title_short_nl as category_nl',
+                'categories.Title_short_fr as category_fr',
+                'ez_content', 'ez_content_fr',
+                'kortnl', 'kortfr'
+            ));
+        return $products;
 	}
 
 	/**
