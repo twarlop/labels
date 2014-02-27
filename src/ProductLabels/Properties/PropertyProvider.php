@@ -178,6 +178,12 @@ class PropertyProvider implements ProviderInterface
 	{
 		$custom = array();
 		$standard = array();
+
+        if(empty($categoryIds))
+        {
+            return compact('standard', 'custom');
+        }
+
 		$lists = LabelCategoryProperty::whereIn('category_id', $categoryIds)
 			->where('owner_id', $this->handelaar_id)
 			->distinct()
