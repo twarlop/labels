@@ -432,7 +432,15 @@ class Document
 				return '<li>' . $property->invoernl . ': ' . $value['inhoudnl'] . '</li>';
 				break;
 			case 'fr':
-				return '<li>' . $property->invoerfr . ': ' . $value['inhoudfr'] . '</li>';
+                if(!empty($value['inhoudfr']))
+                {
+                    return '<li>' . $property->invoerfr . ': ' . $value['inhoudfr'] . '</li>';
+                }
+                else
+                {
+                    return '<li>' . $property->invoerfr . ': ' . $value['inhoudnl'] . '</li>';
+                }
+
 				break;
 			
 		}

@@ -230,13 +230,34 @@ class PropertyProvider implements ProviderInterface
 		{
 			if(isset($properties[$property->catinvoerveldid]))
 			{
-				if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
-				{
-					array_push($answer, array(
-						'property' => $property,
-						'value' => $properties[$property->catinvoerveldid]
-					));
-				}
+                switch($language)
+                {
+                    case 'nl':
+                        if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
+                        {
+                            array_push($answer, array(
+                                'property' => $property,
+                                'value' => $properties[$property->catinvoerveldid]
+                            ));
+                        }
+                        break;
+                    case 'fr':
+                        if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
+                        {
+                            array_push($answer, array(
+                                'property' => $property,
+                                'value' => $properties[$property->catinvoerveldid]
+                            ));
+                        }
+                        else if(in_array($property->data_type, array('num', 'boolean')))
+                        {
+                            array_push($answer, array(
+                                'property' => $property,
+                                'value' => $properties[$property->catinvoerveldid]
+                            ));
+                        }
+                        break;
+                }
 			}
 		}
 		return $answer;

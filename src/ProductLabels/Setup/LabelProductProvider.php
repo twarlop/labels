@@ -93,20 +93,6 @@ class LabelProductProvider implements ProviderInterface
 	}
 
 	/**
-	 * Here we look for custom property order.
-	 * If we don't have any, the properties use standard sort
-	 */
-	protected function splitProdids(array $prodids)
-	{
-		$query = $this->connection->table('prod');
-		$customProdids = $query->join('label_category_properties as lcp', 'lcp.category_id', '=', 'prod.primairecatid')
-			->whereIn('prod.ID', $prodids)
-			->where('lcp.owner_id', $this->handelaarid)
-			->distinct()
-			->get(array('prod.ID as product_id'));
-	}
-
-	/**
 	 * Finds the custom label text provided by the handelaar
 	 */
 	protected function findCustomLabels(array $prodids, array $products)
