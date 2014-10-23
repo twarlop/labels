@@ -172,11 +172,11 @@ class LabelProductProvider implements ProviderInterface
 		{
 			//elektrozine
 			case 1:
-			$fields = array('ez_content as nl', 'ez_content_fr as nl');
+			$fields = array('ez_content as tekstnl', 'ez_content_fr as tekstfr');
 			break;
 			//shoponsite
 			case 3:
-			$fields = array('kortnl as nl', 'kortfr as fr');
+			$fields = array('kortnl as tekstnl', 'kortfr as tekstfr');
 			break;
 		}
 		$query = $this->connection->table('prod');
