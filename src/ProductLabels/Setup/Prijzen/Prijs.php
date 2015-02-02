@@ -13,7 +13,7 @@ class Prijs
 	protected $prijs;
 	protected $prodid;
 
-	public function __construct(array $data = array())
+	public function __construct(\stdClass $data)
 	{
 		foreach($data as $k => $v)
 		{
