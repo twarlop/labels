@@ -26,7 +26,7 @@ class QueueProvider implements ProviderInterface
 	{
 		$queue = $this->connection->table('handelaars_labels_queue')->whereHandelaar_id($this->handelaar_id)->get(array('product_id'));
 		$prodids = array_map(function($item){
-			return $item['product_id'];
+			return $item->product_id;
 		}, $queue);
 		return array_values($prodids);
 	}

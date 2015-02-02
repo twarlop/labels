@@ -2,7 +2,7 @@
 namespace ProductLabels\Migration;
 
 use ProductLabels\Setup\Queue as NewQueue;
-use ProductLabels\DB;
+use DBRM;
 
 /**
 * Queue
@@ -26,7 +26,7 @@ class Queue extends Base
 
 	protected function oldQueue()
 	{
-		$labels = DB::connection('sos')->table('labelprintqueue')->get();
+		$labels = DBRM::connection()->table('labelprintqueue')->get();
 		return $labels;
 	}
 

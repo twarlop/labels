@@ -5,6 +5,7 @@ namespace ProductLabels\Migration;
 use ProductLabels\DB;
 use Illuminate\Database\Schema\Builder;
 use ProductLabels\Contract\MigrationInterface;
+use DBRM;
 
 /**
 * Base
@@ -17,7 +18,7 @@ abstract class Base implements MigrationInterface
 
 	public function __construct()
 	{
-		$connection = DB::connection('sos');
+		$connection = DBRM::connection();
 		$this->connection = $connection;
 		$this->builder = $connection->getSchemaBuilder();
 	}

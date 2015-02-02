@@ -3,10 +3,9 @@
 namespace ProductLabels\Setup;
 
 use ProductLabels\Contract\ProviderInterface;
-use ProductLabels\DB;
 use ProductLabels\Setup\Prijzen\PrijsProvider;
 use ProductLabels\Setup\Promoties\PromotieProvider;
-use DateTime;
+use DateTime, DBRM;
 
 /**
 * LabelProductProvider
@@ -40,7 +39,7 @@ class LabelProductProvider implements ProviderInterface
 	public function __construct($handelaarid, $propertyProvider, $labelProvider, $categoryProvider)
 	{
 		$this->handelaarid = $handelaarid;
-		$this->connection = DB::connection('sos');
+		$this->connection = DBRM::connection();
 		$this->prijsProvider = new PrijsProvider($this->handelaarid, $this->connection, $this->groeperingen);
 		$this->promotieProvider = new PromotieProvider($this->handelaarid, $this->connection, $this->groeperingen, $labelProvider);
 		$this->propertyProvider = $propertyProvider;
@@ -105,9 +104,9 @@ class LabelProductProvider implements ProviderInterface
 		{
 			if(isset($products[$label['prodid']]))
 			{
-				$products[$label['prodid']]->setCustomLabel(array(
-					'nl' => $label['tekstnl'],
-					'fr' => $label['tekstfr']
+				$products[$label->prodid]->setCustomLabel(array(
+					'nl' => $label->tekstnl,
+					'fr' => $label->tekstfr
 				));
 			}
 		}
@@ -136,7 +135,7 @@ class LabelProductProvider implements ProviderInterface
 		foreach($products as $product)
 		{
 			$product = $this->mergeText($product);
-            $product['title'] = $product['merknaam'] . ': ' . $product['title'];
+            $product->title = $product->merknaam . ': ' . $product->title;
 			$product = new LabelProduct($product);
 			$results[$product->product_id] = $product;
 		}
@@ -145,10 +144,10 @@ class LabelProductProvider implements ProviderInterface
 
 	protected function mergeText($product)
 	{
-		$nl = !empty($product['ez_content']) ? $product['ez_content'] : $product['kortnl'];
-		$fr = !empty($product['ez_content_fr']) ? $product['ez_content_fr'] : $product['kortfr'];
-		unset($product['ez_content'], $product['ez_content_fr'], $product['kortnl'], $product['kortfr']);
-		$product['text'] = compact(array('nl', 'fr'));
+		$nl = !empty($product->ez_content) ? $product->ez_content : $product->kortnl;
+		$fr = !empty($product->ez_content_fr) ? $product->ez_content_fr : $product->kortfr;
+		unset($product->ez_content, $product->ez_content_fr, $product->kortnl, $product->kortfr);
+		$product->text = compact(array('nl', 'fr'));
 		return $product;
 	}
 
@@ -162,7 +161,7 @@ class LabelProductProvider implements ProviderInterface
 			->get(array('groeperingid'));
 		$this->groeperingen = array_map(function($item)
 		{
-			return $item['groeperingid'];
+			return $item->groeperingid;
 		}, $groeperingen);
 	}
 

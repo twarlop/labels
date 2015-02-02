@@ -429,18 +429,17 @@ class Document
 	{
 		switch ($this->language) {
 			case 'nl':
-				return '<li>' . $property->invoernl . ': ' . $value['inhoudnl'] . '</li>';
+				return '<li>' . $property->invoernl . ': ' . $value->inhoudnl . '</li>';
 				break;
 			case 'fr':
-                if(!empty($value['inhoudfr']))
+                if(!empty($value->inhoudfr))
                 {
-                    return '<li>' . $property->invoerfr . ': ' . $value['inhoudfr'] . '</li>';
+                    return '<li>' . $property->invoerfr . ': ' . $value->inhoudfr . '</li>';
                 }
                 else
                 {
-                    return '<li>' . $property->invoerfr . ': ' . $value['inhoudnl'] . '</li>';
+                    return '<li>' . $property->invoerfr . ': ' . $value->inhoudnl . '</li>';
                 }
-
 				break;
 			
 		}

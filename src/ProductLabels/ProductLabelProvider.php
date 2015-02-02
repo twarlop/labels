@@ -2,6 +2,7 @@
 namespace ProductLabels;
 
 use ProductLabels\Contract\ProviderInterface;
+use DBRM;
 use DateTime;
 
 class ProductLabelProvider implements ProviderInterface{
@@ -18,7 +19,7 @@ class ProductLabelProvider implements ProviderInterface{
 
 	public function __construct($handelaarid)
 	{
-		$this->connection = DB::connection('sos');
+		$this->connection = DBRM::connection('default');
 		$this->handelaarid = $handelaarid;
 		$this->labelProvider = new Label\LabelProvider();
 		$this->queueProvider = new Setup\QueueProvider($this->handelaarid, $this->connection);

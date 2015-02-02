@@ -116,7 +116,7 @@ class LabelProduct
 
 	public function addProperty($property)
 	{
-		$this->properties[$property['catinvoerveldid']] = $property;
+		$this->properties[$property->catinvoerveldid] = $property;
 	}
 
 	public function getProperties()

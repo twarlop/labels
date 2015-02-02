@@ -57,9 +57,9 @@ class PropertyProvider implements ProviderInterface
 	{
 		foreach($properties as $property)
 		{
-			if(isset($products[$property['prodid']]))
+			if(isset($products[$property->prodid]))
 			{
-				$products[$property['prodid']]->addProperty($property);
+				$products[$property->prodid]->addProperty($property);
 			}
 		}
 	}
@@ -233,7 +233,9 @@ class PropertyProvider implements ProviderInterface
                 switch($language)
                 {
                     case 'nl':
-                        if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
+
+                        $field = 'inhoud' . $language;
+						if(!empty($properties[$property->catinvoerveldid]->$field))
                         {
                             array_push($answer, array(
                                 'property' => $property,
@@ -242,7 +244,8 @@ class PropertyProvider implements ProviderInterface
                         }
                         break;
                     case 'fr':
-                        if(!empty($properties[$property->catinvoerveldid]['inhoud'.$language]))
+                        $field = 'inhoud' . $language;
+						if(!empty($properties[$property->catinvoerveldid]->$field))
                         {
                             array_push($answer, array(
                                 'property' => $property,

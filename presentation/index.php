@@ -3,11 +3,7 @@
  * manually include autoload to simplify installation in old sos system
  */
 
-include __DIR__ . '/../bootstrap/start.php';
-
 setLocale(LC_MONETARY, 'nl_BE');
-
-// include('tests/classes.php');
 
 /**
  * UNCOMMENT THE FOLLOWING TO RUN THE MIGRATION
