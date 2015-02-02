@@ -28,7 +28,7 @@ class LabelProduct
 	protected $customLabel;
 	protected $properties = array();
 
-	public function __construct(array $data = array())
+	public function __construct(\stdClass $data)
 	{
 		foreach($data as $k => $v)
 		{
