@@ -1,13 +1,12 @@
 <?php
 
 namespace ProductLabels\Properties;
-
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * LabelCategoryProperty
 */
-class LabelCategoryProperty extends Eloquent
+class LabelCategoryProperty extends Model
 {
 	protected $table = 'label_category_properties';
 

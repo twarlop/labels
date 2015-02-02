@@ -1,12 +1,11 @@
 <?php
 namespace ProductLabels\Dimension;
-
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * DimensionType
 */
-class DimensionType extends Eloquent
+class DimensionType extends Model
 {
 
 	public $timestamps = false;

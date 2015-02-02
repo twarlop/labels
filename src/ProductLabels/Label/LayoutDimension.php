@@ -1,11 +1,11 @@
 <?php
 namespace ProductLabels\Label;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * LayoutDimension
 */
-class LayoutDimension extends Eloquent
+class LayoutDimension extends Model
 {
 	protected $table = 'label_layout_dimensions';
 

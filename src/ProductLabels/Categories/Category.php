@@ -1,12 +1,12 @@
 <?php
 namespace ProductLabels\Categories;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * Category
 */
-class Category extends Eloquent
+class Category extends Model
 {
 	protected $table = 'categories';
 }

@@ -1,11 +1,11 @@
 <?php
 namespace ProductLabels\Setup;
+use Framework\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
 /**
 * Queue
 */
-class Queue extends Eloquent
+class Queue extends Model
 {
 
 	protected $table = 'handelaars_labels_queue';

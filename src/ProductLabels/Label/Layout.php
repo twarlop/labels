@@ -1,6 +1,6 @@
 <?php
 namespace ProductLabels\Label;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * Layout
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 *
 * example: this will not hold a photo dimension if the current layout to be printed doens't need a photo
 */
-class Layout extends Eloquent
+class Layout extends Model
 {
 
 	protected $table = 'label_layout';

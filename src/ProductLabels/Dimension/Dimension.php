@@ -1,8 +1,8 @@
 <?php
 namespace ProductLabels\Dimension;
 
+use Framework\Database\Eloquent\Model;
 use ProductLabels\Contract\DimensionInterface;
-use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
 * Dimension
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 * This model holds a configuartion for each key part of a product label.
 * it has left, top, width, heigth property
 */
-class Dimension extends Eloquent implements DimensionInterface
+class Dimension extends Model implements DimensionInterface
 {
 	protected $table = 'label_dimensions';
 

@@ -1,12 +1,11 @@
 <?php
 namespace ProductLabels\Properties;
-
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use Framework\Database\Eloquent\Model;
 
 /**
 * Property
 */
-class Property extends Eloquent
+class Property extends Model
 {
 
 	protected $table = 'cat_invoervelden';
