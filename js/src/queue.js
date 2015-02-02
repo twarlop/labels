@@ -140,7 +140,7 @@
 			td.append($('<a/>', {
 				'href': '#',
 				'class': 'inspectCategory',
-				'text': product.category,
+				'text': $("#lang").val() == 2 ? product.category_nl : product.category_fr,
 				'data-category-id': product.category_id
 			}));
 			td.append($('<br/>'));
