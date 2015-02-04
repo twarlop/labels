@@ -19,7 +19,7 @@ class Promotie
 	protected $tekstfr;
 
 
-	public function __construct(array $data = array())
+	public function __construct(\stdClass $data)
 	{
 		foreach($data as $k => $v)
 		{
