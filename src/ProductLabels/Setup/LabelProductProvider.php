@@ -102,7 +102,7 @@ class LabelProductProvider implements ProviderInterface
 			->get();
 		foreach($labels as $label)
 		{
-			if(isset($products[$label['prodid']]))
+			if(isset($products[$label->prodid]))
 			{
 				$products[$label->prodid]->setCustomLabel(array(
 					'nl' => $label->tekstnl,
